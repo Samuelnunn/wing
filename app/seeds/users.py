@@ -6,8 +6,13 @@ from app.models import db, User
 
 def seed_users():
 
+
     demo = User(username='Demo', email='demo@aa.io',
-                password='password')
+                first_name='De', last_name='mo',
+                age='52', zip_code='22222',
+                bio='great human!', gender_id='male',
+                profile_photo_url='google.com',
+                hashed_password=generate_password_hash('password') )
 
     db.session.add(demo)
 
