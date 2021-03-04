@@ -1,8 +1,12 @@
 from flask import Blueprint, jsonify, session, request
+from werkzeug.utils import secure_filename
 from app.models import User, db
 from app.forms import LoginForm
 from app.forms import SignUpForm
 from flask_login import current_user, login_user, logout_user, login_required
+from ..helpers import *
+from ..config import Config
+from ..helpers import upload_file_to_s3
 
 auth_routes = Blueprint('auth', __name__)
 
@@ -34,14 +38,17 @@ def login():
     Logs a user in
     """
     form = LoginForm()
-    print(request.get_json())
+    print("--------------------------", request.get_json())
     # Get the csrf_token from the request cookie and put it into the
     # form manually to validate_on_submit can be used
     form['csrf_token'].data = request.cookies['csrf_token']
     if form.validate_on_submit():
         # Add the user to the session, we are logged in!
         user = User.query.filter(User.email == form.data['email']).first()
+        print('**************** validate_on_submit', user)
         login_user(user)
+        print('**************** user2', user)
+
         return user.to_dict()
     return {'errors': validation_errors_to_error_messages(form.errors)}, 401
 
@@ -56,18 +63,34 @@ def logout():
 
 
 @auth_routes.route('/signup', methods=['POST'])
-def sign_up():
+def sign_up():  
     """
     Creates a new user and logs them in
     """
     form = SignUpForm()
+    file = request.files.get("profile_photo_file")
     form['csrf_token'].data = request.cookies['csrf_token']
+
     if form.validate_on_submit():
+        s3_photo_url = 'https://wing.s3.us-east-2.amazonaws.com/Week4_HarleyDavyDoodle.jpg'
+        file = form.data['profile_photo_file']
+        if file:
+            file.filename = secure_filename(file.filename)
+            s3_photo_url = upload_file_to_s3(file, Config.S3_BUCKET)
+        print("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!", file)
         user = User(
             username=form.data['username'],
             email=form.data['email'],
-            password=form.data['password']
+            first_name=form.data['first_name'],
+            last_name=form.data['last_name'],
+            age=form.data['age'],
+            zip_code=form.data['zip_code'],
+            bio=form.data['bio'],
+            gender_id=form.data['gender_id'],
+            password=form.data['password'],
+            profile_photo_url=s3_photo_url,
         )
+        print("!!!!!!!!!!!!!!!!!!!!!!!!!", user)
         db.session.add(user)
         db.session.commit()
         login_user(user)
