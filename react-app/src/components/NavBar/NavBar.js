@@ -1,10 +1,22 @@
 import React from 'react';
-import { NavLink } from 'react-router-dom';
-import LogoutButton from './auth/LogoutButton';
+import { NavLink, useHistory } from 'react-router-dom';
+import { useDispatch, useSelector } from "react-redux";
+import LogoutButton from '../auth/LogoutButton';
+import { useState } from 'react';
+
 
 const NavBar = ({ setAuthenticated }) => {
-  return (
-    <nav>
+    
+    const history = useHistory();
+    const dispatch = useDispatch();
+    const user = useSelector(state => state.session.user)
+
+    const loadMainFeed = () => {
+        // dispatch(getMatchesForUser()) - store
+      }
+  
+      return (
+          <nav>
       <ul>
         <li>
           <NavLink to="/" exact={true} activeClassName="active">
@@ -33,5 +45,8 @@ const NavBar = ({ setAuthenticated }) => {
     </nav>
   );
 }
+ 
+
+
 
 export default NavBar;

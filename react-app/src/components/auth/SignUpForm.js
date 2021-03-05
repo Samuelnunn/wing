@@ -1,8 +1,9 @@
 import React, { useState, useRef } from "react";
 import { Redirect } from 'react-router-dom';
-import { signUp } from '../../services/auth';
+import { signUp, genderPreferenceFormData } from '../../services/auth';
 import { useDispatch } from 'react-redux'
 import { addUser } from '../../store/session'
+// import { addGenderPreferences } from '../../store/preferences.js'
 
 const SignUpForm = ({authenticated, setAuthenticated}) => {
     const fileInput = useRef(null)
@@ -18,9 +19,9 @@ const SignUpForm = ({authenticated, setAuthenticated}) => {
     const [gender, setGender] = useState("");
     const [profilePicture, setProfilePicture] = useState("");
     const [selectedFile, setSelectedFile] = useState("Profile Image")
+    const [genderPreference, setGenderPreference] = useState("")
 
     const dispatch = useDispatch();
-    console.log(gender.length)
     let genders = ["Woman", "Cis Woman", "Trans Woman", "Man",
            "Cis Man", "Trans Man", "Agender", "Androgynous",
            "Bigender", "GenderFluid", "GenderQueer",
@@ -33,11 +34,13 @@ const SignUpForm = ({authenticated, setAuthenticated}) => {
         if (password === repeatPassword) {
             const user = await signUp(username, email, password, 
                                       firstName, lastName, age, 
-                                      zipCode, bio, gender, profilePicture);
-                console.log(user)
+                                      zipCode, bio, gender, profilePicture,
+                                      genderPreference);
+            // const genderPreferenceData = await genderPreferenceFormData(genderPreference)
           if (!user.errors) {
             setAuthenticated(true);
             dispatch(addUser(user));
+            // dispatch(addGenderPreferences(genderPreferenceData))
           }
         }
     };
@@ -80,6 +83,10 @@ const SignUpForm = ({authenticated, setAuthenticated}) => {
   
     const updateGender = (e) => {
         setGender(e.target.value);
+    };
+    
+    const updateGenderPreference = (e) => {
+        setGenderPreference(e.target.value);
     };
   
     const updateProfilePhotoPicture = (e) => {
@@ -185,6 +192,7 @@ const SignUpForm = ({authenticated, setAuthenticated}) => {
                 ></input>
             </div>
             <div> 
+                <p>Idententifying Gender :</p>
                 { genders.map(eachGender => {
                     if (gender.length >= 1) {
                     return (
@@ -206,6 +214,36 @@ const SignUpForm = ({authenticated, setAuthenticated}) => {
                                 name="gender"
                                 placeholder={eachGender}
                                 onChange={updateGender}
+                                value={eachGender}
+                                required={true}
+                            ></input>{eachGender}</> 
+                        )   
+                    }
+                })}
+            </div>
+            <div> 
+                <p>Gender Preference:</p>
+                { genders.map(eachGender => {
+                    if (genderPreference.length >= 1) {
+                    return (
+                        <>
+                            <input
+                                type="checkbox"
+                                name="genderPreferences"
+                                placeholder={eachGender}
+                                onChange={updateGenderPreference}
+                                value={eachGender}
+                            ></input>{eachGender}
+                        </>
+                        )
+                    } else {
+                        return (
+                            <>
+                            <input
+                                type="checkbox"
+                                name="genderPreferences"
+                                placeholder={eachGender}
+                                onChange={updateGenderPreference}
                                 value={eachGender}
                                 required={true}
                             ></input>{eachGender}</> 
