@@ -35,7 +35,7 @@ export const logout = async () => {
 
 export const signUp = async (username, email, password, firstName, 
                              lastName, age, zipCode, bio, 
-                             gender, profilePicture) => {
+                             gender, profilePicture, genderPreference) => {
             
     const formData = new FormData();
 
@@ -48,12 +48,26 @@ export const signUp = async (username, email, password, firstName,
     formData.append("bio", bio);
     formData.append("gender_id", gender);
     formData.append("password", password);
+    formData.append("gender_preference", genderPreference)
 
     if (profilePicture) {
         formData.append("profile_photo_file", profilePicture)
     };
 
     const response = await fetch("/api/auth/signup", {
+        method: "POST",
+        body: formData
+    });
+    return await response.json();
+}
+
+export const genderPreferenceFormData = async (genderPreference) => {
+            
+    const formData = new FormData();
+
+    formData.append("gender_preference", genderPreference);
+
+    const response = await fetch("/api/gender_preference", {
         method: "POST",
         body: formData
     });

@@ -5,20 +5,26 @@ import { BrowserRouter } from "react-router-dom";
 import configureStore from "./store";
 import App from './App';
 import './index.css';
+import ModalProvider from './context/ModalContext';
+// import AuthProvider from './';
+import * as sessionActions from './store/session'
 
 const store = configureStore();
 
 if (process.env.NODE_ENV !== "production") {
     window.store = store;
+    window.sessionActions = sessionActions;
 }
 
 function Root() {
     return (
-      <Provider store={store}>
         <BrowserRouter>
-          <App />
-        </BrowserRouter>
-      </Provider>
+        <Provider store={store}>
+          <ModalProvider>
+                <App />
+          </ModalProvider>
+        </Provider>
+      </BrowserRouter>
     );
 }
 

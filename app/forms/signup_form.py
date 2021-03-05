@@ -33,3 +33,4 @@ class SignUpForm(FlaskForm):
     bio = TextAreaField('bio', validators=[DataRequired()])
     gender_id = StringField('gender',  validators=[DataRequired()])
     profile_photo_file = FileField('profile photo')
+    gender_preference = StringField('gender preferences', validators=[DataRequired()])

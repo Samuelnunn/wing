@@ -1,6 +1,6 @@
 from flask import Blueprint, jsonify, session, request
 from werkzeug.utils import secure_filename
-from app.models import User, db
+from app.models import User, Gender, genderPreferences, db
 from app.forms import LoginForm
 from app.forms import SignUpForm
 from flask_login import current_user, login_user, logout_user, login_required
@@ -77,21 +77,24 @@ def sign_up():
         if file:
             file.filename = secure_filename(file.filename)
             s3_photo_url = upload_file_to_s3(file, Config.S3_BUCKET)
-        print("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!", file)
         user = User(
-            username=form.data['username'],
-            email=form.data['email'],
-            first_name=form.data['first_name'],
-            last_name=form.data['last_name'],
-            age=form.data['age'],
-            zip_code=form.data['zip_code'],
-            bio=form.data['bio'],
-            gender_id=form.data['gender_id'],
-            password=form.data['password'],
-            profile_photo_url=s3_photo_url,
-        )
-        print("!!!!!!!!!!!!!!!!!!!!!!!!!", user)
+                username=form.data['username'],
+                email=form.data['email'],
+                first_name=form.data['first_name'],
+                last_name=form.data['last_name'],
+                age=form.data['age'],
+                zip_code=form.data['zip_code'],
+                bio=form.data['bio'],
+                gender_id=form.data['gender_id'],
+                password=form.data['password'],
+                profile_photo_url=s3_photo_url,
+            )
+        gender_preferences = Gender(
+                gender_name=form.data['gender_preference']
+            ) 
+        print('Here I am!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!', user)
         db.session.add(user)
+        db.session.add(gender_preferences)
         db.session.commit()
         login_user(user)
         return user.to_dict()
