@@ -1,8 +1,8 @@
 """all tables
 
-Revision ID: 9f8e8d19e767
+Revision ID: 194f2b54e61e
 Revises: 
-Create Date: 2021-03-04 12:56:12.478809
+Create Date: 2021-03-09 17:50:57.328086
 
 """
 from alembic import op
@@ -10,7 +10,7 @@ import sqlalchemy as sa
 
 
 # revision identifiers, used by Alembic.
-revision = '9f8e8d19e767'
+revision = '194f2b54e61e'
 down_revision = None
 branch_labels = None
 depends_on = None
@@ -44,11 +44,12 @@ def upgrade():
     sa.UniqueConstraint('username')
     )
     op.create_table('gender_preferences',
+    sa.Column('id', sa.Integer(), nullable=False),
     sa.Column('user_id', sa.Integer(), nullable=False),
     sa.Column('gender_id', sa.Integer(), nullable=False),
     sa.ForeignKeyConstraint(['gender_id'], ['genders.id'], ),
     sa.ForeignKeyConstraint(['user_id'], ['users.id'], ),
-    sa.PrimaryKeyConstraint('user_id', 'gender_id')
+    sa.PrimaryKeyConstraint('id')
     )
     op.create_table('matches',
     sa.Column('matcher_id', sa.Integer(), nullable=True),

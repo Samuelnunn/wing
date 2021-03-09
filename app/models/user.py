@@ -2,7 +2,7 @@ from .db import db
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask_login import UserMixin
 import datetime
-from .gender_preferences import genderPreferences
+from .gender_preferences import GenderPreference
 
 matches = db.Table(
     'matches',
@@ -30,9 +30,8 @@ class User(db.Model, UserMixin):
                           default=datetime.datetime.utcnow)
     updated_at = db.Column(db.DateTime,
                           default=datetime.datetime.utcnow)
-    genders = db.relationship("Gender", secondary=genderPreferences,
-                              back_populates="user",
-                              )
+
+    genders = db.relationship("GenderPreference", back_populates="user")
     sent_messages = db.relationship("Message", foreign_keys="Message.message_sender_id", 
                                     back_populates="sender")
     recieved_messages = db.relationship("Message", foreign_keys="Message.recipient_id", 
