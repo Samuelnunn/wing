@@ -1,5 +1,6 @@
-import React, { createContext, useEffect, useState, useContext, useRef } from 'react';
+import React, { useEffect, useState, useContext, useRef } from 'react';
 import ReactDOM from 'react-dom';
+import './modal.css'
 
 const ModalContext = React.createContext();
 
@@ -21,19 +22,19 @@ const ModalProvider = ({children}) => {
     );
 };
     export const Modal = ({onClose, children }) => {
-        const ModalContext = useContext(ModalContext)
-        if (!ModalContext) return null
+        const ModalNode = useContext(ModalContext)
+        if (!ModalNode) return null
 
         return ReactDOM.createPortal(
             <div id="modal">
             <div id="modal-background" onClick={onClose} />
             <div id="modal-content">
-              <i className="fas fa-times modal-close" onClick={onClose}></i>
-              {children}
+                <i className="fas fa-times modal-close" onClick={onClose}></i>
+                {children}
             </div>
           </div>,
-          ModalContext   
-        )
+          ModalNode
+        );
     }
 
 export default ModalProvider;

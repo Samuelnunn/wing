@@ -81,15 +81,19 @@ export const logoutUser = () => async (dispatch) => {
 
 
 const initialState = { user: null };
-const sessionReducer = (state = initialState, action) => {
-    switch (action.type) {
-        case SET_USER:
-          return { ...state, user: action.user };
-        case REMOVE_USER:
-          return { ...state, user: null };
-        default:
-          return state;
-      }
-};
+
+function sessionReducer(state = initialState, action) {
+  let newState;
+  switch (action.type) {
+    case SET_USER:
+        newState = Object.assign({}, state, { user: action.user });
+      return newState;
+    case REMOVE_USER:
+      newState = Object.assign({}, state, { user: undefined });
+      return newState;
+    default:
+      return state;
+  }
+}
 
 export default sessionReducer;
