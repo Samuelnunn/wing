@@ -1,13 +1,18 @@
 from .db import db
 import datetime
 
-genderPreferences = db.Table(
-    "gender_preferences",
+
+class GenderPreference(db.Model):
+    __tablename__ = "gender_preferences"
     db.Model.metadata,
-    db.Column("user_id", db.Integer, db.ForeignKey("users.id"),
-              primary_key=True
-              ),
-    db.Column("gender_id", db.Integer, db.ForeignKey("genders.id"),
-              primary_key=True
-              )
-)
+    id = db.Column(db.Integer, primary_key=True)
+    user_id = db.Column(db.Integer, db.ForeignKey("users.id"),
+              nullable=False
+            )
+    gender_id = db.Column(db.Integer, db.ForeignKey("genders.id"),
+              nullable=False
+            )
+    
+    user = db.relationship("User", back_populates="genders")
+    gender = db.relationship("Gender", back_populates="user")
+
