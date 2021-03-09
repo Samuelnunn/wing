@@ -76,7 +76,7 @@ This is the backend for the Flask React project.
 
 7. If image exists delete before building
 
-dokcer image rm registry.heroku.com/wingdating/web
+docker image rm registry.heroku.com/wingdating/web
 
 docker build --tag registry.heroku.com/wingdating/web .  
 
