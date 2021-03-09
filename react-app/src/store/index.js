@@ -1,11 +1,13 @@
 import { createStore, combineReducers, applyMiddleware, compose } from "redux";
 import thunk from "redux-thunk";
 import sessionReducer from "./session";
-import genderPreferenceReducer from './preferences'
+import matchesReducer from './matches'
+import genderPreferenceReducer from './preferences';
 
 const rootReducer = combineReducers({
     session: sessionReducer,
     genderPreference: genderPreferenceReducer,
+    matches: matchesReducer
 });
 
 let enhancer;

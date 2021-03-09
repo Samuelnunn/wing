@@ -19,7 +19,6 @@ export const login = async (email, password) => {
     })
   });
   const awaitJson = await response.json();
-  debugger
   return awaitJson
 }
 

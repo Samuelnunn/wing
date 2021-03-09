@@ -1,64 +1,66 @@
-import React, { useState, useEffect, useSelector } from "react";
-import { BrowserRouter, Route, Switch, useHistory } from "react-router-dom";
-import { useDispatch } from "react-redux";
-import LoginForm from "./components/LoginForm/LoginForm";
-import SignUpForm from "./components/auth/SignUpForm";
-import NavBar from "./components/NavBar/NavBar";
-import LandingPage from "./components/LandingPage";
+import React, { useState, useEffect } from "react";
+import { BrowserRouter, NavLink, Route, Switch, useHistory } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import NavBar from "./components/NavBar/index";
 import ProtectedRoute from "./components/auth/ProtectedRoute";
-import UsersList from "./components/UsersList";
-import User from "./components/User";
+import MatchCard from "./components/Match/index"
 import LogoutButton from './components/auth/LogoutButton';
-import { authenticate } from "./services/auth";
+import { authenticate, logout } from "./services/auth";
 import { addUser } from "./store/session";
+import { getPotentialMatches } from './store/matches';
+
+
+
 
 function App() {
+const dispatch = useDispatch();
   const [authenticated, setAuthenticated] = useState(false);
   const [loaded, setLoaded] = useState(false);
-  const dispatch = useDispatch();
-  const history = useHistory();
   
+  const user = useSelector(state => state.session.user)
+  console.log(user)
 
   useEffect(() => {
-    (async() => {
+    (async () => {
       const user = await authenticate();
       if (!user.errors) {
         setAuthenticated(true);
         dispatch(addUser(user));
+        dispatch(getPotentialMatches());
       }
       setLoaded(true);
     })();
-  }, [dispatch]);
+  }, [setAuthenticated, dispatch]);
+
 
   if (!loaded) {
     return null;
     }
-    if (loaded) {
+
       return (
-        <BrowserRouter>
-        {/* <NavBar setAuthenticated={setAuthenticated} /> */}
-        {/* <LandingPage setAuthenticated={setAuthenticated}/> */}
-        <Switch>
-          <Route path="/login" exact={true}>
-            <LoginForm
-              authenticated={authenticated}
-              setAuthenticated={setAuthenticated}
-            />
-          </Route>
-          <Route path="/sign-up" exact={true}>
-            <SignUpForm authenticated={authenticated} setAuthenticated={setAuthenticated} />
-          </Route>
-        </Switch>
-        <Switch>
-            <ProtectedRoute path="/" exact={true} authenticated={authenticated}>
-            <h1>My Home Page</h1>
-            {console.log()}
-            <LogoutButton setAuthenticated={setAuthenticated} />
-            </ProtectedRoute>
-        </Switch>
-      </BrowserRouter>
-      )
-    }    
-}
+        <>
+            <BrowserRouter>
+            <NavBar loaded={loaded} setAuthenticated={setAuthenticated}  authenticated={authenticated}/>
+            {loaded && (
+                <>
+                    <Switch>
+                        <Route path="/matches">
+                            <MatchCard />
+                            <LogoutButton setAuthenticated={setAuthenticated} />
+                            <button onClick={logout}></button>
+                        </Route>      
+                        <Route path="/" exact={true} authenticated={authenticated}>
+                            <MatchCard />
+                        </Route>
+                    </Switch>
+                    <>
+                    </>
+                </>
+            )}
+            </BrowserRouter>
+      </>
+    )
+}    
+
 
 export default App;

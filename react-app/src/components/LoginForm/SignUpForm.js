@@ -1,11 +1,12 @@
 import React, { useState, useRef } from "react";
-import { Redirect } from 'react-router-dom';
+import { Redirect, useHistory } from 'react-router-dom';
 import { signUp, genderPreferenceFormData } from '../../services/auth';
 import { useDispatch } from 'react-redux'
 import { addUser } from '../../store/session'
 // import { addGenderPreferences } from '../../store/preferences.js'
 
-const SignUpForm = ({authenticated, setAuthenticated}) => {
+const SignUpForm = ({authenticated, setAuthenticated, onClose}) => {
+    const history = useHistory();
     const fileInput = useRef(null)
     const [username, setUsername] = useState("");
     const [email, setEmail] = useState("");
@@ -39,7 +40,9 @@ const SignUpForm = ({authenticated, setAuthenticated}) => {
             // const genderPreferenceData = await genderPreferenceFormData(genderPreference)
           if (!user.errors) {
             setAuthenticated(true);
+            onClose()
             dispatch(addUser(user));
+            window.location.href='/matches';
             // dispatch(addGenderPreferences(genderPreferenceData))
           }
         }
@@ -99,7 +102,7 @@ const SignUpForm = ({authenticated, setAuthenticated}) => {
     }
 
     if (authenticated) {
-        return <Redirect to="/" />;
+        return <Redirect to="/matches" />;
     }
 
     return (

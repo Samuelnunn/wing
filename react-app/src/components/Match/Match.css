@@ -1,0 +1,15 @@
+.whole-container {
+    /* width: 100%;
+    height: 700px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  */
+}
+
+.match-card-top{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-top: 200px;
+}
