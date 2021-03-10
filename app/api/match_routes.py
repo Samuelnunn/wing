@@ -35,7 +35,7 @@ def match():
     users_to_return = []
     for information in possible_matches:
         for nested_info in information:
-            if user != nested_info.id | user != users_already_matched:
+            if user != nested_info.id:
                 users_to_return.append(match_to_dict(nested_info))
     return jsonify(users_to_return)
     
@@ -55,9 +55,9 @@ def match_user(id_param):
     return jsonify(matches_to_return)
 
 
-@match_routes.route("/matched/", methods=["GET"])
-# @login_required
-def users_match():
+# @match_routes.route("/matched/", methods=["GET"])
+# # @login_required
+# def users_match():
     # matched_users = db.session.query(User.Match).all()
     # print( user, '!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!')
     # user_to_match = User.query.filter(User.id == id_param).first()
