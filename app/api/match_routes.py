@@ -22,6 +22,7 @@ def match_to_dict(match):
 def match():
     user = User.query.get(current_user.id).id
     users_gender_preference_id = GenderPreference.query.filter(user == GenderPreference.user_id).all()
+    users_already_matched = User.query.filter(User.id == current_user.id).first()
     gender_id_join = []
     for gender_ids in users_gender_preference_id:
         gender_id_join.append(Gender.query.filter(gender_ids.id == Gender.id).all())
@@ -33,38 +34,40 @@ def match():
         possible_matches.append(User.query.filter(User.gender_id == possible_match).all())
     users_to_return = []
     for information in possible_matches:
-        for nestedinfo in information:
-            users_to_return.append(match_to_dict(nestedinfo))
-    print('!!!!!!!!!!!!!!!!!!!!', users_to_return)
+        for nested_info in information:
+            if user != nested_info.id | user != users_already_matched:
+                users_to_return.append(match_to_dict(nested_info))
     return jsonify(users_to_return)
     
-# #     user_to_match = User.query.filter(User.id == current_user).first()
-# #     user.matchers.append(user_to_match)
-# #     user_to_match.matches.append(user)
-# #     db.session.add(user)
-# #     db.session.add(user_to_match)
-# #     db.session.commit()
-# #     match_to_return = []
-# #     for match in user.matchers:
-# #         match_to_return.append(match_to_dict(match))
-# #     return jsonify(match_to_return)
 
-
-# @match_routes.route("/matched/<int:id_param>", methods=["POST"])
+@match_routes.route("/matched/<int:id_param>", methods=["POST"])
 # @login_required
-# def match(id_param):
-#     user = User.query.filter(User.id == current_user.id).first()
-#     print(user, current_user)
-#     user_to_match = User.query.filter(User.id == current_user).first()
-#     user.matchers.append(user_to_match)
-#     user_to_match.matches.append(user)
-#     db.session.add(user)
-#     db.session.add(user_to_match)
-#     db.session.commit()
-#     match_to_return = []
-#     for match in user.matchers:
-#         match_to_return.append(match_to_dict(match))
-#     return jsonify(match_to_return)
+def match_user(id_param):
+    user = User.query.filter(User.id == current_user.id).first()
+    print(user)
+    user_to_match = User.query.filter(User.id == id_param).first()
+    user.matches.append(user_to_match)
+    db.session.add(user)
+    db.session.commit()
+    matches_to_return = []
+    for match in user.matches:
+        matches_to_return.append(match_to_dict(match))
+    return jsonify(matches_to_return)
+
+
+@match_routes.route("/matched/", methods=["GET"])
+# @login_required
+def users_match():
+    # matched_users = db.session.query(User.Match).all()
+    # print( user, '!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!')
+    # user_to_match = User.query.filter(User.id == id_param).first()
+    # db.session.add(user)
+    # db.session.commit()
+    # matches_to_return = []
+    # for match in user.matches:
+    #     matches_to_return.append(match_to_dict(match))
+    # return jsonify(matches_to_return)
+
 
 
 # @match_routes.route("/unmatch/<int:id_param>", methods=["POST"])

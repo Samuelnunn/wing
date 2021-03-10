@@ -10,6 +10,7 @@ ENV REACT_APP_BASE_URL=https://wingdating.herokuapp.com
 RUN npm install
 RUN npm run build
 
+
 FROM python:3.9
 
 # Setup Flask environment
@@ -20,12 +21,14 @@ ENV SQLALCHEMY_ECHO=True
 EXPOSE 8000
 
 WORKDIR /var/www
+COPY ./react-app .
 COPY . .
 COPY --from=build-stage /react-app/build/* app/static/
 
 # Install Python Dependencies
 RUN pip install -r requirements.txt
 RUN pip install psycopg2
+RUN pip install boto3
 
 # Run flask environment
 CMD gunicorn app:app

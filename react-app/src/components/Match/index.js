@@ -9,54 +9,61 @@ import './Match.css'
 
 function MatchCard() {
     const dispatch = useDispatch();
-
     const user = useSelector((state) => state.session.user);
     const potentialMatch = useSelector((state) => state.matches);
+    const neededUser = useSelector((state) => Object.values(state.matches));
     const [seenUser, setSeenUser] = useState([]);
 
+    const arrayOfIds= [];
+    const myRandomIdHelper = potentialMatch.map(eachid => {
+        arrayOfIds.push(eachid.id);
+    })
+    const idRanxomizer = arrayOfIds[Math.floor(Math.random() * arrayOfIds.length)];
+    const idFilter = potentialMatch.filter((oneMatch) => oneMatch.id == idRanxomizer);
+
+    const matchUser = async (e) => {
+        console.log(e.target.id)
+        dispatch(matchUsers(e.target.id))
+        setSeenUser(e.target.id)
+    }
+    console.log(seenUser)
     if (potentialMatch ) {
-    let ammountOfPotentialMatches = potentialMatch.length;
-    // const { potentialUserRandomizer } = potentialMatch[Math.floor(Math.random() * potentialMatch.length)];
-    // if (potentialUserRandomizer){
-    // // console.log(potentialUserRandomizer.map(eachVal => {
-    // //     console.log(eachVal)
-    // // }))
-    // }
-    const userToMatch = potentialMatch[ammountOfPotentialMatches - 1]
-    console.log(userToMatch)
-
-
-    return ( 
-        <>
-            {potentialMatch && 
-                <>
-                {potentialMatch.map((eachValue) => {
-                    return(
-                     <>
-                            <div className='whole-container' />
-                            <div className='match-card-top'>
-                                <PersonOutlineIcon />
-                                <h1 className='match-card'>{potentialMatch.first_name}</h1>
-                                <img src={potentialMatch.profile_photo_url} />
-                                <ChatBubbleIcon />
-                            </div>
-                            <button onClick={seenUser.push(potentialMatch)}> weeeee </button>
-                            <div>
-                                <p>
-                                    yes
-                                </p>
-                            </div>
-                            <div>
-                                <p>
-                                    no
-                                </p>
-                            </div>
+        return ( 
+            <>
+                {potentialMatch && 
+                    <>
+                    {idFilter.map((singlePerson) => {
+                        if(singlePerson.id !== seenUser) {
+                        return(
+                         <>
+                                <div className='whole-container' key={singlePerson.first_name}/>
+                                <div className='match-card-top'>
+                                    <PersonOutlineIcon />
+                                    <h1 className='match-card'>{singlePerson.first_name}</h1>
+                                    <img src={singlePerson.profile_photo_url} />
+                                    <ChatBubbleIcon />
+                                </div>
+                                {}
+                                <button onClick={matchUser}
+                                id={singlePerson.id}
+                                > Match</button>
+                                <div>
+                                    <p>
+                                        yes
+                                    </p>
+                                </div>
+                                <div>
+                                    <p>
+                                        no
+                                    </p>
+                                </div>
+                        </>
+                        )
+                        }
+                        })}
                     </>
-                    )
-                    })}
-                </>
-            }
-        </>)
+                }
+            </>)
     } else {
         return (
             <>

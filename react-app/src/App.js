@@ -17,7 +17,7 @@ const dispatch = useDispatch();
   const [authenticated, setAuthenticated] = useState(false);
   const [loaded, setLoaded] = useState(false);
   
-  const user = useSelector(state => state.session.user)
+  const user = useSelector(state => state.session.user) 
   console.log(user)
 
   useEffect(() => {
