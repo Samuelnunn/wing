@@ -8,29 +8,31 @@ import LogoutButton from './components/auth/LogoutButton';
 import { authenticate, logout } from "./services/auth";
 import { addUser } from "./store/session";
 import { getPotentialMatches } from './store/matches';
+import { matchedByOtherUser } from './store/matched';
 
 
 
 
 function App() {
-const dispatch = useDispatch();
+  const dispatch = useDispatch();
   const [authenticated, setAuthenticated] = useState(false);
   const [loaded, setLoaded] = useState(false);
   
-  const user = useSelector(state => state.session.user) 
-  console.log(user)
+  const user = useSelector(state => state.session.user) ;
 
-  useEffect(() => {
-    (async () => {
-      const user = await authenticate();
-      if (!user.errors) {
-        setAuthenticated(true);
-        dispatch(addUser(user));
-        dispatch(getPotentialMatches());
-      }
-      setLoaded(true);
-    })();
-  }, [setAuthenticated, dispatch]);
+
+    useEffect(() => {
+      (async () => {
+        const user = await authenticate();
+        if (!user.errors) {
+            setAuthenticated(true);
+            dispatch(addUser(user));
+            dispatch(getPotentialMatches());
+            dispatch(matchedByOtherUser());
+        }
+        setLoaded(true);
+      })();
+    }, [setAuthenticated, dispatch]);
 
 
   if (!loaded) {

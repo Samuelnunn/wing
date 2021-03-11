@@ -3,73 +3,95 @@ import { useDispatch, useSelector } from "react-redux";
 import { useParams, Link, useHistory } from "react-router-dom"
 import PersonOutlineIcon from '@material-ui/icons/PersonOutline';
 import ChatBubbleIcon from '@material-ui/icons/ChatBubble';
-import {matchUsers, getPotentialMatches} from '../../store/matches'
+import { Modal } from '../../context/ModalContext';
+import MessageOnMatch from '../MessageOnMatch';
+import { matchUsers, getPotentialMatches, matchedByOtherUser } from '../../store/matches'
+import { sendAMessage } from '../../store/messages'
 import './Match.css'
 
 
 function MatchCard() {
     const dispatch = useDispatch();
+    
     const user = useSelector((state) => state.session.user);
     const potentialMatch = useSelector((state) => state.matches);
-    const neededUser = useSelector((state) => Object.values(state.matches));
+    const matchedUser = useSelector((state) => state.matched);
+    
+    const [showModal, setShowModal] = useState(false);
     const [seenUser, setSeenUser] = useState([]);
+    const onClose= () => {setShowModal(false)};
 
     const arrayOfIds= [];
-    const myRandomIdHelper = potentialMatch.map(eachid => {
-        arrayOfIds.push(eachid.id);
-    })
-    const idRanxomizer = arrayOfIds[Math.floor(Math.random() * arrayOfIds.length)];
-    const idFilter = potentialMatch.filter((oneMatch) => oneMatch.id == idRanxomizer);
+    const arrayOfMatchedIds = [];
+    
+    potentialMatch.map((eachId) => {arrayOfIds.push(eachId.id)});
+    matchedUser.map((eachId) => {arrayOfMatchedIds.push(eachId.id)})
+    
+    const idRandomizer = arrayOfIds[Math.floor(Math.random() * arrayOfIds.length)];
+    const idFilter = potentialMatch.filter((oneMatch) => oneMatch.id == idRandomizer);
 
     const matchUser = async (e) => {
-        console.log(e.target.id)
-        dispatch(matchUsers(e.target.id))
-        setSeenUser(e.target.id)
-    }
-    console.log(seenUser)
-    if (potentialMatch ) {
+        dispatch(matchUsers(e.target.id));
+        setSeenUser(e.target.id);
+        arrayOfMatchedIds.filter((eachId) => {
+            if (eachId == e.target.id) {
+                console.log('Match!!!');
+                setShowModal(true);
+            }
+        });
+    };
+    
+    if (potentialMatch) {
         return ( 
             <>
                 {potentialMatch && 
                     <>
-                    {idFilter.map((singlePerson) => {
-                        if(singlePerson.id !== seenUser) {
-                        return(
-                         <>
-                                <div className='whole-container' key={singlePerson.first_name}/>
-                                <div className='match-card-top'>
-                                    <PersonOutlineIcon />
-                                    <h1 className='match-card'>{singlePerson.first_name}</h1>
-                                    <img src={singlePerson.profile_photo_url} />
-                                    <ChatBubbleIcon />
-                                </div>
-                                {}
-                                <button onClick={matchUser}
-                                id={singlePerson.id}
-                                > Match</button>
-                                <div>
-                                    <p>
-                                        yes
-                                    </p>
-                                </div>
-                                <div>
-                                    <p>
-                                        no
-                                    </p>
-                                </div>
-                        </>
-                        )
-                        }
-                        })}
+                        {idFilter.map((singlePerson) => {
+                            if(singlePerson.id !== seenUser) {
+                                return(
+                                    <div key={singlePerson.last_name}>
+                                        <div className='whole-container' key={singlePerson.first_name}>
+                                            <div className='match-card-top'>
+                                                <PersonOutlineIcon />
+                                                <h1 className='match-card'>{singlePerson.first_name}</h1>
+                                                <img src={singlePerson.profile_photo_url} />
+                                                <ChatBubbleIcon />
+                                            </div>
+                                            <button onClick={matchUser}
+                                            id={singlePerson.id}
+                                            > Match</button>
+                                            <div>
+                                                <p>
+                                                    yes
+                                                </p>
+                                            </div>
+                                            <div>
+                                                <p>
+                                                    no
+                                                </p>
+                                            </div>
+                                            <div>
+                                                {showModal && (
+                                                    <Modal onClose={onClose}>
+                                                        <MessageOnMatch singlePerson={singlePerson} onClose={onClose}/>
+                                                    </Modal>
+                                                )};
+                                            </div>
+                                        </div>   
+                                    </div>
+                                );
+                            }
+                        })};
                     </>
-                }
-            </>)
+                };
+            </>
+        );
     } else {
         return (
             <>
                 <h1>No available matches</h1>
             </>
-        )
+        );
     }
 }
 

@@ -1,4 +1,6 @@
-const SET_MATCHES = "session/setPotentialMatches";
+const SET_MATCHES = "matches/setPotentialMatches";
+
+
 
 const setPotentialMatches = (matches) => {
     return {
@@ -6,6 +8,7 @@ const setPotentialMatches = (matches) => {
         payload: matches
     }
 }
+
 
 export const getPotentialMatches = () => async (dispatch) => {
     const response = await fetch(`/api/matches/`);
@@ -15,6 +18,8 @@ export const getPotentialMatches = () => async (dispatch) => {
     }
   return potentialMatches;
 };
+
+
 
 
 export const matchUsers = (userId) => async (dispatch) => {

@@ -9,6 +9,8 @@ import ModalProvider from './context/ModalContext';
 // import AuthProvider from './';
 import * as sessionActions from './store/session'
 import * as matchActions from './store/matches'
+import * as matchedActions from './store/matched'
+import * as messageActions from './store/messages'
 
 const store = configureStore();
 
@@ -16,6 +18,8 @@ if (process.env.NODE_ENV !== "production") {
     window.store = store;
     window.sessionActions = sessionActions;
     window.matchActions = matchActions;
+    window.matchedActions = matchedActions;
+    window.messageActions = messageActions;
 }
 
 function Root() {

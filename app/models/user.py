@@ -4,13 +4,13 @@ from flask_login import UserMixin
 import datetime
 from .gender_preferences import GenderPreference
 
+
 matches = db.Table(
     'matches',
     db.Model.metadata,
     db.Column("matcher_id", db.Integer, db.ForeignKey("users.id")),
     db.Column("matched_id", db.Integer, db.ForeignKey("users.id"))
 )
-
 
 class User(db.Model, UserMixin):
     __tablename__ = 'users'
@@ -68,5 +68,11 @@ class User(db.Model, UserMixin):
             "age": self.age,
             "bio": self.bio,
             "genderId": self.gender_id,
-            "profilePhotoUrl": self.profile_photo_url
+            "profilePhotoUrl": self.profile_photo_url,
         }
+
+    def matched_users(self):
+        return User.query \
+            .join(matches, (matches.c.matcher_id == User.id))\
+            .filter(matches.c.matched_id == self.id)
+            ## switch matcher_id and matched_id to get this users desired match 
