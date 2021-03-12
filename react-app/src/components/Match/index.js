@@ -1,13 +1,11 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useParams, Link, useHistory } from "react-router-dom"
 import PersonOutlineIcon from '@material-ui/icons/PersonOutline';
 import ChatBubbleIcon from '@material-ui/icons/ChatBubble';
 import { Modal } from '../../context/ModalContext';
 import MessageOnMatch from '../MessageOnMatch';
-import { matchUsers, getPotentialMatches, matchedByOtherUser } from '../../store/matches'
-import { sendAMessage } from '../../store/messages'
-import './Match.css'
+import { matchUsers } from '../../store/matches';
+import './Match.css';
 
 
 function MatchCard() {
@@ -75,15 +73,15 @@ function MatchCard() {
                                                     <Modal onClose={onClose}>
                                                         <MessageOnMatch singlePerson={singlePerson} onClose={onClose}/>
                                                     </Modal>
-                                                )};
+                                                )}
                                             </div>
                                         </div>   
                                     </div>
-                                );
+                                )
                             }
-                        })};
+                        })}
                     </>
-                };
+                }
             </>
         );
     } else {
@@ -91,7 +89,7 @@ function MatchCard() {
             <>
                 <h1>No available matches</h1>
             </>
-        );
+        )
     }
 }
 

@@ -6,15 +6,33 @@ from app.forms import MessageForm
 
 message_routes = Blueprint('messages', __name__)
 
-def message_to_dict(message):
-    return {
-        "id": message.id,
-        "read": message.read,
-        "content": message.content,
-        "recipient_id": message.recipient_id,
-        "message_sender_id": message.message_sender_id,
-        "created_at": message.created_at
-    }
+
+@message_routes.route('/', methods=["GET"])
+def get_messages():
+    user = User.query.filter(User.id == current_user.id).first()
+    messages = Message.query.filter(user.id == Message.recipient_id).all()
+    formated_messages = []
+
+    def message_info(messages):
+        return {
+            # "id": messages.id,
+            # "read": messages.read,
+            # "content": messages.content,
+            # "recipient_id": messages.recipient_id,
+            # "message_sender_id": messages.message_sender_id,
+            # "createdAt": messages.created_at,
+            "messageSenderId": message.to_dict(),
+            # "messageSenderFirstName": messageSender.firstName,
+            # "messageSenderlastName": messageSender.lastName,
+            # "messageProfilePhoto": messageSender.profilePhotoUrl,
+        }
+
+    for message in messages:
+        formated_messages.append(message.to_dict())
+    # for messageSender in messages:
+    #     formated_messages.append(message_info(message.to_dict()))
+    return{"messages": formated_messages}
+
 
 @message_routes.route('/<int:id_param>', methods=["POST"])
 # @login_required
@@ -36,14 +54,12 @@ def message_user(id_param):
 
     if form.validate_on_submit():
         message_data = request.form.get('content')
-        print(message_data, '***********************')
         message = Message(
             read=False,
             content=message_data,
             recipient_id=user_to_message.id,
             message_sender_id=user.id,
         )
-        print(message.content, '!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!')
         db.session.add(message)
         db.session.commit()
         return message_info(message)

@@ -31,4 +31,5 @@ class Message(db.Model):
             "messageSenderId": self.message_sender_id,
             "createdAt": self.created_at,
             "updatedAt": self.updated_at,
+            "messageSender": self.sender.to_dict(),
         }

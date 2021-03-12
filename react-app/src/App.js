@@ -3,12 +3,14 @@ import { BrowserRouter, NavLink, Route, Switch, useHistory } from "react-router-
 import { useDispatch, useSelector } from "react-redux";
 import NavBar from "./components/NavBar/index";
 import ProtectedRoute from "./components/auth/ProtectedRoute";
-import MatchCard from "./components/Match/index"
+import MatchCard from "./components/Match/index";
+import Messages from "./components/Messages/index";
 import LogoutButton from './components/auth/LogoutButton';
 import { authenticate, logout } from "./services/auth";
 import { addUser } from "./store/session";
 import { getPotentialMatches } from './store/matches';
 import { matchedByOtherUser } from './store/matched';
+import { fetchMessages } from './store/messages';
 
 
 
@@ -29,6 +31,7 @@ function App() {
             dispatch(addUser(user));
             dispatch(getPotentialMatches());
             dispatch(matchedByOtherUser());
+            dispatch(fetchMessages());
         }
         setLoaded(true);
       })();
@@ -53,6 +56,9 @@ function App() {
                         </Route>      
                         <Route path="/" exact={true} authenticated={authenticated}>
                             <MatchCard />
+                        </Route>
+                        <Route path="/messages" exact={true} authenticated={authenticated}>
+                            <Messages loaded={loaded} />
                         </Route>
                     </Switch>
                     <>

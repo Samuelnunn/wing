@@ -19,6 +19,7 @@ const MessageOnMatch = ({singlePerson, onClose}) => {
     return (
         <>
             <div className='add-message-field'>
+                <h1>It's A Match!</h1>
                 <textarea 
                     className='message-text-area' 
                     placeholder='Send a message'
