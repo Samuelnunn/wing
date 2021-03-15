@@ -9,8 +9,14 @@
 
   body{
       display: grid;
-      
+      padding-top: 100px;
+      background-image: url('./images/pexels-oleg-magni-1040473\ \(1\).jpg');
       grid-template-rows: auto 1fr;
+      height: auto;
+      width: auto;
   }
 
+  .body-of-webpage{
+      padding-top: 200px;
+  }
 

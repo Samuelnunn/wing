@@ -11,7 +11,7 @@ const rootReducer = combineReducers({
     genderPreference: genderPreferenceReducer,
     matches: matchesReducer,
     matched: matchedReducer,
-    messages: messagesReducer
+    messages: messagesReducer,
 });
 
 let enhancer;

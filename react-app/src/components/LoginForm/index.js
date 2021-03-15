@@ -10,6 +10,16 @@ const AuthFormModal = ({setAuthenticated, authenticated}) => {
     const [showModal, setShowModal] = useState(false);
     const [formType, setFormType] = useState("login");
     const onClose= () => {setShowModal(false)}
+    
+    const demoLogin = e => {
+        e.preventDefault();
+        dispatch(login('samuelnunn90@gmail.com', 'password'))
+          .then(() => {
+            dispatch(onClose());
+          });
+      };
+    
+    
     return (
             <>
                 <button onClick={() => {
@@ -20,13 +30,7 @@ const AuthFormModal = ({setAuthenticated, authenticated}) => {
                         setShowModal(true);
                         setFormType("signup")
                     }}>Sign Up</button>
-                <button onClick={()=>{
-                    return dispatch(login({ email:"demo@aa.io", password:"password" })).catch(
-                        (res) => {
-                            if (res.data && res.data.errors) console.log(res.data.errors);
-                        }
-                  );
-                }} >Demo</button>
+                <button type='button' onClick={demoLogin} >Demo</button>
                 {showModal && (
                   <Modal onClose={onClose}>
                     {(formType==="login") &&

@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useAuthContext } from '../../context/AuthContext'
 import AuthFormModal from '../LoginForm/index'
 import LoggedInUser from './LoggedInUser'
+import SplashPage from '../Splash'
 import LogoutButton from '../auth/LogoutButton';
 import { useState } from 'react';
 import './Navbar.css'
@@ -23,6 +24,7 @@ const NavBar = ({ loaded, setAuthenticated }) => {
         sessionLinks = (
         <>
             <AuthFormModal setAuthenticated={setAuthenticated}/> 
+            <SplashPage />
         </>
         )
     }

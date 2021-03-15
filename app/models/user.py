@@ -71,8 +71,13 @@ class User(db.Model, UserMixin):
             "profilePhotoUrl": self.profile_photo_url,
         }
 
-    def matched_users(self):
+    def users_that_matched(self):
         return User.query \
             .join(matches, (matches.c.matcher_id == User.id))\
             .filter(matches.c.matched_id == self.id)
+    
+    def both_users_matched(self):
+        return User.query \
+            .join(matches, (matches.c.matched_id == User.id))\
+            .filter(matches.c.matcher_id == self.id)
             ## switch matcher_id and matched_id to get this users desired match 

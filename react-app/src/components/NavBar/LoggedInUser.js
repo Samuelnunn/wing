@@ -3,6 +3,7 @@ import { useDispatch } from 'react-redux';
 import { useHistory, Link } from "react-router-dom";
 import { logout } from '../../services/auth';
 import LogoutButton from '../auth/LogoutButton'
+import User from '../User'
 import MatchCard from "../Match";
 
 
@@ -36,22 +37,25 @@ function LoggedInUser({ user, setAuthenticated }) {
   return (
     <>
       <Link to="/matches">
-        <p title="Profile">matches</p>
+        <p title="Profile">Wing</p>
       </Link>
       <Link to="/messages">
         <p>messages</p>
       </Link>
-      <Link to="/home">
+      <Link to="/matched">
+        <p>Matches</p>
+      </Link>
+      <Link to="/profile">
         <p>profile</p>
       </Link>
-      <button onClick={openMenu}>
+      {/* <button onClick={openMenu}>
         <p>Menu</p>
       </button>
       {showMenu && (
         <ul className="profile-dropdown">
             <MatchCard />
         </ul>
-      )}
+      )} */}
         <LogoutButton setAuthenticated={setAuthenticated} />
     </>
   );

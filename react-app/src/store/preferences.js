@@ -15,15 +15,13 @@ const removeGenderPreferences = () => {
 };
 
 
-export const addGenderPreferences = (genderPreference) => async (dispatch) => {
-    const response = await fetch('/api/preference/genders',{
-        method: "POST",
-        headers: {
-            "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-            genderPreference
-        }),
+export const addGenderPreferences = (genderPreference, id) => async (dispatch) => {
+    const formData = new FormData();
+    formData.append("gender_preference", genderPreference)
+    
+    const response = await fetch(`/api/users/${id}`,{
+        method: "PUT",
+        body: formData,
     });
     const genderPreferences = await response.json();
     if(!genderPreferences.errors) {

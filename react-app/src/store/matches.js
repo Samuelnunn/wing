@@ -1,11 +1,11 @@
+
+
 const SET_MATCHES = "matches/setPotentialMatches";
-
-
 
 const setPotentialMatches = (matches) => {
     return {
         type: SET_MATCHES,
-        payload: matches
+        matches
     }
 }
 
@@ -33,14 +33,13 @@ export const matchUsers = (userId) => async (dispatch) => {
   return users;
 };
 
-const initialState = [];
 
-function matchesReducer(state = initialState, action) {
-  let newState;
-  switch (action.type) {
+
+function matchesReducer(state = {matches: []}, {type, matches}) {
+
+  switch (type) {
     case SET_MATCHES:
-      newState = action.payload;
-      return newState;
+      return {...state, matches};
     default:
       return state;
   }

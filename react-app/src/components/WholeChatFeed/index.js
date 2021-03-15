@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { sendAMessage } from '../../store/messages';
-import './messages-on-click.css';
 
-const MessageOnClick = ({eachPersonWhoHasMessaged, onClose}) => {
+
+const WholeChatFeed = ({eachPersonWhoHasMessaged}) => {
     const dispatch = useDispatch();
     console.log(eachPersonWhoHasMessaged)
     const matchedUserToMessage = eachPersonWhoHasMessaged
@@ -17,7 +17,6 @@ const MessageOnClick = ({eachPersonWhoHasMessaged, onClose}) => {
         if (messageText) {
             dispatch(sendAMessage(idToSend, messageText));
             setMessageText("");
-            onClose();
         };
     };
 
@@ -25,10 +24,6 @@ const MessageOnClick = ({eachPersonWhoHasMessaged, onClose}) => {
 
         <>
             <div className='add-message-field'>
-                <div>
-                    {/* <p>{personToMessage}</p> */}
-                    <h1>{"myObject"}</h1>
-                </div>
                 <div>
                     <textarea 
                         className='message-text-area' 
@@ -43,4 +38,4 @@ const MessageOnClick = ({eachPersonWhoHasMessaged, onClose}) => {
     );
 };
 
-export default MessageOnClick;
+export default WholeChatFeed;

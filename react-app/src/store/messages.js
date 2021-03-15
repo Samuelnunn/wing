@@ -2,14 +2,20 @@ const SEND_A_MESSAGE = "messages/sendAMessage";
 const FETCH_ALL_MESSAGES = "messages/fetchAllMessages";
 
 
+
 const sendMessage = (payload) => ({
     type: SEND_A_MESSAGE,
     payload,
 });
 
-const fetchAllMessages= (messages) => ({
+const fetchAllMessages= (message) => ({
     type: FETCH_ALL_MESSAGES,
-    payload: messages,
+    message,
+});
+
+const fetchOneUsersMessages=(message) => ({
+    type: FETCH_ALL_MESSAGES,
+    message,
 });
 
 
@@ -22,6 +28,17 @@ export const fetchMessages = () => {
             return Date.parse(message.createdAt);
       })
         dispatch(fetchAllMessages(responseJSON.messages));
+    };
+};
+
+export const fetchAllOneUsersMessage = (userId) => {
+    return async (dispatch) => {
+        const response = await fetch(`/api/messages/${userId}`);
+        const responseJSON = await response.json();
+        responseJSON.messages.sort((message) => {
+            return Date.parse(message.createdAt);
+      })
+        dispatch(fetchOneUsersMessages(responseJSON.messages));
     };
 };
 
@@ -38,17 +55,13 @@ export const sendAMessage = (id, content) => async (dispatch) => {
         return message;
     };
 
-const initialState = [];
-
-function messagesReducer(state = initialState, action) {
-    let newState;
-    switch (action.type) {
+function messagesReducer(state = {message: []}, {type, message}) {
+    switch (type) {
         case SEND_A_MESSAGE:
-            newState = [...state, action.payload];
-            return newState;
+            return {...state, message};
         case FETCH_ALL_MESSAGES:
-            newState = [...state, ...action.payload];
-            return newState;
+            
+            return {...state, message};
         default:
             return state;
     }

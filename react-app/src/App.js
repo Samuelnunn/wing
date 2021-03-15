@@ -6,11 +6,14 @@ import ProtectedRoute from "./components/auth/ProtectedRoute";
 import MatchCard from "./components/Match/index";
 import Messages from "./components/Messages/index";
 import LogoutButton from './components/auth/LogoutButton';
+import Matched from './components/Matched/index';
+import User from './components/User'
 import { authenticate, logout } from "./services/auth";
 import { addUser } from "./store/session";
 import { getPotentialMatches } from './store/matches';
 import { matchedByOtherUser } from './store/matched';
 import { fetchMessages } from './store/messages';
+import './index.css';
 
 
 
@@ -41,7 +44,6 @@ function App() {
   if (!loaded) {
     return null;
     }
-
       return (
         <>
             <BrowserRouter>
@@ -50,15 +52,21 @@ function App() {
                 <>
                     <Switch>
                         <Route path="/matches">
-                            <MatchCard />
-                            <LogoutButton setAuthenticated={setAuthenticated} />
-                            <button onClick={logout}></button>
+                            <MatchCard class="body-of-webpage"/>
+                            {/* <LogoutButton setAuthenticated={setAuthenticated} /> */}
+                            {/* {/* <button onClick={logout}></button> */}
                         </Route>      
                         <Route path="/" exact={true} authenticated={authenticated}>
-                            <MatchCard />
+                            <MatchCard className="body-of-webpage" />
                         </Route>
                         <Route path="/messages" exact={true} authenticated={authenticated}>
-                            <Messages loaded={loaded} />
+                            <Messages className="body-of-webpage" loaded={loaded} />
+                        </Route>
+                        <Route path="/matched" exact={true} authenticated={authenticated}>
+                            <Matched className="body-of-webpage" loaded={loaded} />
+                        </Route>
+                        <Route path="/profile" exact={true} authenticated={authenticated}>
+                            <User user={user} className="body-of-webpage" loaded={loaded} />
                         </Route>
                     </Switch>
                     <>
