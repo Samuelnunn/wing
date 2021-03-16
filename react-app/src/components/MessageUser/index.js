@@ -4,7 +4,6 @@ import { sendAMessage } from '../../store/messages';
 
 const MessageUser = ({eachUser}) => {
     const dispatch = useDispatch();
-    console.log(eachUser)
     const [messageText, setMessageText] = useState("");
     
     const handleMessageSendClick = (e) => {

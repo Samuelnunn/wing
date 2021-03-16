@@ -1,32 +1,38 @@
-import { CardActions } from "@material-ui/core";
-
-const CREATE_MATCHES = "matched/createMatches";
-const REMOVE_MATCH = "matched/removeMatches";
+const SET_MATCHES = "matched/SET_MATCHED_USERS";
+const SET_MATCH = "matched/SET_MATCHED_USER";
 
 
-const getMatchedUser = (matchedUser) => {
+const setMatchedUsers = (matchedUsers) => {
     return {
-        type: CREATE_MATCHES,
+        type: SET_MATCHES,
+        matchedUsers
+    };
+};
+
+const setMatchedUser = (matchedUser) => {
+    return {
+        type: SET_MATCH,
         matchedUser
     };
 };
 
-const removeMatch = (matchedUser) => {
-    return {
-        type: REMOVE_MATCH,
-        matchedUser
-    };
+export const getMatches = () => async (dispatch) => {
+    const response = await fetch(`/api/matches/matched/`);
+    const userMatches = await response.json();
+    if (!userMatches.errors) {
+      dispatch(setMatchedUsers(userMatches));
+    }
+    return userMatches;
 };
 
 export const matchedByOtherUser = () => async (dispatch) => {
     const response = await fetch(`/api/matches/matched/`);
     const userMatches = await response.json();
     if(!userMatches.errors) {
-        dispatch(getMatchedUser(userMatches));
+        dispatch(setMatchedUsers(userMatches));
     }
   return userMatches
 };
-
 
 export const unmatchUser = (userId) => async (dispatch) => {
     const response = await fetch(`/api/matches/unmatch/${userId}`, {
@@ -35,19 +41,19 @@ export const unmatchUser = (userId) => async (dispatch) => {
     const userMatches = await response.json();
     console.log(userMatches)
     if(!userMatches.errors) {
-        dispatch(removeMatch(userMatches));
+        dispatch(setMatchedUser(userMatches));
     }
   return userMatches;
 };
 
+const initialState = { matchedUsers: {} };
 
-
-function matchedReducer(state = { matchedUser: []}, action) {
+function matchedReducer(state = initialState, action) {
     switch (action.type) {
-      case CREATE_MATCHES:
-        return {...state, matchedUser: action.matchedUser};
-      case REMOVE_MATCH:
-        return {...state, matchedUser: action.matchedUser}
+      case SET_MATCHES:
+        return {...state, matchedUsers: { ...action.matchedUsers }};
+      case SET_MATCH:
+        return {...state, matchedUsers: {[action.matchedUser.id]: action.matchedUser, ...state.matchedUsers}}
       default:
         return state;
     }

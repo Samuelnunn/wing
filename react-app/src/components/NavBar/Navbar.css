@@ -30,6 +30,8 @@
     top: 0;
     width: 100%;
     z-index: 100;
+    border-bottom: 90%;
+    border-bottom: 500px, solid, gray;
   }
   
   .nav-links {

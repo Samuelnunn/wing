@@ -1,21 +1,20 @@
-import React, { useState, useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { matchedByOtherUser, unmatchUser } from '../../store/matched';
+import React, { useEffect } from 'react';
+import { useDispatch } from 'react-redux';
+import { getMatches, unmatchUser } from '../../store/matched';
 
 const Unmatch = ({eachUser}) => {
     const dispatch = useDispatch();
-    
-    useEffect(() => {},
-    
-    [dispatch])
-
+   
     const handleUnmatchClick = (e) => {
         e.preventDefault();
         if (eachUser) {
             dispatch(unmatchUser(eachUser.id));
-            // dispatch(matchedByOtherUser());
         };
     };
+
+    useEffect(() => {
+        dispatch(getMatches());
+    }, [dispatch]);
 
     return (
             <div className='add-message-field'>
