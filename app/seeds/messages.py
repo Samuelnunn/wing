@@ -1,19 +1,18 @@
 import json
-from werkzeug.security import generate_password_hash
-from app.models import db, User
+from app.models import db, Message
 
 # Adds a demo user, you can add other users here if you want
 
 
-def seed_users():
-    new_users = []
-    with open('./app/seeds/userdata.json') as f:
+def seed_messages():
+    new_messages = []
+    with open('./app/seeds/messages.json') as f:
         data = json.load(f)
-        for user in data:
-            new_user = User(**user)
-            new_users.append(new_user)
+        for messages in data:
+            new_message = Message(**messages)
+            new_messages.append(new_message)
 
-    db.session.add_all(new_users)
+    db.session.add_all(new_messages)
     db.session.commit()
 
 # Uses a raw SQL query to TRUNCATE the users table.
@@ -22,7 +21,7 @@ def seed_users():
 # the auto incrementing primary key
 
 
-def undo_users():
+def undo_messages():
     db.session.execute('TRUNCATE users CASCADE;')
     db.session.execute("ALTER SEQUENCE USERS_id_seq RESTART WITH 1")
     db.session.commit()

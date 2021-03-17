@@ -29,51 +29,45 @@ const Messages = ({loaded}) => {
     };
 
 
-    return  loaded ?
+    return usersMessages.length ?
+        usersMessages.map(eachPersonWhoHasMessaged => {
+            const myFilter = usersMessages.filter((eachUser) => {
+                if (eachUser.messageSenderId == eachPersonWhoHasMessaged.messageSenderId) {
+                return eachUser;
+            }});
+            return (
                 <>
-                    { usersMessages && usersMessages.map(eachPersonWhoHasMessaged => {
-                        const myFilter = usersMessages.filter((eachUser) => {
-                            if (eachUser.messageSenderId == eachPersonWhoHasMessaged.messageSenderId) {
-                            return eachUser;
-                            }
-                        })
-                        return (
-                            <>
-                                <div className='message-feed-container'>
-                                <div key={eachPersonWhoHasMessaged.id} className='message-element'>
-                                    {<img src={eachPersonWhoHasMessaged.messageSender.profilePhotoUrl} alt="" className='profile-photo'/>}
-                                </div>
-                                <div className='message-element'>
-                                    {<h2>{eachPersonWhoHasMessaged.messageSender.firstName}: </h2> }
-                                </div>
-                                <div>
-                                    <div className='message-element'>
-                                        <h2>{eachPersonWhoHasMessaged.content}</h2>
-                                        {/* <button onClick={messageUser} id={eachPersonWhoHasMessaged.id}>
-                                            Hello
-                                        </button> */}
-                                    </div>
-                                </div>
-                                </div>
-                                <div>
-                                {/* {showModal && (
-                                    <Modal onClose={onClose}>
-                                        <MessageOnClick eachPersonWhoHasMessaged={eachPersonWhoHasMessaged} onClose={onClose}/>
-                                    </Modal>
-                                )}
-                                </div> */}
-
-                                        <WholeChatFeed eachPersonWhoHasMessaged={eachPersonWhoHasMessaged} onClose={onClose}/>
-
-                                </div>
-                            </>
-                        )
-                    })}
+                    <div className='message-feed-container'>
+                    <div key={eachPersonWhoHasMessaged.id} className='message-element'>
+                        {<img src={eachPersonWhoHasMessaged.messageSender.profilePhotoUrl} alt="" className='profile-photo'/>}
+                    </div>
+                    <div className='message-element'>
+                        {<h2>{eachPersonWhoHasMessaged.messageSender.firstName}: </h2> }
+                    </div>
+                    <div>
+                        <div className='message-element'>
+                            <h2>{eachPersonWhoHasMessaged.content}</h2>
+                            {/* <button onClick={messageUser} id={eachPersonWhoHasMessaged.id}>
+                                Hello
+                            </button> */}
+                        </div>
+                    </div>
+                    </div>
+                    <div>
+                    {/* {showModal && (
+                        <Modal onClose={onClose}>
+                            <MessageOnClick eachPersonWhoHasMessaged={eachPersonWhoHasMessaged} onClose={onClose}/>
+                        </Modal>
+                    )}
+                    </div> */}
+                            <WholeChatFeed eachPersonWhoHasMessaged={eachPersonWhoHasMessaged} onClose={onClose}/>
+                    </div>
                 </>
-                :
-                <>
-                    <h1>No messages</h1>
-                </>  
+            );
+        }) :
+            <>
+                <h1>No messages</h1>
+            </>  
 };
 
 export default Messages;

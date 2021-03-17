@@ -25,16 +25,17 @@ def match():
     users_already_matched = User.query.filter(User.id == current_user.id).first()
     my_current_user = User.query.get(current_user.id)
     matching_users = my_current_user.both_users_matched().all()
-    print(matching_users, '!!!!!!!!!!!')
+    print(matching_users, '!!!!!!!!!!!!!!')
     gender_id_join = []
     for gender_ids in users_gender_preference_id:
         gender_id_join.append(Gender.query.filter(gender_ids.id == Gender.id).all())
     gender_names = []
     for gender_name in gender_id_join:
+        print(gender_name[0], "*******************")
         gender_names.append(gender_name[0].gender_name)
     possible_matches = []
     for possible_match in gender_names:
-        possible_matches.append(User.query.filter(User.gender_id == possible_match).all())
+        possible_matches.append(User.query.filter(User.gender_id != possible_match).all())
     users_to_return = []
     for matches in possible_matches:
         for data in matches:
@@ -83,6 +84,16 @@ def users_match():
         for match in matching_users:
             if(match == matching):
                 matches_to_return.append(match_to_dict(match))
+    return jsonify(matches_to_return)
+
+@match_routes.route("/want/", methods=["GET"])
+# @login_required
+def users_match_to_current_user():
+    user = User.query.get(current_user.id)
+    matching_users = user.users_that_matched().all()
+    matches_to_return = []
+    for match in matching_users:
+            matches_to_return.append(match_to_dict(match))
     return jsonify(matches_to_return)
 
 

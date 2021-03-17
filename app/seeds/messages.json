@@ -1,0 +1,32 @@
+[
+    {
+      "read": true,
+      "content": "Your friend looks cute! They should meet!",
+      "recipient_id": "1",
+      "message_sender_id": "3"
+    },
+    {
+      "read": true,
+      "content": "Oh absolutely! Does he like Thai food?",
+      "recipient_id": "3",
+      "message_sender_id": "1"
+    },
+    {
+      "read": false,
+      "content": "Loves it. Where shall they meet?",
+      "recipient_id": "1",
+      "message_sender_id": "3"
+    },
+    {
+      "read": false,
+      "content": "Hey. He's cute!",
+      "recipient_id": "1",
+      "message_sender_id": "5"
+    },
+    {
+      "read": false,
+      "content": "adorable",
+      "recipient_id": "1",
+      "message_sender_id": "4"
+    }
+]

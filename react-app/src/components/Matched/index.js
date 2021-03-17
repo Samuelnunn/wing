@@ -6,7 +6,7 @@ import { getMatches } from '../../store/matched'
 import './matched.css';
 
 
-const Matched = ({loaded}) => {
+const Matched = () => {
     const dispatch = useDispatch();
     
     const usersMatches = useSelector((state) => state.matched.matchedUsers);

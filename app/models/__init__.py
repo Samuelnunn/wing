@@ -5,4 +5,5 @@ from .gender_preferences import GenderPreference
 # from .matches import Match
 from .photos import Photo
 from .messages import Message
+from .seen_by import SeenByUser
 

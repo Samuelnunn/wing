@@ -31,13 +31,15 @@ class User(db.Model, UserMixin):
     updated_at = db.Column(db.DateTime,
                           default=datetime.datetime.utcnow)
 
-    genders = db.relationship("GenderPreference", back_populates="user")
+    genders = db.relationship("GenderPreference", back_populates="user", cascade="all, delete-orphan")
     sent_messages = db.relationship("Message", foreign_keys="Message.message_sender_id", 
                                     back_populates="sender")
     recieved_messages = db.relationship("Message", foreign_keys="Message.recipient_id", 
                                     back_populates="recipient")
     photos = db.relationship("Photo", back_populates="user",
                              cascade="all, delete-orphan")
+    seen_by_id = db.relationship("SeenByUser", back_populates="user", 
+                            cascade="all, delete-orphan")
     matchers = db.relationship(
         "User",
         secondary=matches,

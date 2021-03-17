@@ -4,20 +4,22 @@ import PersonOutlineIcon from '@material-ui/icons/PersonOutline';
 import ChatBubbleIcon from '@material-ui/icons/ChatBubble';
 import { Modal } from '../../context/ModalContext';
 import MessageOnMatch from '../MessageOnMatch';
-import { matchUsers } from '../../store/matches';
+import { matchUsers, usersWhoHaveMatchedCurrent } from '../../store/matches';
 import './Match.css';
 
 
 function MatchCard() {
     const dispatch = useDispatch();
     
-    const user = useSelector((state) => state.session.user);
     const potentialMatch = useSelector((state) => state.matches.matches);
+    const usersWhoLikeCurrentUser = useSelector((state) => state.matches.otherUserMatched);
     const matchedUser = useSelector((state) => state.matched.matchedUsers);
 
     const [showModal, setShowModal] = useState(false);
     const [seenUser, setSeenUser] = useState([]);
-
+    console.log(potentialMatch);
+    console.log(matchedUser);
+    console.log(usersWhoLikeCurrentUser)
     
   
     const onClose= () => {setShowModal(false)};
@@ -26,7 +28,7 @@ function MatchCard() {
     const arrayOfMatchedIds = [];
 
     const usersArrayToMap = Object.values(matchedUser);
-    
+
     potentialMatch.map((eachId) => {arrayOfIds.push(eachId.id)});
     usersArrayToMap.map((eachId) => {arrayOfMatchedIds.push(eachId.id)});
     
@@ -36,9 +38,10 @@ function MatchCard() {
     const matchUser = async (e) => {
         dispatch(matchUsers(e.target.id));
         setSeenUser(e.target.id);
-        arrayOfMatchedIds.filter((eachId) => {
-            if (eachId == e.target.id) {
-                console.log('Match!!!');
+        usersWhoLikeCurrentUser.filter((eachId) => {
+            console.log(e.target.id)
+            console.log(eachId)
+            if (eachId.id == e.target.id) {
                 setShowModal(true);
             }
         });

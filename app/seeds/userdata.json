@@ -1,0 +1,247 @@
+[
+    {
+      "username": "Demo",
+      "email": "demo@aa.io",
+      "first_name": "demo@aa.io",
+      "last_name": "demo@aa.io",
+      "password": "password",
+      "age": "52", 
+      "zip_code": "11111",
+      "bio": "Totally Awesome!",
+      "profile_photo_url": "http://wing.s3.amazonaws.com/sam-moqadam-0_6VJneNkBs-unsplash.jpg",
+      "gender_id": "Man"
+    },
+    {
+      "username": "Carlo",
+      "email": "Carlo@carl.com",
+      "first_name": "Carlo",
+      "last_name": "carl",
+      "password": "password",
+      "age": "22", 
+      "zip_code": "11111",
+      "bio": "Good Human!",
+      "profile_photo_url": "http://wing.s3.amazonaws.com/victor-creed-OQTkozv1uDA-unsplash.jpg",
+      "gender_id": "Man"
+
+    },
+    {
+      "username": "Frankie",
+      "email": "frankle@frank.com",
+      "first_name": "Frankie",
+      "last_name": "Frank",
+      "password": "password",
+      "age": "32", 
+      "zip_code": "11111",
+      "bio": "To be frank... you should set him up!",
+      "profile_photo_url": "http://wing.s3.amazonaws.com/sandy-millar-2U0429Hn_eQ-unsplash.jpg",
+      "gender_id": "Man"
+
+    },
+    {
+      "username": "Peter",
+      "email": "peter@aa.io",
+      "first_name": "Peter",
+      "last_name": "out",
+      "password": "password",
+      "age": "32", 
+      "zip_code": "11111",
+      "bio": "Love has always petered out for peter!",
+      "profile_photo_url": "http://wing.s3.amazonaws.com/osheen-turnbull-sU0IT6W8KaU-unsplash.jpg",
+      "gender_id": "Man"
+
+    },
+    {
+      "username": "Marvin",
+      "email": "marvil@aa.io",
+      "first_name": "Marvin",
+      "last_name": "McNothing",
+      "password": "password",
+      "age": "22", 
+      "zip_code": "11111",
+      "bio": "Marvelous Marvin",
+      "profile_photo_url": "http://wing.s3.amazonaws.com/marvin-meyer-QS4KxdelN_4-unsplash.jpg",
+      "gender_id": "Man"
+
+    },
+    {
+      "username": "Sandy",
+      "email": "sanders@sand.com",
+      "first_name": "Sandy",
+      "last_name": "Sanders",
+      "password": "password",
+      "age": "32", 
+      "zip_code": "11111",
+      "bio": "Not always this stoned.",
+      "profile_photo_url": "http://wing.s3.amazonaws.com/khushaman-raj-6bfr2WhQmr8-unsplash.jpg",
+      "gender_id": "Man"
+
+    },
+    {
+      "username": "Hank",
+      "email": "hankerchief@hank.com",
+      "first_name": "hank",
+      "last_name": "hankles",
+      "password": "password",
+      "age": "52", 
+      "zip_code": "11111",
+      "bio": "This is hunky hank!",
+      "profile_photo_url": "http://wing.s3.amazonaws.com/frank-alarcon-bIhLddjH36k-unsplash.jpg",
+      "gender_id": "Man"
+
+    },
+    {
+      "username": "bloopers",
+      "email": "bloopers@aa.io",
+      "first_name": "Gaspard",
+      "last_name": "Poisson",
+      "password": "password",
+      "age": "22", 
+      "zip_code": "11111",
+      "bio": "The gratest. Truly",
+      "profile_photo_url": "http://wing.s3.amazonaws.com/evelina-friman-XyKX2wJ1jkI-unsplash.jpg",
+      "gender_id": "Man"
+
+    },
+    {
+      "username": "benwwww",
+      "email": "ben@aa.io",
+      "first_name": "Ben",
+      "last_name": "White",
+      "password": "password",
+      "age": "32", 
+      "zip_code": "11111",
+      "bio": "Totally Awesome!",
+      "profile_photo_url": "http://wing.s3.amazonaws.com/ben-white-_YQgJos0SKE-unsplash.jpg",
+      "gender_id": "Man"
+
+    },
+    {
+      "username": "Gary",
+      "email": "gary@aa.io",
+      "first_name": "Gary",
+      "last_name": "Gary@aa.io",
+      "password": "password",
+      "age": "22", 
+      "zip_code": "11111",
+      "bio": "AW the best. Everyone would be lucky",
+      "profile_photo_url": "http://wing.s3.amazonaws.com/ashkan-forouzani-RbqZucCIHNw-unsplash.jpg",
+      "gender_id": "Man"
+
+    },
+    {
+      "username": "Michael",
+      "email": "michael@michael.com",
+      "first_name": "Michael",
+      "last_name": "Pigliavento",
+      "password": "password",
+      "age": "32", 
+      "zip_code": "11111",
+      "bio": "The best human I know",
+      "profile_photo_url": "http://wing.s3.amazonaws.com/alexander-krivitskiy-TD9rSZywT7Y-unsplash.jpg",
+      "gender_id": "Man"
+
+    },
+    {
+      "username": "Felix",
+      "email": "Lemmo@aa.io",
+      "first_name": "Felix",
+      "last_name": "Wheeler",
+      "password": "password",
+      "age": "52", 
+      "zip_code": "11111",
+      "bio": "So good!!",
+      "profile_photo_url": "http://wing.s3.amazonaws.com/ashkan-forouzani-RbqZucCIHNw-unsplash.jpg",
+      "gender_id": "Man"
+
+    },
+    {
+      "username": "carly",
+      "email": "carly@aa.io",
+      "first_name": "Carly",
+      "last_name": "Carl",
+      "password": "password",
+      "age": "52", 
+      "zip_code": "11111",
+      "bio": "Totally Awesome!",
+      "profile_photo_url": "http://wing.s3.amazonaws.com/anastasia-vityukova-QhKX67yT7wk-unsplash.jpg",
+      "gender_id": "Woman"
+
+    },
+    {
+      "username": "danielle",
+      "email": "danielle@aa.io",
+      "first_name": "Danielle",
+      "last_name": "Brooks",
+      "password": "password",
+      "age": "52", 
+      "zip_code": "11111",
+      "bio": "Totally Awesome!",
+      "profile_photo_url": "http://wing.s3.amazonaws.com/anastasia-vityukova-QhKX67yT7wk-unsplash.jpg",
+      "gender_id": "Woman"
+
+    },
+    {
+      "username": "waterdrinker",
+      "email": "water@aa.io",
+      "first_name": "Laura",
+      "last_name": "Drinkwater",
+      "password": "password",
+      "age": "52", 
+      "zip_code": "11111",
+      "bio": "Totally Awesome!",
+      "profile_photo_url": "http://wing.s3.amazonaws.com/anastasia-vityukova-QhKX67yT7wk-unsplash.jpg",
+      "gender_id": "Woman"
+
+    },
+    {
+      "username": "Hilary",
+      "email": "swank@aa.io",
+      "first_name": "Hilary",
+      "last_name": "Swank",
+      "password": "password",
+      "age": "52", 
+      "zip_code": "11111",
+      "bio": "Totally Awesome!",
+      "profile_photo_url": "http://wing.s3.amazonaws.com/anastasia-vityukova-QhKX67yT7wk-unsplash.jpg",
+      "gender_id": "Woman"
+
+    },
+    {
+      "username": "Meryl",
+      "email": "Streep@Steep.com",
+      "first_name": "Meryl",
+      "last_name": "Streep",
+      "password": "password",
+      "age": "52", 
+      "zip_code": "11111",
+      "bio": "Totally Awesome!",
+      "profile_photo_url": "http://wing.s3.amazonaws.com/anastasia-vityukova-QhKX67yT7wk-unsplash.jpg",
+      "gender_id": "Woman"
+
+    },
+    {
+      "username": "Emma Stone",
+      "email": "emma@aa.io",
+      "first_name": "Emma",
+      "last_name": "Stone",
+      "password": "password",
+      "age": "52", 
+      "zip_code": "11111",
+      "bio": "Totally Awesome!",
+      "profile_photo_url": "http://wing.s3.amazonaws.com/anastasia-vityukova-QhKX67yT7wk-unsplash.jpg",
+      "gender_id": "Woman"
+
+    },
+    {
+      "username": "Taleah",
+      "email": "Wheeler",
+      "first_name": "Tal",
+      "last_name": "Wheeler",
+      "password": "password",
+      "age": "52", 
+      "zip_code": "11111",
+      "bio": "Totally Awesome!",
+      "profile_photo_url": "http://wing.s3.amazonaws.com/alexander-krivitskiy-TD9rSZywT7Y-unsplash.jpg",
+      "gender_id": "Man"
+    }
+]

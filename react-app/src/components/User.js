@@ -36,7 +36,7 @@ const updateGenderPreference = (e) => {
   }
 
   return (
-    <ul>
+    <ul key={user}>
       <li>
         <strong>User Id</strong> {user.id}
       </li>

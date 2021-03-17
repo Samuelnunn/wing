@@ -10,7 +10,7 @@ import Matched from './components/Matched/index';
 import User from './components/User'
 import { authenticate, logout } from "./services/auth";
 import { addUser } from "./store/session";
-import { getPotentialMatches } from './store/matches';
+import { getPotentialMatches, usersWhoHaveMatchedCurrent } from './store/matches';
 import { matchedByOtherUser } from './store/matched';
 import { fetchMessages } from './store/messages';
 import './index.css';
@@ -35,6 +35,7 @@ function App() {
             dispatch(getPotentialMatches());
             dispatch(matchedByOtherUser());
             dispatch(fetchMessages());
+            dispatch(usersWhoHaveMatchedCurrent());
         }
         setLoaded(true);
       })();
