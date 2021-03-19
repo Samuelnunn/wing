@@ -12,26 +12,47 @@ def get_messages():
     user = User.query.filter(User.id == current_user.id).first()
     messages = Message.query.filter(user.id == Message.recipient_id).all()
     formated_messages = []
-
+    
     def message_info(messages):
         return {
-            # "id": messages.id,
-            # "read": messages.read,
-            # "content": messages.content,
-            # "recipient_id": messages.recipient_id,
-            # "message_sender_id": messages.message_sender_id,
-            # "createdAt": messages.created_at,
             "messageSenderId": message.to_dict(),
-            # "messageSenderFirstName": messageSender.firstName,
-            # "messageSenderlastName": messageSender.lastName,
-            # "messageProfilePhoto": messageSender.profilePhotoUrl,
         }
 
     for message in messages:
         formated_messages.append(message.to_dict())
-    # for messageSender in messages:
-    #     formated_messages.append(message_info(message.to_dict()))
     return{"messages": formated_messages}
+
+@message_routes.route('/messagefeed/<int:id_param>', methods=["GET"])
+def get_messagefeed(id_param):
+    user = User.query.filter(User.id == current_user.id).first()
+    messages_from_match = Message.query.filter(id_param == Message.message_sender_id).all()
+    message_from_user = Message.query.filter(Message.recipient_id == id_param)
+ 
+    formated_messages = []
+    
+    def message_info(messages):
+        return {
+            "messageSenderId": message.to_dict(),
+        }
+
+    for message in messages_from_match:
+        formated_messages.append(message.to_dict())
+    for message in message_from_user:
+        formated_messages.append(message.to_dict())
+    return{"messages": formated_messages}
+
+
+@message_routes.route('/message', methods=["GET"])
+def get_one_messages():
+    user = User.query.filter(User.id == current_user.id).first()
+    messages = Message.query.filter(user.id == Message.recipient_id).first()
+    
+    def message_info(messages):
+        return {
+            "messageSenderId": messages.to_dict(),
+        }
+        # messages.to_dict
+    return{"messages": messages.to_dict()}
 
 
 @message_routes.route('/<int:id_param>', methods=["POST"])

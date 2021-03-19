@@ -12,6 +12,15 @@ matches = db.Table(
     db.Column("matched_id", db.Integer, db.ForeignKey("users.id"))
 )
 
+
+seen_by_users = db.Table(
+    'seen_users',
+    db.Model.metadata,
+    db.Column("seen_by_id", db.Integer, db.ForeignKey("users.id")),
+    db.Column("user_that_has_been_seen_id", db.Integer, db.ForeignKey("users.id"))
+)
+
+
 class User(db.Model, UserMixin):
     __tablename__ = 'users'
 
@@ -49,6 +58,15 @@ class User(db.Model, UserMixin):
         lazy="dynamic"
     )
 
+    seen_users = db.relationship(
+        "User",
+        secondary=seen_by_users,
+        primaryjoin=(seen_by_users.c.seen_by_id == id),
+        secondaryjoin=(seen_by_users.c.user_that_has_been_seen_id == id),
+        backref=db.backref("seen_by_users", lazy="dynamic"),
+        lazy="dynamic"
+    )
+
     @property
     def password(self):
         return self.hashed_password
@@ -71,6 +89,7 @@ class User(db.Model, UserMixin):
             "bio": self.bio,
             "genderId": self.gender_id,
             "profilePhotoUrl": self.profile_photo_url,
+            # "seen_user_ids": [user.id for user in self.seen_users]
         }
 
     def users_that_matched(self):
@@ -82,4 +101,9 @@ class User(db.Model, UserMixin):
         return User.query \
             .join(matches, (matches.c.matched_id == User.id))\
             .filter(matches.c.matcher_id == self.id)
-            ## switch matcher_id and matched_id to get this users desired match 
+            ## switch matcher_id and matched_id to get this users desired match
+    
+    def users_that_have_been_seen(self):
+        return User.query \
+            .join(seen_by_users, (seen_by_users.c.user_that_has_been_seen_id == User.id))\
+            .filter(seen_by_users.c.seen_by_id == self.id)

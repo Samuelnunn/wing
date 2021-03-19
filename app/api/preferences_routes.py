@@ -7,7 +7,6 @@ preference_routes = Blueprint('preference', __name__)
 
 @preference_routes.route('/genders', methods=['POST'])
 def gender_perferences():
-    print('Im hit!**********************')
     form = GenderPreferenceForm()
     form['csrf_token'].data = request.cookies['csrf_token']
     

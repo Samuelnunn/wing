@@ -1,6 +1,6 @@
 from flask import Blueprint, jsonify, request
 from flask_login import login_required, current_user
-from app.models import db, User, GenderPreference, Gender
+from app.models import db, User, GenderPreference, Gender, SeenByUser
 
 
 match_routes = Blueprint('matches', __name__)
@@ -17,6 +17,13 @@ def match_to_dict(match):
         "profile_photo_url": match.profile_photo_url,
     }
 
+def list_compare(list1, list2):
+    non_matching_users = []
+    for i in list1:
+        if i not in list2:
+            non_matching_users.append(i)
+    return non_matching_users
+
 @match_routes.route("/", methods=["GET"])
 # @login_required
 def match():
@@ -25,13 +32,11 @@ def match():
     users_already_matched = User.query.filter(User.id == current_user.id).first()
     my_current_user = User.query.get(current_user.id)
     matching_users = my_current_user.both_users_matched().all()
-    print(matching_users, '!!!!!!!!!!!!!!')
     gender_id_join = []
     for gender_ids in users_gender_preference_id:
         gender_id_join.append(Gender.query.filter(gender_ids.id == Gender.id).all())
     gender_names = []
     for gender_name in gender_id_join:
-        print(gender_name[0], "*******************")
         gender_names.append(gender_name[0].gender_name)
     possible_matches = []
     for possible_match in gender_names:
@@ -40,8 +45,9 @@ def match():
     for matches in possible_matches:
         for data in matches:
             if user != data.id:
-                users_to_return.append(match_to_dict(data))
-    return jsonify(users_to_return)
+                users_to_return.append(data)
+    
+    return jsonify([output_user.to_dict() for output_user in users_to_return])
     
 
 @match_routes.route("/matched/<int:id_param>", methods=["POST"])
@@ -95,6 +101,45 @@ def users_match_to_current_user():
     for match in matching_users:
             matches_to_return.append(match_to_dict(match))
     return jsonify(matches_to_return)
+
+@match_routes.route("/seen/<int:id_param>", methods=["POST"])
+# @login_required
+def seen_by_current_user(id_param):
+    # def seen_info(self):
+    #     return {
+    #         "seenUser": self.seen_by_user_id,
+    #         "currentUser": self.user_id
+    #     }
+    # user = User.query.get(current_user.id)
+    # user_has_been_seen = User.query.filter(User.id == id_param).first()
+    # seen_by = SeenByUser(
+    #     seen_by_user_id=current_user.id,
+    #     user_id=user_has_been_seen.id
+    # )
+    user_to_be_seen = User.query.get(id_param)
+    current_user.seen_users.append(user_to_be_seen)
+    db.session.add(current_user)
+    db.session.commit()
+    return current_user.to_dict()
+
+@match_routes.route("/seen/", methods=["GET"])
+# @login_required
+def users_seen_by_current_user():
+    # def seen_info(seen):
+    #     return {
+    #         "seenUser": seen.user_that_has_been_seen_id,
+    #         "currentUser": seen.seen_by_id
+    #     }
+    # user = User.query.get(current_user.id).id/
+
+
+    user_has_been_seen = current_user.users_that_have_been_seen().all()
+    users_to_return = []
+    for users in user_has_been_seen:
+            users_to_return.append(users.id)
+            print(users)
+    return jsonify({'seenUsersIds': users_to_return})
+
 
 
 
