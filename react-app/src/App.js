@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { BrowserRouter, NavLink, Route, Switch, useHistory } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
+import Navigation from './Navigation'
 import NavBar from "./components/NavBar/index";
 import ProtectedRoute from "./components/auth/ProtectedRoute";
 import MatchCard from "./components/Match/index";
@@ -8,12 +9,15 @@ import Messages from "./components/Messages/index";
 import LogoutButton from './components/auth/LogoutButton';
 import Matched from './components/Matched/index';
 import User from './components/User'
+import SplashPage from './components/Splash'
 import { authenticate, logout } from "./services/auth";
 import { addUser } from "./store/session";
-import { getPotentialMatches, usersWhoHaveMatchedCurrent } from './store/matches';
+import { getPotentialMatches, usersWhoHaveMatchedCurrent} from './store/matches';
 import { matchedByOtherUser } from './store/matched';
-import { fetchMessages } from './store/messages';
+import { fetchMessageFeedMessages, fetchMessages } from './store/messages';
+import { getSeenUsers } from './store/matches';
 import './index.css';
+
 
 
 
@@ -25,17 +29,25 @@ function App() {
   
   const user = useSelector(state => state.session.user) ;
 
+  const config = {
+    navigation: {
+      component: Navigation,
+      location: "before", // or after
+    }
+  };
 
     useEffect(() => {
       (async () => {
         const user = await authenticate();
         if (!user.errors) {
+            console.log('Hi')
             setAuthenticated(true);
             dispatch(addUser(user));
             dispatch(getPotentialMatches());
             dispatch(matchedByOtherUser());
             dispatch(fetchMessages());
             dispatch(usersWhoHaveMatchedCurrent());
+            dispatch(getSeenUsers());
         }
         setLoaded(true);
       })();
@@ -49,15 +61,20 @@ function App() {
         <>
             <BrowserRouter>
             <NavBar loaded={loaded} setAuthenticated={setAuthenticated}  authenticated={authenticated}/>
+            
+            <Route path="/" exact={true} authenticated={authenticated}>
+                <SplashPage className='splash'/>
+            </Route>
+            
             {loaded && (
                 <>
                     <Switch>
                         <Route path="/matches">
-                            <MatchCard class="body-of-webpage"/>
+                            <MatchCard class="body-of-webpage" exact={true} authenticated={authenticated}/>
                             {/* <LogoutButton setAuthenticated={setAuthenticated} /> */}
                             {/* {/* <button onClick={logout}></button> */}
                         </Route>      
-                        <Route path="/" exact={true} authenticated={authenticated}>
+                        <Route path="/matches" exact={true} authenticated={authenticated}>
                             <MatchCard className="body-of-webpage" />
                         </Route>
                         <Route path="/messages" exact={true} authenticated={authenticated}>

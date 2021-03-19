@@ -19,6 +19,7 @@ const setMatchedUser = (matchedUser) => {
 export const getMatches = () => async (dispatch) => {
     const response = await fetch(`/api/matches/matched/`);
     const userMatches = await response.json();
+    console.log(userMatches)
     if (!userMatches.errors) {
       dispatch(setMatchedUsers(userMatches));
     }

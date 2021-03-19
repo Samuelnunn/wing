@@ -6,12 +6,14 @@ import matchedReducer from './matched';
 import genderPreferenceReducer from './preferences';
 import messagesReducer from './messages';
 
+
 const rootReducer = combineReducers({
     session: sessionReducer,
     genderPreference: genderPreferenceReducer,
     matches: matchesReducer,
     matched: matchedReducer,
     messages: messagesReducer,
+
 });
 
 let enhancer;

@@ -1,0 +1,54 @@
+.logo{
+    /* background-color: yellow; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+}
+
+@keyframes bounce {
+    0%, 20%, 60%, 100% {
+      -webkit-transform: translateY(0);
+      transform: translateY(0);
+    }
+  
+    40% {
+      -webkit-transform: translateY(-20px);
+      transform: translateY(-20px);
+    }
+  
+    80% {
+      -webkit-transform: translateY(-10px);
+      transform: translateY(-10px);
+    }
+}
+
+.text{
+    height: 50px;
+    transform-style: preserve-3d;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    /* background-color:#007d8c; */
+    /* background-color: linear-gradient(60deg, #f79533, #f37055, #ef4e7b, #a166ab, #5073b8, #1098ad, #07b39b, #6fba82);; */
+    box-shadow: 0 0 100px 50px #007d8c
+    ;
+}
+
+
+
+
+
+.text:hover{
+    cursor: pointer;
+    animation: bounce 1s;
+}
+
+.about-body{
+    background-color:rgb(101,64,116, 0.9);
+    border-radius: 25px;
+    height: 500px;
+    width: 500px;
+    color: gray;
+}
+

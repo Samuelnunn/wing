@@ -22,6 +22,8 @@ export const login = async (email, password) => {
   return awaitJson
 }
 
+
+
 export const logout = async () => {
   const response = await fetch("/api/auth/logout", {
     headers: {

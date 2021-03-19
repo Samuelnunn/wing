@@ -1,14 +1,13 @@
 import React from 'react';
 import { NavLink, useHistory } from 'react-router-dom';
 import { useDispatch, useSelector } from "react-redux";
-import { useAuthContext } from '../../context/AuthContext'
-import AuthFormModal from '../LoginForm/index'
-import LoggedInUser from './LoggedInUser'
-import SplashPage from '../Splash'
+import AuthFormModal from '../LoginForm/index';
+import LoggedInUser from './LoggedInUser';
+import SplashPage from '../Splash';
 import LogoutButton from '../auth/LogoutButton';
-import { useState } from 'react';
 import './Navbar.css'
-import MatchCard from '../Match';
+import '../../index.css'
+
 
 
 const NavBar = ({ loaded, setAuthenticated }) => {
@@ -24,14 +23,15 @@ const NavBar = ({ loaded, setAuthenticated }) => {
         sessionLinks = (
         <>
             <AuthFormModal setAuthenticated={setAuthenticated}/> 
-            <SplashPage />
         </>
         )
     }
 
     return (
         <div className='nav-bar'>
-            <span className="nav-links">{loaded && sessionLinks} </span>
+            <div className='border-length'>
+                <span className="nav-links">{loaded && sessionLinks} </span>
+            </div>
         </div>
     )
 

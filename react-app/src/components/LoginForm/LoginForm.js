@@ -17,7 +17,7 @@ const LoginForm = ({ setAuthenticated, onClose }) => {
         setErrors([]);
     
         const user = await login(email, password);
-        if (user) {
+        if (!user.errors) {
             setAuthenticated(true);
             onClose();
             window.location.href='/matches';
@@ -28,32 +28,40 @@ const LoginForm = ({ setAuthenticated, onClose }) => {
 
 
   return (
-    <form onSubmit={handleSubmit}>
-      <div>
-            {errors.map((error) => (
-                <div>{error}</div>
-            ))}
-      </div>
-      <div>
-            <label htmlFor="email">Email</label>
-            <input
-                name="email"
-                type="text"
-                placeholder="Email"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-            />
-      </div>
-        <div>
-            <label htmlFor="password">Password</label>
-            <input
-                name="password"
-                type="password"
-                placeholder="Password"
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-            />
-            <button type="submit">Login</button>
+    <form onSubmit={handleSubmit} className='form-container'>
+        <div className='left-side-container'>
+        </div>
+        <div className='login-container'>
+            <div>
+                  {errors.map((error) => (
+                      <div>{error}</div>
+                  ))}
+            </div>
+            <div className='email-ele'>
+                    <label htmlFor="email">Email </label>
+                    <input
+                        name="email"
+                        type="text"
+                        placeholder="bubble@bop.com"
+                        value={email}
+                        onChange={(e) => setEmail(e.target.value)}
+                        className='input-fields'
+                    />
+            </div>
+                <div className='password-ele'>
+                    <label htmlFor="password">Password </label>
+                    <input
+                        name="password"
+                        type="password"
+                        placeholder="*******"
+                        value={password}
+                        onChange={(e) => setPassword(e.target.value)}
+                        className='input-fields'
+                    />
+                </div>
+                    <div className='button-ele'>
+                        <button type="submit" className='button-ele'>Login</button>
+                    </div>
         </div>
     </form>
   );

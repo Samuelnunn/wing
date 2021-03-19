@@ -1,9 +1,9 @@
 import React, { useState, useRef } from "react";
 import { Redirect, useHistory } from 'react-router-dom';
 import { signUp, genderPreferenceFormData } from '../../services/auth';
-import { useDispatch } from 'react-redux'
-import { addUser } from '../../store/session'
-// import { addGenderPreferences } from '../../store/preferences.js'
+import { useDispatch } from 'react-redux';
+import { addUser } from '../../store/session';
+import './SignUp.css';
 
 const SignUpForm = ({authenticated, setAuthenticated, onClose}) => {
     const history = useHistory();
@@ -19,8 +19,8 @@ const SignUpForm = ({authenticated, setAuthenticated, onClose}) => {
     const [bio, setBio] = useState("");
     const [gender, setGender] = useState("");
     const [profilePicture, setProfilePicture] = useState("");
-    const [selectedFile, setSelectedFile] = useState("Profile Image")
-    const [genderPreference, setGenderPreference] = useState("")
+    const [selectedFile, setSelectedFile] = useState("Profile Image");
+    const [genderPreference, setGenderPreference] = useState("");
 
     const dispatch = useDispatch();
     let genders = ["Woman", "Cis Woman", "Trans Woman", "Man",
@@ -28,7 +28,7 @@ const SignUpForm = ({authenticated, setAuthenticated, onClose}) => {
            "Bigender", "GenderFluid", "GenderQueer",
            "Gender Nonconforming", "Hijra", "Intersex",
            "Non-binary", "Other", "Pangender", "Transfeminine",
-           "Transmasculine", "Transsexual", "Two Spirit"]
+           "Transmasculine", "Transsexual", "Two Spirit"];
 
     const onSignUp = async (e) => {
         e.preventDefault();
@@ -37,7 +37,6 @@ const SignUpForm = ({authenticated, setAuthenticated, onClose}) => {
                                       firstName, lastName, age, 
                                       zipCode, bio, gender, profilePicture,
                                       genderPreference);
-            // const genderPreferenceData = await genderPreferenceFormData(genderPreference)
           if (!user.errors) {
             setAuthenticated(true);
             onClose()
@@ -106,167 +105,173 @@ const SignUpForm = ({authenticated, setAuthenticated, onClose}) => {
     }
 
     return (
-        <form onSubmit={onSignUp}>
-            <div>
+        <form onSubmit={onSignUp} className='signup-form-container'>
+            <div className='right-side-container'>
+            </div>
+            <div className='sign-up-side'>
+                <div>
+                    <input
+                        type="text"
+                        name="username"
+                        placeholder='Username'
+                        onChange={updateUsername}
+                        value={username}
+                    ></input>
+                </div>
+                <div>
                 <input
-                    type="text"
-                    name="username"
-                    placeholder='Username'
-                    onChange={updateUsername}
-                    value={username}
+                        type="text"
+                        name="email"
+                        placeholder='Email'
+                        onChange={updateEmail}
+                        value={email}
                 ></input>
-            </div>
-            <div>
-            <input
-                    type="text"
-                    name="email"
-                    placeholder='Email'
-                    onChange={updateEmail}
-                    value={email}
-            ></input>
-            </div>
-            <div>
-                <input
-                    type="password"
-                    name="password"
-                    placeholder='Password'
-                    onChange={updatePassword}
-                    value={password}
-                ></input>
-            </div>
-            <div>
-                <input
-                    type="password"
-                    name="repeat_password"
-                    placeholder='Confirm password'
-                    onChange={updateRepeatPassword}
-                    value={repeatPassword}
-                    required={true}
-                ></input>
-            </div>
-            <div>    
-                <input
-                    type="text"
-                    name="firstName"
-                    placeholder='First Name'
-                    onChange={updateFirstName}
-                    value={firstName}
-                    required={true}
-                ></input>
-            </div>
-            <div>    
-                <input
-                    type="text"
-                    name="lastName"
-                    placeholder='Last Name'
-                    onChange={updateLastName}
-                    value={lastName}
-                    required={true}
-                ></input>
-            </div>
-            <div>    
-                <input
-                    type="number"
-                    name="age"
-                    placeholder='Age'
-                    onChange={updateAge}
-                    value={age}
-                    required={true}
-                ></input>
-            </div>
-            <div>    
-                <input
-                    type="number"
-                    name="zipCode"
-                    placeholder='Zip Code'
-                    onChange={updateZipCode}
-                    value={zipCode}
-                    required={true}
-                ></input>
-            </div>
-            <div>
-                <input
-                    type="text"
-                    name="bio"
-                    placeholder='Tell people about your person'
-                    onChange={updateBio}
-                    value={bio}
-                    required={true}
-                ></input>
-            </div>
-            <div> 
-                <p>Idententifying Gender :</p>
-                { genders.map(eachGender => {
-                    if (gender.length >= 1) {
-                    return (
-                        <>
-                            <input
-                                type="checkbox"
-                                name="gender"
-                                placeholder={eachGender}
-                                onChange={updateGender}
-                                value={eachGender}
-                            ></input>{eachGender}
-                        </>
-                        )
-                    } else {
+                </div>
+                <div>
+                    <input
+                        type="password"
+                        name="password"
+                        placeholder='Password'
+                        onChange={updatePassword}
+                        value={password}
+                    ></input>
+                </div>
+                <div>
+                    <input
+                        type="password"
+                        name="repeat_password"
+                        placeholder='Confirm password'
+                        onChange={updateRepeatPassword}
+                        value={repeatPassword}
+                        required={true}
+                    ></input>
+                </div>
+                <div>    
+                    <input
+                        type="text"
+                        name="firstName"
+                        placeholder='First Name'
+                        onChange={updateFirstName}
+                        value={firstName}
+                        required={true}
+                    ></input>
+                </div>
+                <div>    
+                    <input
+                        type="text"
+                        name="lastName"
+                        placeholder='Last Name'
+                        onChange={updateLastName}
+                        value={lastName}
+                        required={true}
+                    ></input>
+                </div>
+                <div>    
+                    <input
+                        type="number"
+                        name="age"
+                        placeholder='Age'
+                        onChange={updateAge}
+                        value={age}
+                        required={true}
+                    ></input>
+                </div>
+                <div>    
+                    <input
+                        type="number"
+                        name="zipCode"
+                        placeholder='Zip Code'
+                        onChange={updateZipCode}
+                        value={zipCode}
+                        required={true}
+                    ></input>
+                </div>
+                <div>
+                    <input
+                        type="text"
+                        name="bio"
+                        placeholder='Tell people about your person'
+                        onChange={updateBio}
+                        value={bio}
+                        required={true}
+                    ></input>
+                </div>
+                <div> 
+                    <p>Idententifying Gender :</p>
+                    { genders.map(eachGender => {
+                        if (gender.length >= 1) {
                         return (
                             <>
-                            <input
-                                type="checkbox"
-                                name="gender"
-                                placeholder={eachGender}
-                                onChange={updateGender}
-                                value={eachGender}
-                                required={true}
-                            ></input>{eachGender}</> 
-                        )   
-                    }
-                })}
-            </div>
-            <div> 
-                <p>Gender Preference:</p>
-                { genders.map(eachGender => {
-                    if (genderPreference.length >= 1) {
-                    return (
-                        <>
-                            <input
-                                type="checkbox"
-                                name="genderPreferences"
-                                placeholder={eachGender}
-                                onChange={updateGenderPreference}
-                                value={eachGender}
-                            ></input>{eachGender}
-                        </>
-                        )
-                    } else {
+                                <input
+                                    type="checkbox"
+                                    name="gender"
+                                    placeholder={eachGender}
+                                    onChange={updateGender}
+                                    value={eachGender}
+                                ></input>{eachGender}
+                            </>
+                            )
+                        } else {
+                            return (
+                                <>
+                                <input
+                                    type="checkbox"
+                                    name="gender"
+                                    placeholder={eachGender}
+                                    onChange={updateGender}
+                                    value={eachGender}
+                                    required={true}
+                                ></input>{eachGender}</> 
+                            )   
+                        }
+                    })}
+                </div>
+                <div> 
+                    <p>Gender Preference:</p>
+                    { genders.map(eachGender => {
+                        if (genderPreference.length >= 1) {
                         return (
                             <>
-                            <input
-                                type="checkbox"
-                                name="genderPreferences"
-                                placeholder={eachGender}
-                                onChange={updateGenderPreference}
-                                value={eachGender}
-                                required={true}
-                            ></input>{eachGender}</> 
-                        )   
-                    }
-                })}
+                                <input
+                                    type="checkbox"
+                                    name="genderPreferences"
+                                    placeholder={eachGender}
+                                    onChange={updateGenderPreference}
+                                    value={eachGender}
+                                ></input>{eachGender}
+                            </>
+                            )
+                        } else {
+                            return (
+                                <>
+                                <input
+                                    type="checkbox"
+                                    name="genderPreferences"
+                                    placeholder={eachGender}
+                                    onChange={updateGenderPreference}
+                                    value={eachGender}
+                                    required={true}
+                                ></input>{eachGender}</> 
+                            )   
+                        }
+                    })}
+                </div>
+                <div>
+                    <h5 className='normalize-text' style={{ margin: '0', overflow: 'hidden' }}>{selectedFile}</h5>
+                </div>
+                <div>
+                <input
+                        
+                        type="file"
+                        name="user_file"
+                        onChange={updateProfilePhotoPicture}
+                        ref={fileInput}
+                    /> 
+                </div>
+                <button type="submit">Sign Up</button>
             </div>
-            <div>
-                <h5 className='normalize-text' style={{ margin: '0', overflow: 'hidden' }}>{selectedFile}</h5>
+            <div className='right-side-container'>
             </div>
-            <div>
-            <input
-                    
-                    type="file"
-                    name="user_file"
-                    onChange={updateProfilePhotoPicture}
-                    ref={fileInput}
-                /> 
-            </div>
-            <button type="submit">Sign Up</button>
         </form>
     );
 };

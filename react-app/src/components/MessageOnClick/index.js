@@ -1,28 +1,32 @@
-import React, { useState } from 'react';
-import { useDispatch } from 'react-redux';
-import { sendAMessage } from '../../store/messages';
+import React, { useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { sendAMessage, fetchMessageFeedMessages } from '../../store/messages';
 import './messages-on-click.css';
 
-const MessageOnClick = ({eachPersonWhoHasMessaged, onClose}) => {
+const MessageOnClick = ({personToMessage, onClose}) => {
     const dispatch = useDispatch();
-    console.log(eachPersonWhoHasMessaged)
-    const matchedUserToMessage = eachPersonWhoHasMessaged
-    const idToSend = matchedUserToMessage.messageSenderId
-    // console.log(idToSend)
-    // const otherUserName = personToMessage.messageSender
+    const messageFeedSelector = useSelector((state) => state.messages)
+    
+    // useEffect(() => {
+    //     dispatch(fetchMessageFeedMessages(personToMessage));
+    // }, [dispatch, fetchMessageFeedMessages]);
+    
+    console.log(messageFeedSelector)
+    console.log(personToMessage)
+
     const [messageText, setMessageText] = useState("");
-    // console.log(otherUserName)
+
+
     const handleMessageSendClick = (e) => {
         e.preventDefault();
         if (messageText) {
-            dispatch(sendAMessage(idToSend, messageText));
+            // dispatch(sendAMessage(idToSend, messageText));
             setMessageText("");
             onClose();
         };
     };
 
     return (
-
         <>
             <div className='add-message-field'>
                 <div>

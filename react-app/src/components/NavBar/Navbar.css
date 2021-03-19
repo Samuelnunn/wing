@@ -30,10 +30,17 @@
     top: 0;
     width: 100%;
     z-index: 100;
-    border-bottom: 90%;
-    border-bottom: 500px, solid, gray;
+    padding-left: 150px;
   }
   
+  .border-length{
+    padding-right: 300px;
+    padding-top: 10px;
+    border-bottom: 2px solid rgb(72,53,68, 0.4);
+    top: 50%;
+    bottom: 0;
+  }
+
   .nav-links {
     display: flex;
     flex-direction: row;
@@ -52,9 +59,24 @@
     outline:none;
     background: transparent;
     border: 0;
-    font-size: 18px;
+    font-size: 25px;
     text-transform: uppercase;
     padding: 1px 6px;
+    font-family: 'Lato';
+    color:#483544;
+    padding-left: 40px;
+   
+  }
+  
+  .nav-bar button,
+  .nav-links a:hover {
+    cursor: pointer;
+    color: white;
+    
+  }
+
+  .a:hover{
+      color: aliceblue;
   }
   
   .theme-button {
@@ -75,3 +97,4 @@
   .logout i {
     display: none;
   }
+

@@ -27,7 +27,7 @@ function LoggedInUser({ user, setAuthenticated }) {
     document.addEventListener('click', closeMenu);
   
     return () => document.removeEventListener("click", closeMenu);
-  }, [showMenu]);
+  }, [showMenu, logout]);
 
   const logoutUser = async (e) => {
       e.preventDefault()

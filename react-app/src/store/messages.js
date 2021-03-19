@@ -1,5 +1,6 @@
 const SEND_A_MESSAGE = "messages/sendAMessage";
 const FETCH_ALL_MESSAGES = "messages/fetchAllMessages";
+const FETCH_MESSAGE_FEED = "messages/fetchMessageFeed";
 
 
 
@@ -13,9 +14,9 @@ const fetchAllMessages= (message) => ({
     message,
 });
 
-const fetchOneUsersMessages=(message) => ({
-    type: FETCH_ALL_MESSAGES,
-    message,
+const fetchMessageFeed=(messagefeed) => ({
+    type: FETCH_MESSAGE_FEED,
+    messagefeed,
 });
 
 
@@ -31,14 +32,14 @@ export const fetchMessages = () => {
     };
 };
 
-export const fetchAllOneUsersMessage = (userId) => {
+export const fetchMessageFeedMessages = (userId) => {
     return async (dispatch) => {
-        const response = await fetch(`/api/messages/${userId}`);
+        const response = await fetch(`/api/messages/messagefeed/${userId}`);
         const responseJSON = await response.json();
         responseJSON.messages.sort((message) => {
             return Date.parse(message.createdAt);
       })
-        dispatch(fetchOneUsersMessages(responseJSON.messages));
+        dispatch(fetchMessageFeed(responseJSON.messages));
     };
 };
 
@@ -55,13 +56,14 @@ export const sendAMessage = (id, content) => async (dispatch) => {
         return message;
     };
 
-function messagesReducer(state = {message: []}, {type, message}) {
+function messagesReducer(state = {message: [], messagefeed: []}, {type, message, messagefeed}) {
     switch (type) {
         case SEND_A_MESSAGE:
             return {...state, message};
-        case FETCH_ALL_MESSAGES:
-            
+        case FETCH_ALL_MESSAGES: 
             return {...state, message};
+        case FETCH_ALL_MESSAGES: 
+            return {...state, messagefeed};
         default:
             return state;
     }

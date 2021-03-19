@@ -5,13 +5,10 @@ import { sendAMessage } from '../../store/messages';
 
 const WholeChatFeed = ({eachPersonWhoHasMessaged}) => {
     const dispatch = useDispatch();
-    console.log(eachPersonWhoHasMessaged)
     const matchedUserToMessage = eachPersonWhoHasMessaged
     const idToSend = matchedUserToMessage.messageSenderId
-    // console.log(idToSend)
-    // const otherUserName = personToMessage.messageSender
     const [messageText, setMessageText] = useState("");
-    // console.log(otherUserName)
+
     const handleMessageSendClick = (e) => {
         e.preventDefault();
         if (messageText) {

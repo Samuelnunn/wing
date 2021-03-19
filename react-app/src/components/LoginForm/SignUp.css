@@ -1,36 +1,28 @@
-#nav-link-buttons{
-    /* color: yellow !important; */
-    color:#483544;
-}
-#nav-link-buttons:hover{
-    transition: color 1s;
-    color:white;
-}
 
 
-
-.form-container{
-    display: grid;
+.signup-form-container{
+    display: inline-block;
     grid-template-columns: 1fr 1fr;
-    height: 300px;
+    max-height: 400px;
     width: 600px;
     font-size: x-large;
     border-radius: 25px;
 }
 
-.left-side-container{
-    grid-row-start: 1;
+.right-side-container{
+    grid-row-start: 2;
     /* background-color:rgb(72,53,68, 0.7); */
     background-color:#604753;
 }
 
-.login-container{
-    
+.sign-up-side{
+    overflow: scroll;
     background-color: white;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: space-around;
+    
 
 }
 

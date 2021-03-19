@@ -1,40 +1,41 @@
 import React, { useState, useEffect, useContext } from 'react';
 import { useDispatch, useSelector } from "react-redux";
-import { sendAMessage, fetchMessages } from '../../store/messages';
+import { sendAMessage, fetchMessages, fetchMessageFeedMessages } from '../../store/messages';
 import { Modal } from '../../context/ModalContext';
 import MessageOnClick from '../MessageOnClick';
 import WholeChatFeed from '../WholeChatFeed'
 import './messages.css';
 
 
-const Messages = ({loaded}) => {
+const Messages = () => {
     const dispatch = useDispatch();
 
     const user = useSelector((state) => state.session.user);
     const potentialMatch = useSelector((state) => state.matches);
     const usersMessages = useSelector((state) => state.messages.message);
-    console.log(usersMessages)
+ 
     
     const [showModal, setShowModal] = useState(false);
-    const [personToMessage, setPersonToMessage] = useState({});
+    const [personToMessage, setPersonToMessage] = useState(0);
+    
     const onClose= () => {setShowModal(false)};
 
-    const messageUser = (e) => {    
-        const myFilter = usersMessages.filter((eachUser) => {
-            if (eachUser.messageSender.id == e.target.id) {
-                setPersonToMessage(eachUser)
-            } 
-        })
+    const messageUser = (e) => {   
+        console.log(e.target.id);
+        setPersonToMessage(e.target.id) 
+        // dispatch(fetchMessageFeedMessages(e.target.id))
         setShowModal(true);
     };
 
+    useEffect(() => {
+        dispatch(fetchMessageFeedMessages(personToMessage));
+    }, [dispatch, personToMessage]);
+    
+
 
     return usersMessages.length ?
-        usersMessages.map(eachPersonWhoHasMessaged => {
-            const myFilter = usersMessages.filter((eachUser) => {
-                if (eachUser.messageSenderId == eachPersonWhoHasMessaged.messageSenderId) {
-                return eachUser;
-            }});
+        usersMessages.map((eachPersonWhoHasMessaged) => {
+            const userToMessage = eachPersonWhoHasMessaged
             return (
                 <>
                     <div className='message-feed-container'>
@@ -47,19 +48,20 @@ const Messages = ({loaded}) => {
                     <div>
                         <div className='message-element'>
                             <h2>{eachPersonWhoHasMessaged.content}</h2>
-                            {/* <button onClick={messageUser} id={eachPersonWhoHasMessaged.id}>
+                            <button onClick={messageUser} id={eachPersonWhoHasMessaged.id}>
                                 Hello
-                            </button> */}
+                            </button>
                         </div>
                     </div>
                     </div>
                     <div>
-                    {/* {showModal && (
-                        <Modal onClose={onClose}>
-                            <MessageOnClick eachPersonWhoHasMessaged={eachPersonWhoHasMessaged} onClose={onClose}/>
+                    {showModal && (
+                        <Modal onClose={onClose} >
+                            <MessageOnClick personToMessage={personToMessage} onClose={onClose}/>
                         </Modal>
                     )}
-                    </div> */}
+                    </div>
+                    <div>
                             <WholeChatFeed eachPersonWhoHasMessaged={eachPersonWhoHasMessaged} onClose={onClose}/>
                     </div>
                 </>
