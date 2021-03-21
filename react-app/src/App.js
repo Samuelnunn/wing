@@ -14,8 +14,9 @@ import { authenticate, logout } from "./services/auth";
 import { addUser } from "./store/session";
 import { getPotentialMatches, usersWhoHaveMatchedCurrent} from './store/matches';
 import { matchedByOtherUser } from './store/matched';
-import { fetchMessageFeedMessages, fetchMessages } from './store/messages';
+import { fetchMessages } from './store/messages';
 import { getSeenUsers } from './store/matches';
+import { addPreferenceToState } from './store/preferences'
 import './index.css';
 
 
@@ -40,7 +41,6 @@ function App() {
       (async () => {
         const user = await authenticate();
         if (!user.errors) {
-            console.log('Hi')
             setAuthenticated(true);
             dispatch(addUser(user));
             dispatch(getPotentialMatches());
@@ -48,6 +48,7 @@ function App() {
             dispatch(fetchMessages());
             dispatch(usersWhoHaveMatchedCurrent());
             dispatch(getSeenUsers());
+            dispatch(addPreferenceToState())
         }
         setLoaded(true);
       })();

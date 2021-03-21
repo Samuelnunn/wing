@@ -5,7 +5,7 @@ import matchesReducer from './matches';
 import matchedReducer from './matched';
 import genderPreferenceReducer from './preferences';
 import messagesReducer from './messages';
-
+import messageModalReducer from './messageModal';
 
 const rootReducer = combineReducers({
     session: sessionReducer,
@@ -13,7 +13,7 @@ const rootReducer = combineReducers({
     matches: matchesReducer,
     matched: matchedReducer,
     messages: messagesReducer,
-
+    messageModal: messageModalReducer,
 });
 
 let enhancer;

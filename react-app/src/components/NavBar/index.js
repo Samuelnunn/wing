@@ -12,7 +12,7 @@ import '../../index.css'
 
 const NavBar = ({ loaded, setAuthenticated }) => {
     const user = useSelector(state => state.session.user)
-
+    
     let sessionLinks;
 
     if (user) {

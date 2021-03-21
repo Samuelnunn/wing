@@ -4,7 +4,7 @@
     border-radius: 50%;
 }
 
-.message-feed-container{
+.all-users-messages-container{
     display: flex;
     flex-direction: row;
     padding: 10px;

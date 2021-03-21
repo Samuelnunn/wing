@@ -12,15 +12,20 @@ def get_messages():
     user = User.query.filter(User.id == current_user.id).first()
     messages = Message.query.filter(user.id == Message.recipient_id).all()
     formated_messages = []
-    
     def message_info(messages):
         return {
             "messageSenderId": message.to_dict(),
         }
-
     for message in messages:
         formated_messages.append(message.to_dict())
-    return{"messages": formated_messages}
+    formated_and_sorted = []
+    sorted_messages = sorted(formated_messages, key = lambda i: i['id'], reverse=True)
+    for message in sorted_messages:
+        if message['messageSenderId'] not in formated_and_sorted:
+            formated_and_sorted.append(message['messageSenderId'])
+            formated_and_sorted.append(message)
+    remove_int = [message for message in formated_and_sorted if not isinstance(message, int)]
+    return{"messages": remove_int}
 
 @message_routes.route('/messagefeed/<int:id_param>', methods=["GET"])
 def get_messagefeed(id_param):
@@ -30,28 +35,31 @@ def get_messagefeed(id_param):
  
     formated_messages = []
     
-    def message_info(messages):
-        return {
-            "messageSenderId": message.to_dict(),
-        }
-
     for message in messages_from_match:
         formated_messages.append(message.to_dict())
     for message in message_from_user:
-        formated_messages.append(message.to_dict())
-    return{"messages": formated_messages}
+        if message.message_sender_id == current_user.id:
+            formated_messages.append(message.to_dict())
+    sorted_messages = sorted(formated_messages, key = lambda i: i['id'])
+    return{"messages": sorted_messages}
+
+@message_routes.route('/messagefeed/<int:id_param>', methods=["PUT"])
+def unread_to_read(id_param):
+    user = User.query.filter(User.id == current_user.id).first()
+    messages_from_match = Message.query.filter(id_param == Message.message_sender_id).first()
+    update_entry = messages_from_match.read = True
+    db.session.commit()
+    return "Messages read."
 
 
 @message_routes.route('/message', methods=["GET"])
 def get_one_messages():
     user = User.query.filter(User.id == current_user.id).first()
     messages = Message.query.filter(user.id == Message.recipient_id).first()
-    
     def message_info(messages):
         return {
             "messageSenderId": messages.to_dict(),
         }
-        # messages.to_dict
     return{"messages": messages.to_dict()}
 
 

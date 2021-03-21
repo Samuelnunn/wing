@@ -1,50 +1,40 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useContext } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { sendAMessage, fetchMessageFeedMessages } from '../../store/messages';
+import { sendAMessage, fetchMessageFeedMessages, fetchMessages } from '../../store/messages';
 import './messages-on-click.css';
 
-const MessageOnClick = ({personToMessage, onClose}) => {
-    const dispatch = useDispatch();
-    const messageFeedSelector = useSelector((state) => state.messages)
+const MessageOnClick = ({personToMessage}) => {
     
+    const messageFeedSelector = useSelector((state) => state.messages.messagefeed);
+    
+    const dispatch = useDispatch()
+
+   
     // useEffect(() => {
-    //     dispatch(fetchMessageFeedMessages(personToMessage));
-    // }, [dispatch, fetchMessageFeedMessages]);
+
+    // },[dispatch, fetchMessages, personToMessage])
+
+
     
-    console.log(messageFeedSelector)
-    console.log(personToMessage)
-
-    const [messageText, setMessageText] = useState("");
-
-
-    const handleMessageSendClick = (e) => {
-        e.preventDefault();
-        if (messageText) {
-            // dispatch(sendAMessage(idToSend, messageText));
-            setMessageText("");
-            onClose();
-        };
-    };
-
-    return (
-        <>
-            <div className='add-message-field'>
-                <div>
-                    {/* <p>{personToMessage}</p> */}
-                    <h1>{"myObject"}</h1>
+    return messageFeedSelector.length ?
+        messageFeedSelector.map((eachMessage) => {
+            return(
+                <div className='message-feed-container' key={eachMessage.id}>
+                    <div className='profile-photo-element'>
+                        {<img src={eachMessage.messageSender.profilePhotoUrl} alt="" className='profile-photo'/>}
+                    </div>
+                    <div className='user-name'>
+                            {<h2>{eachMessage.messageSender.firstName}: </h2> }
+                    </div>
+                    <div className='message-element'>
+                            {<h2>{eachMessage.content}</h2> }
+                    </div>
                 </div>
-                <div>
-                    <textarea 
-                        className='message-text-area' 
-                        placeholder='Send a message'
-                        value={messageText}
-                        onChange={e => { setMessageText(e.target.value)}}
-                    ></textarea>
-                </div>
-                <button className='message-send-button' onClick={handleMessageSendClick}>Send Message</button>
-            </div>
-        </>
-    );
+            )
+        }) :
+            <>
+                <h1>Trouble loading! Please refresh the page</h1>
+            </>
 };
 
 export default MessageOnClick;

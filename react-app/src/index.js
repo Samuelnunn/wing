@@ -11,6 +11,7 @@ import * as sessionActions from './store/session'
 import * as matchActions from './store/matches'
 import * as matchedActions from './store/matched'
 import * as messageActions from './store/messages'
+import * as preferenceActions from './store/preferences'
 
 const store = configureStore();
 
@@ -20,6 +21,7 @@ if (process.env.NODE_ENV !== "production") {
     window.matchActions = matchActions;
     window.matchedActions = matchedActions;
     window.messageActions = messageActions;
+    window.preferenceActions = preferenceActions;
 }
 
 function Root() {

@@ -21,6 +21,7 @@ const fetchMessageFeed=(messagefeed) => ({
 
 
 
+
 export const fetchMessages = () => {
     return async (dispatch) => {
         const response = await fetch(`/api/messages/`);
@@ -40,21 +41,26 @@ export const fetchMessageFeedMessages = (userId) => {
             return Date.parse(message.createdAt);
       })
         dispatch(fetchMessageFeed(responseJSON.messages));
+        const res = await fetch(`/api/messages/messagefeed/${userId}`, {
+            method: 'PUT'
+        })
     };
 };
+
+
 
 export const sendAMessage = (id, content) => async (dispatch) => {
     const formData = new FormData();
         formData.append("content", content);
-    
         let res = await fetch(`/api/messages/${id}`, {
             method: "POST",
             body: formData,
         });
         const message = await res.json();
-        dispatch(sendMessage(message));
+        // dispatch(sendMessage(message));
+        // await dispatch(fetchMessageFeed(id))
         return message;
-    };
+};
 
 function messagesReducer(state = {message: [], messagefeed: []}, {type, message, messagefeed}) {
     switch (type) {
@@ -62,7 +68,7 @@ function messagesReducer(state = {message: [], messagefeed: []}, {type, message,
             return {...state, message};
         case FETCH_ALL_MESSAGES: 
             return {...state, message};
-        case FETCH_ALL_MESSAGES: 
+        case FETCH_MESSAGE_FEED: 
             return {...state, messagefeed};
         default:
             return state;

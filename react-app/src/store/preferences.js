@@ -15,24 +15,37 @@ const removeGenderPreferences = () => {
 };
 
 
-export const addGenderPreferences = (genderPreference, id) => async (dispatch) => {
-    const formData = new FormData();
-    formData.append("gender_preference", genderPreference)
-    
-    const response = await fetch(`/api/users/${id}`,{
-        method: "PUT",
-        body: formData,
-    });
-    const genderPreferences = await response.json();
-    if(!genderPreferences.errors) {
-        dispatch(setGenderPreference(genderPreferences));
-    }
-  return genderPreferences;
+export const fetchPreferences = () => {
+    return async (dispatch) => {
+        const response = await fetch(`/api/preferences/genders/`);
+        const responseJSON = await response.json();
+        dispatch(setGenderPreference());
+       
+      }
+    };
+
+
+
+export const addPreferenceToState = () => async (dispatch) => {
+    const response = await fetch(`/api/preference/genders/`);
+    const preferences = await response.json()
+    dispatch(setGenderPreference(preferences))
+    return preferences;
+  
+
 };
 
+export const addGenderPreferences = (id, genderPreference) => async (dispatch) => {
+    console.log(genderPreference)
+    const response = await fetch(`/api/preference/genders/${genderPreference}`,{
+        method: "PUT",
+    
+    });
 
 
-const initialState = { genderPreferences: null };
+};
+
+const initialState = { genderPreferences: [] };
 const genderPreferenceReducer = (state = initialState, action) => {
     switch (action.type) {
         case SET_GENDER_PREFERENCES:

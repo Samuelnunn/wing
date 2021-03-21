@@ -28,7 +28,8 @@ def list_compare(list1, list2):
 # @login_required
 def match():
     user = User.query.get(current_user.id).id
-    users_gender_preference_id = GenderPreference.query.filter(user == GenderPreference.user_id).all()
+    refactor = GenderPreference.query.filter(GenderPreference.user_id == user).first()
+    users_gender_preference_id = GenderPreference.query.filter(refactor.gender_id == GenderPreference.user_id).all()
     users_already_matched = User.query.filter(User.id == current_user.id).first()
     my_current_user = User.query.get(current_user.id)
     matching_users = my_current_user.both_users_matched().all()
@@ -40,7 +41,7 @@ def match():
         gender_names.append(gender_name[0].gender_name)
     possible_matches = []
     for possible_match in gender_names:
-        possible_matches.append(User.query.filter(User.gender_id != possible_match).all())
+        possible_matches.append(User.query.filter(User.gender_id == possible_match).all())
     users_to_return = []
     for matches in possible_matches:
         for data in matches:
@@ -137,7 +138,6 @@ def users_seen_by_current_user():
     users_to_return = []
     for users in user_has_been_seen:
             users_to_return.append(users.id)
-            print(users)
     return jsonify({'seenUsersIds': users_to_return})
 
 

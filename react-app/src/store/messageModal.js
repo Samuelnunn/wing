@@ -4,7 +4,7 @@
 
 // const MESSAGES = 'messageModal/Messages';
 
-// const setPosts = messages => ({ type: MESSAGES, messages });
+// const setPosts = messages => ({ type: MESSAGES, messageS });
 
 // export const ShowEventModal = () => ({ type: SHOW });
 
@@ -54,3 +54,49 @@
 //       return state;
 //   }
 // }
+
+const MESSAGEFEED = 'modal/MESSAGEFEED';
+
+const SHOW = 'modal/SHOW';
+
+const HIDE = 'modal/HIDE';
+
+const fetchMessageFeedModal=(messagefeed) => ({
+    type: MESSAGEFEED,
+    messagefeed,
+});
+
+export const ShowMessageModal = () => ({ type: SHOW });
+
+export const HideMessageModal = () => ({ type: HIDE });
+
+
+export const fetchMessageFeedMessagesModal = (userId) => {
+    return async (dispatch) => {
+        const response = await fetch(`/api/messages/messagefeed/${userId}`);
+        const responseJSON = await response.json();
+        responseJSON.messages.sort((message) => {
+            return Date.parse(message.createdAt);
+      })
+        dispatch(fetchMessageFeedModal(responseJSON.messages));
+    };
+};
+
+
+export default function messageModalReducer (
+  state = {
+    messageFeed: []
+  },
+  { type, messageFeed }) {
+  switch (type) {
+    case MESSAGEFEED:
+      return { ...state, messageFeed };
+    case SHOW:
+      return { ...state, display: true };
+    case HIDE:
+      return { ...state, display: false };
+
+    default:
+      return state;
+  }
+}

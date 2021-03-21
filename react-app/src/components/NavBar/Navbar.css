@@ -35,7 +35,8 @@
   
   .border-length{
     padding-right: 300px;
-    padding-top: 10px;
+    padding-top: 50px;
+    /* margin-bottom: 20px; */
     border-bottom: 2px solid rgb(72,53,68, 0.4);
     top: 50%;
     bottom: 0;
@@ -75,10 +76,6 @@
     
   }
 
-  .a:hover{
-      color: aliceblue;
-  }
-  
   .theme-button {
     border-radius: 50%;
     border-style: solid;

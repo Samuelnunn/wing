@@ -32,7 +32,7 @@ export const matchedByOtherUser = () => async (dispatch) => {
     if(!userMatches.errors) {
         dispatch(setMatchedUsers(userMatches));
     }
-  return userMatches
+  return userMatches;
 };
 
 export const unmatchUser = (userId) => async (dispatch) => {
