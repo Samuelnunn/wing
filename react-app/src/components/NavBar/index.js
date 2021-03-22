@@ -3,8 +3,6 @@ import { NavLink, useHistory } from 'react-router-dom';
 import { useDispatch, useSelector } from "react-redux";
 import AuthFormModal from '../LoginForm/index';
 import LoggedInUser from './LoggedInUser';
-import SplashPage from '../Splash';
-import LogoutButton from '../auth/LogoutButton';
 import './Navbar.css'
 import '../../index.css'
 

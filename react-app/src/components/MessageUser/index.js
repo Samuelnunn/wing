@@ -15,17 +15,15 @@ const MessageUser = ({eachUser}) => {
     };
 
     return (
-        <>
-            <div className='add-message-field'>
-                <textarea 
-                    className='message-text-area' 
-                    placeholder='Send a message'
-                    value={messageText}
-                    onChange={e => { setMessageText(e.target.value)}}
-                ></textarea>
-                <button className='message-send-button' onClick={handleMessageSendClick}>Send Message</button>
-            </div>
-        </>
+        <div className='message-matched-container'>
+            <textarea 
+                className='message-text-area-matched' 
+                placeholder='Send a message'
+                value={messageText}
+                onChange={e => { setMessageText(e.target.value)}}
+            ></textarea>
+            <button className='message-send-button-matched' onClick={handleMessageSendClick}>Send Message</button>
+        </div>
     );
 };
 

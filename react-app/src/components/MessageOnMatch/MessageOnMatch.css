@@ -1,0 +1,26 @@
+.message-on-match{
+    width: 650px;
+    height: 800px;
+    border-radius: 25px;
+    /* position: absolute; */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 175px;
+    background-color: rgb(68,60,76);
+    color: white;
+    border: solid 4px rgb(18,147,164);
+    box-shadow: 0 0 100px 20px #007d8c;
+    
+}
+
+
+
+
+.elements-in-message-container{
+    display: grid;
+    height: 100%;
+    width: 100%;
+    grid-template-columns: 100px auto 100px;
+    grid-template-rows: 40px 500px 40px 100px auto;
+}

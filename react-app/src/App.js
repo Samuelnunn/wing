@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from "react";
 import { BrowserRouter, NavLink, Route, Switch, useHistory } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
+import Center from 'react-center';
 import Navigation from './Navigation'
 import NavBar from "./components/NavBar/index";
 import ProtectedRoute from "./components/auth/ProtectedRoute";
 import MatchCard from "./components/Match/index";
 import Messages from "./components/Messages/index";
-import LogoutButton from './components/auth/LogoutButton';
 import Matched from './components/Matched/index';
 import User from './components/User'
 import SplashPage from './components/Splash'
@@ -76,7 +76,9 @@ function App() {
                             {/* {/* <button onClick={logout}></button> */}
                         </Route>      
                         <Route path="/matches" exact={true} authenticated={authenticated}>
-                            <MatchCard className="body-of-webpage" />
+                            <Center>
+                                <MatchCard className="body-of-webpage" />
+                            </Center>
                         </Route>
                         <Route path="/messages" exact={true} authenticated={authenticated}>
                             <Messages className="body-of-webpage" loaded={loaded} />

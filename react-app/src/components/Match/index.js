@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import PersonOutlineIcon from '@material-ui/icons/PersonOutline';
-import ChatBubbleIcon from '@material-ui/icons/ChatBubble';
+import FavoriteBorderTwoToneIcon from '@material-ui/icons/FavoriteBorderTwoTone';
+import ClearTwoToneIcon from '@material-ui/icons/ClearTwoTone';
 import { Modal } from '../../context/ModalContext';
 import MessageOnMatch from '../MessageOnMatch';
 import { matchUsers, userToBeSeen, getSeenUsers } from '../../store/matches';
@@ -39,13 +39,12 @@ function MatchCard() {
     
     
     const removedDuplicates = arrayOfIds.filter(values => !flattenNestedArray.includes(values));
-    const randomNum = Math.floor(Math.random() * removedDuplicates.length)
+    const randomNum = Math.floor(Math.random() * removedDuplicates.length);
     
 
     const randomizerFilter = potentialMatch.filter((oneMatch) => oneMatch.id == removedDuplicates[randomNum]); 
 
     const matchUser = (e) => {
-
         dispatch(matchUsers(e.target.id));
         setSeenUser(e.target.id);
         dispatch(userToBeSeen(e.target.id))
@@ -56,7 +55,7 @@ function MatchCard() {
             }
         });
     };
-    
+
     const passUser = (e) => {
         setSeenUser(e.target.id);
         dispatch(userToBeSeen(e.target.id))
@@ -64,40 +63,35 @@ function MatchCard() {
     };
     
 
-   
+
       
     return randomizerFilter.length ?
         randomizerFilter.map((singlePerson) => {
             if(singlePerson.id) {
                 return(
-                    <div key={singlePerson.last_name}>
-                        <div className='whole-container' key={singlePerson.first_name}>
-                            <div className='match-card-top'>
-                                <PersonOutlineIcon />
-                                <h1 className='match-card'>{singlePerson.firstName}</h1>
-                                <img src={singlePerson.profilePhotoUrl} className='match-card-pic'/>
-                                <h2>{singlePerson.bio}</h2>
-                                <ChatBubbleIcon />
-                            </div>
-                            <button onClick={matchUser}
-                            id={singlePerson.id}
-                            > Match</button>
-                            <button onClick={passUser}
-                            id={singlePerson.id}
-                            >Pass</button>
-                            <div>
-                                {showModal && (
-                                    <Modal onClose={onClose}>
-                                        <MessageOnMatch singlePerson={singlePerson} onClose={onClose}/>
-                                    </Modal>
-                                )}
+                    <div key={singlePerson.last_name} className='whole-match-container'>
+                    <div className='elements-in-container' key={singlePerson.first_name}>
+                        <img src={singlePerson.profilePhotoUrl} className='match-card-pic'/>
+                        <h1 className='match-card-name-age'>{singlePerson.firstName}, {singlePerson.age}</h1>
+                        <p className='bio'>{singlePerson.bio}</p>    
+                        <FavoriteBorderTwoToneIcon className='match-button'onClick={matchUser}
+                            id={singlePerson.id} />
+                        <ClearTwoToneIcon className='pass-button' id={singlePerson.id} onClick={passUser}/>
+                        <div>
+                            {showModal && (
+                                <Modal onClose={onClose}>
+                                    <MessageOnMatch singlePerson={singlePerson} onClose={onClose}/>
+                                </Modal>
+                            )}
                             </div>
                         </div>   
                     </div>
                 );
             } }
         ) :
-        <h1>No available matches</h1>
+            <div className='no-match'>
+                <h1 className='no-match-text'>No available matches</h1>
+            </div>
 }
 
 export default MatchCard

@@ -18,18 +18,29 @@ const Matched = () => {
     const usersArrayToMap = Object.values(usersMatches);
     
     return usersArrayToMap.length ? 
-        usersArrayToMap.map((eachUser) => {
-            return (
-                <div>
-                    <h2>{eachUser.first_name}</h2>
-                    <h3>{eachUser.bio}</h3>
-                    <img src={eachUser.profile_photo_url} className='match-pic'/>
-                    <MessageUser eachUser={eachUser}/>
-                    <Unmatch eachUser={eachUser} />
-                </div>
-            );
-        }) :
-    <h1> No Matches at this time! </h1>
+        <div className='matched-container'>
+            <div className='position-elements'>
+        {usersArrayToMap.map((eachUser) => {
+                return (
+                    <div className='elements-in-matched-container'>
+                        <div className='elements-in-top-matched'>
+                            <h2 className='matched-first-name'>{eachUser.first_name}, {eachUser.age}</h2>
+                            <h3 className='matched-bio'>{eachUser.bio}</h3>
+                            <img src={eachUser.profile_photo_url} className='matched-pic'/>
+                        </div>
+                        <div className='elements-in-bottom-matched'>
+                            <MessageUser eachUser={eachUser}/>
+                            <Unmatch className='unmatch-button' eachUser={eachUser} />
+                        </div>
+                    </div>
+                );
+            })} 
+        </div>
+        </div>
+            : 
+            <div className='no-current-matches-container'>
+                <h1 className='no-current-matches-text'> No Matches at this time! </h1>
+            </div>
 };
 
 export default Matched;

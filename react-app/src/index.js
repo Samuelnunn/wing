@@ -2,6 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from "react-redux";
 import { BrowserRouter } from "react-router-dom";
+import Center from 'react-center';
 import configureStore from "./store";
 import App from './App';
 import './index.css';
@@ -29,7 +30,9 @@ function Root() {
         <BrowserRouter>
           <ModalProvider>
                 <Provider store={store}>
-                    <App />
+                    <Center>
+                        <App />
+                    </Center>
                 </Provider>
           </ModalProvider>
       </BrowserRouter>
