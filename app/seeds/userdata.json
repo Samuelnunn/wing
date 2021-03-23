@@ -8,7 +8,7 @@
       "age": "52", 
       "zip_code": "11111",
       "bio": "Totally Awesome!",
-      "profile_photo_url": "http://wing.s3.amazonaws.com/sam-moqadam-0_6VJneNkBs-unsplash.jpg",
+      "profile_photo_url": "http://wing.s3.amazonaws.com/1.png",
       "gender_id": "Man"
     },
     {
@@ -20,7 +20,7 @@
       "age": "22", 
       "zip_code": "11111",
       "bio": "Good Human!",
-      "profile_photo_url": "http://wing.s3.amazonaws.com/victor-creed-OQTkozv1uDA-unsplash.jpg",
+      "profile_photo_url": "http://wing.s3.amazonaws.com/2.png",
       "gender_id": "Man"
 
     },
@@ -33,7 +33,7 @@
       "age": "32", 
       "zip_code": "11111",
       "bio": "To be frank... you should set him up!",
-      "profile_photo_url": "http://wing.s3.amazonaws.com/sandy-millar-2U0429Hn_eQ-unsplash.jpg",
+      "profile_photo_url": "http://wing.s3.amazonaws.com/3.png",
       "gender_id": "Man"
 
     },
@@ -46,7 +46,7 @@
       "age": "32", 
       "zip_code": "11111",
       "bio": "Love has always petered out for peter!",
-      "profile_photo_url": "http://wing.s3.amazonaws.com/osheen-turnbull-sU0IT6W8KaU-unsplash.jpg",
+      "profile_photo_url": "http://wing.s3.amazonaws.com/4.png",
       "gender_id": "Man"
 
     },
@@ -59,7 +59,7 @@
       "age": "22", 
       "zip_code": "11111",
       "bio": "Marvelous Marvin",
-      "profile_photo_url": "http://wing.s3.amazonaws.com/marvin-meyer-QS4KxdelN_4-unsplash.jpg",
+      "profile_photo_url": "http://wing.s3.amazonaws.com/5.png",
       "gender_id": "Man"
 
     },
@@ -72,7 +72,7 @@
       "age": "32", 
       "zip_code": "11111",
       "bio": "Not always this stoned.",
-      "profile_photo_url": "http://wing.s3.amazonaws.com/khushaman-raj-6bfr2WhQmr8-unsplash.jpg",
+      "profile_photo_url": "http://wing.s3.amazonaws.com/6.png",
       "gender_id": "Man"
 
     },
@@ -85,7 +85,7 @@
       "age": "52", 
       "zip_code": "11111",
       "bio": "This is hunky hank!",
-      "profile_photo_url": "http://wing.s3.amazonaws.com/frank-alarcon-bIhLddjH36k-unsplash.jpg",
+      "profile_photo_url": "http://wing.s3.amazonaws.com/7.png",
       "gender_id": "Man"
 
     },
@@ -98,7 +98,7 @@
       "age": "22", 
       "zip_code": "11111",
       "bio": "The gratest. Truly",
-      "profile_photo_url": "http://wing.s3.amazonaws.com/evelina-friman-XyKX2wJ1jkI-unsplash.jpg",
+      "profile_photo_url": "http://wing.s3.amazonaws.com/8.png",
       "gender_id": "Man"
 
     },
@@ -111,7 +111,7 @@
       "age": "32", 
       "zip_code": "11111",
       "bio": "Totally Awesome!",
-      "profile_photo_url": "http://wing.s3.amazonaws.com/ben-white-_YQgJos0SKE-unsplash.jpg",
+      "profile_photo_url": "http://wing.s3.amazonaws.com/9.png",
       "gender_id": "Man"
 
     },
@@ -124,7 +124,7 @@
       "age": "22", 
       "zip_code": "11111",
       "bio": "AW the best. Everyone would be lucky",
-      "profile_photo_url": "http://wing.s3.amazonaws.com/ashkan-forouzani-RbqZucCIHNw-unsplash.jpg",
+      "profile_photo_url": "http://wing.s3.amazonaws.com/10.png",
       "gender_id": "Man"
 
     },
@@ -137,7 +137,7 @@
       "age": "32", 
       "zip_code": "11111",
       "bio": "The best human I know",
-      "profile_photo_url": "http://wing.s3.amazonaws.com/alexander-krivitskiy-TD9rSZywT7Y-unsplash.jpg",
+      "profile_photo_url": "http://wing.s3.amazonaws.com/18.png",
       "gender_id": "Man"
 
     },
@@ -150,20 +150,85 @@
       "age": "52", 
       "zip_code": "11111",
       "bio": "So good!!",
-      "profile_photo_url": "http://wing.s3.amazonaws.com/ashkan-forouzani-RbqZucCIHNw-unsplash.jpg",
+      "profile_photo_url": "http://wing.s3.amazonaws.com/11.png",
       "gender_id": "Man"
 
     },
     {
-      "username": "carly",
-      "email": "carly@aa.io",
-      "first_name": "Carly",
+      "username": "Matty",
+      "email": "matty@aa.io",
+      "first_name": "Matty",
+      "last_name": "Wheeler",
+      "password": "password",
+      "age": "52", 
+      "zip_code": "11111",
+      "bio": "Matty is my favorite. You're friend should be so lucky!",
+      "profile_photo_url": "http://wing.s3.amazonaws.com/13.png",
+      "gender_id": "Man"
+
+    },
+    {
+      "username": "Ashton",
+      "email": "ashton@aa.io",
+      "first_name": "Matty",
+      "last_name": "Wheeler",
+      "password": "password",
+      "age": "52", 
+      "zip_code": "11111",
+      "bio": "Ashton is agressively average",
+      "profile_photo_url": "http://wing.s3.amazonaws.com/14.png",
+      "gender_id": "Man"
+
+    },
+    {
+      "username": "Paolo",
+      "email": "Paolo@aa.io",
+      "first_name": "Matty",
+      "last_name": "Wheeler",
+      "password": "password",
+      "age": "52", 
+      "zip_code": "11111",
+      "bio": "I wish he would sing to me!",
+      "profile_photo_url": "http://wing.s3.amazonaws.com/15.png",
+      "gender_id": "Man"
+
+    },
+    {
+      "username": "Max",
+      "email": "Max@aa.io",
+      "first_name": "Matty",
+      "last_name": "Wheeler",
+      "password": "password",
+      "age": "52", 
+      "zip_code": "11111",
+      "bio": "Max? He's a total Bae.",
+      "profile_photo_url": "http://wing.s3.amazonaws.com/16.png",
+      "gender_id": "Man"
+
+    },
+    {
+      "username": "Adam",
+      "email": "Adam@aa.io",
+      "first_name": "Matty",
+      "last_name": "Wheeler",
+      "password": "password",
+      "age": "52", 
+      "zip_code": "11111",
+      "bio": "Adam is the apple of my eye.",
+      "profile_photo_url": "http://wing.s3.amazonaws.com/17.png",
+      "gender_id": "Man"
+
+    },
+    {
+      "username": "Logan",
+      "email": "Logan@aa.io",
+      "first_name": "Logan",
       "last_name": "Carl",
       "password": "password",
       "age": "52", 
       "zip_code": "11111",
       "bio": "Totally Awesome!",
-      "profile_photo_url": "http://wing.s3.amazonaws.com/anastasia-vityukova-QhKX67yT7wk-unsplash.jpg",
+      "profile_photo_url": "http://wing.s3.amazonaws.com/14.png",
       "gender_id": "Woman"
 
     },
@@ -233,7 +298,19 @@
 
     },
     {
-      "username": "Taleah",
+      "username": "Saleah",
+      "email": "Wheeler@heeler.com",
+      "first_name": "Tal",
+      "last_name": "Wheeler",
+      "password": "password",
+      "age": "52", 
+      "zip_code": "11111",
+      "bio": "Totally Awesome!",
+      "profile_photo_url": "http://wing.s3.amazonaws.com/12.png",
+      "gender_id": "Man"
+    },
+    {
+      "username": "Baleah",
       "email": "Wheeler",
       "first_name": "Tal",
       "last_name": "Wheeler",
@@ -241,7 +318,7 @@
       "age": "52", 
       "zip_code": "11111",
       "bio": "Totally Awesome!",
-      "profile_photo_url": "http://wing.s3.amazonaws.com/alexander-krivitskiy-TD9rSZywT7Y-unsplash.jpg",
-      "gender_id": "Man"
+      "profile_photo_url": "http://wing.s3.amazonaws.com/anastasia-vityukova-QhKX67yT7wk-unsplash.jpg",
+      "gender_id": "Non-Binary"
     }
 ]

@@ -12,7 +12,6 @@ matches = db.Table(
     db.Column("matched_id", db.Integer, db.ForeignKey("users.id"))
 )
 
-
 seen_by_users = db.Table(
     'seen_users',
     db.Model.metadata,

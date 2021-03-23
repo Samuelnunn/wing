@@ -15,26 +15,16 @@
     /* margin-top: 50px; */
     /* border: solid 4px rgb(18,147,164); */
     padding-top: 50px;
-
-    
 }
 
 .matched-container::-webkit-scrollbar {
     display: none;
 }
 
-.position-elements{
-    /* padding-top: 1330px; */
-    /* display: flex;
-    flex-direction: column;
-    justify-content: center; */
-    /* padding-top: 50px; */
-    /* border: solid 4px rgb(18,147,164); */
-}
 
 .elements-in-matched-container{
     width: 750px;
-    height: 650px;
+    height: 565px;
     border-radius: 25px;
     display: grid;
     /* grid-template-rows: 500px 1fr; */
@@ -42,12 +32,17 @@
     color: white;
     border: solid 4px rgb(18,147,164);
     /* margin-top: 900px */
+    margin-bottom: 50px;
+   
+    
 }
 
 .elements-in-top-matched{
     display: grid;
     grid-template-columns: 422px 1fr;
     grid-template-rows: 50px 100px 250px 100px;
+    
+    
 }
 
 .elements-in-bottom-matched{
@@ -55,6 +50,7 @@
     /* grid-template-columns: 422px 1fr; */
     grid-template-rows: 50px 100px;
     /* height: 200px; */
+   
 }
 
 .message-matched-container{
@@ -67,22 +63,21 @@
 .unmatched-button{
     display: flex;
     justify-content: flex-end;
-    /* align-items: center !important; */
 }
 
 .message-text-area-matched{
-    /* position: absolute; */
     vertical-align: text-bottom;
     width: 600px;
     resize: none;
     font-size: 22px;
-    height: 60px;
+    height: 58px;
     display: flex;
     outline: none;
     padding-left: 10px;
     display: flex;
     align-content: flex-end;
     border-top: solid rgb(18,147,164);
+    border-radius: 0 0 0 25px;
 }
 
 .no-current-matches-container{
@@ -127,7 +122,6 @@
 
 .message-send-button-matched{
     padding: 0;
-    /* margin-top: 0.5px; */
     text-align: center;
     background-color: white;
     border: none;
@@ -135,13 +129,55 @@
     outline: none;
     color: black;
     font: inherit;
-    height: 58px;
+    height: 57px;
     width: 142px;
     border-top: solid rgb(18,147,164);
+    border-radius: 0 0 25px 0;
 }
 .message-send-button-matched:hover{
     cursor: pointer;
     background-color: teal;
     color: white;
     transition: 1s;
+    
+}
+
+.remove-match-container{
+    display: flex;
+    justify-self: end;
+    padding-top: 10px;
+    padding-right: 10px;
+}
+
+.remove-match-button{
+    border-radius: 50%;
+    width: 50px !important;
+    height: 50px !important;
+    outline: none;
+    background: none;
+    border: 2px solid teal;
+}
+.remove-match-button:hover{
+    cursor: pointer;
+    background-color: teal;
+   transition: 1.5s;
+   transform: translateX(0.15em);
+ }
+
+.remove-match-button::before,
+.remove-match-button::after
+ {
+    content: '';
+    position: absolute;
+    width: inherit;
+    border-left: inherit;
+    z-index: -1;
+}
+
+
+.remove-match-button::before {
+    height: 80%;
+    top: 10%;
+    left: calc(-0.15em - 0.08em * 2);
+    filter: brightness(0.8);
 }

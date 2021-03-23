@@ -3,6 +3,7 @@ from .users import seed_users, undo_users
 from .genders import seed_genders, undo_genders
 from .gender_preferences import seed_gender_preferences, undo_seed_gender_preferences
 from .messages import seed_messages, undo_messages
+from .matches import seed_matches, undo_matches
 # from .matches import seed_matches, undo_matches
 
 # Creates a seed group to hold our commands

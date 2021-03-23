@@ -40,26 +40,21 @@
    background-color: teal;
 }
 
-.pass-button{
-    border-radius: 50%;
-    width: 50px !important;
-    height: 50px !important;
-    grid-row-start: 5;
-    grid-column-start: 3;
-    outline: none;
-    background: none;
-    border: 2px solid teal;
+.match-button::before {
+    height: 80%;
+    top: 10%;
+    left: calc(-0.15em - 0.08em * 2);
+    filter: brightness(0.8);
 }
 
-.pass-button::before,
-.pass-button::after
- {
-    content: '';
-    position: absolute;
-    width: inherit;
-    border-left: inherit;
-    z-index: -1;
+
+.match-button:hover{
+   cursor: pointer;
+   background-color: teal;
+  transition: 1.5s;
+  transform: translateX(0.15em);
 }
+
 
 .match-button::before,
 .match-button::after
@@ -71,32 +66,39 @@
     z-index: -1;
 }
 
+.pass-button{
+    border-radius: 50%;
+    width: 50px !important;
+    height: 50px !important;
+    grid-row-start: 5;
+    grid-column-start: 3;
+    outline: none;
+    background: none;
+    border: 2px solid teal;
+}
+.pass-button:hover{
+    cursor: pointer;
+    background-color: teal;
+   transition: 1.5s;
+   transform: translateX(0.15em);
+ }
+
+.pass-button::before,
+.pass-button::after
+ {
+    content: '';
+    position: absolute;
+    width: inherit;
+    border-left: inherit;
+    z-index: -1;
+}
+
+
 .pass-button::before {
     height: 80%;
     top: 10%;
     left: calc(-0.15em - 0.08em * 2);
     filter: brightness(0.8);
-}
-.match-button::before {
-    height: 80%;
-    top: 10%;
-    left: calc(-0.15em - 0.08em * 2);
-    filter: brightness(0.8);
-}
-
-
-.pass-button:hover{
-   cursor: pointer;
-   background-color: teal;
-  transition: 1.5s;
-  transform: translateX(0.15em);
-}
-
-.match-button:hover{
-   cursor: pointer;
-   background-color: teal;
-  transition: 1.5s;
-  transform: translateX(0.15em);
 }
 
 

@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
+import ClearTwoToneIcon from '@material-ui/icons/ClearTwoTone';
 import { getMatches, unmatchUser } from '../../store/matched';
 
 const Unmatch = ({eachUser}) => {
@@ -17,8 +18,9 @@ const Unmatch = ({eachUser}) => {
     }, [dispatch]);
 
     return (
-            <div className='add-message-field'>
-                <button className='message-send-button' onClick={handleUnmatchClick}>Remove Match</button>
+            <div className='remove-match-container'>
+                {/* <button className='remove-match-button' onClick={handleUnmatchClick}>Remove Match</button> */}
+                <ClearTwoToneIcon className='remove-match-button' onClick={handleUnmatchClick}/>
             </div>
     );
 };

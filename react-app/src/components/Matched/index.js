@@ -27,10 +27,10 @@ const Matched = () => {
                             <h2 className='matched-first-name'>{eachUser.first_name}, {eachUser.age}</h2>
                             <h3 className='matched-bio'>{eachUser.bio}</h3>
                             <img src={eachUser.profile_photo_url} className='matched-pic'/>
+                            <Unmatch className='unmatch-button' eachUser={eachUser} />
                         </div>
                         <div className='elements-in-bottom-matched'>
                             <MessageUser eachUser={eachUser}/>
-                            <Unmatch className='unmatch-button' eachUser={eachUser} />
                         </div>
                     </div>
                 );

@@ -12,8 +12,27 @@ def seed_users():
         for user in data:
             new_user = User(**user)
             new_users.append(new_user)
+    new_users[0].matches.append(new_users[2])
+    new_users[2].matches.append(new_users[0])
+    new_users[0].matches.append(new_users[3])
+    new_users[3].matches.append(new_users[0])
+    new_users[0].matches.append(new_users[4])
+    new_users[4].matches.append(new_users[0])
+    new_users[0].matches.append(new_users[10])
+    new_users[0].matches.append(new_users[6])
+    new_users[0].matches.append(new_users[8])
+    new_users[0].matches.append(new_users[15])
+    new_users[0].seen_by_users.append(new_users[2])
+    new_users[2].seen_by_users.append(new_users[0])
+    new_users[0].seen_by_users.append(new_users[3])
+    new_users[3].seen_by_users.append(new_users[0])
+    new_users[0].seen_by_users.append(new_users[4])
+    new_users[4].seen_by_users.append(new_users[0])
+
 
     db.session.add_all(new_users)
+    # db.session.add(first_match1)
+    # db.session.add(first_match2)
     db.session.commit()
 
 # Uses a raw SQL query to TRUNCATE the users table.

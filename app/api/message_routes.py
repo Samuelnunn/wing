@@ -46,8 +46,9 @@ def get_messagefeed(id_param):
 @message_routes.route('/messagefeed/<int:id_param>', methods=["PUT"])
 def unread_to_read(id_param):
     user = User.query.filter(User.id == current_user.id).first()
-    messages_from_match = Message.query.filter(id_param == Message.message_sender_id).first()
-    update_entry = messages_from_match.read = True
+    messages_from_match = Message.query.filter(id_param == Message.message_sender_id).all()
+    for messages in messages_from_match:
+        messages.read = True
     db.session.commit()
     return "Messages read."
 

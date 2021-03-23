@@ -17,7 +17,7 @@ function MatchCard() {
     const matchedUser = useSelector((state) => state.matched.matchedUsers);
     const seenUsersFromStore = useSelector((state) => state.matches.seenUsers);
     // const seenUsersFromStored = useSelector((state) => state.matches.seenUsers.seenUserIds);
-    
+    console.log(potentialMatch)
     
     const [showModal, setShowModal] = useState(false);
     const [seenUser, setSeenUser] = useState(0);
@@ -42,18 +42,18 @@ function MatchCard() {
     const randomNum = Math.floor(Math.random() * removedDuplicates.length);
     
 
-    const randomizerFilter = potentialMatch.filter((oneMatch) => oneMatch.id == removedDuplicates[randomNum]); 
+    const randomizerFilter = potentialMatch.filter((oneMatch) => oneMatch.id == removedDuplicates[0]); 
 
     const matchUser = (e) => {
-        dispatch(matchUsers(e.target.id));
-        setSeenUser(e.target.id);
-        dispatch(userToBeSeen(e.target.id))
-        .then(() => {dispatch(getSeenUsers())})
         usersWhoLikeCurrentUser.filter((eachId) => {
             if (eachId.id == e.target.id) {
                 setShowModal(true);
             }
         });
+        dispatch(matchUsers(e.target.id));
+        setSeenUser(e.target.id);
+        dispatch(userToBeSeen(e.target.id))
+        .then(() => {dispatch(getSeenUsers())})
     };
 
     const passUser = (e) => {

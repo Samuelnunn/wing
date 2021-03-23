@@ -26,7 +26,7 @@
 
 .text{
     height: 50px;
-    transform-style: preserve-3d;
+
     width: 40px;
     height: 40px;
     border-radius: 50%;
@@ -46,10 +46,14 @@
 }
 
 .about-body{
-    background-color:rgb(101,64,116, 0.9);
+    display: flex;
+    justify-content: center;
+    padding-top: 10px;
+    height: 400px;
+    width: 400px;
+    border: solid  rgb(18,147,164);
     border-radius: 25px;
-    height: 500px;
-    width: 500px;
-    color: gray;
+    color: white;
+    background-color: rgb(68,60,76, 0.7);
 }
 

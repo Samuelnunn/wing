@@ -1,10 +1,13 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import { useDispatch, useSelector } from "react-redux";
 import { sendAMessage, fetchMessages, fetchMessageFeedMessages, setMessageFeedForUser } from '../../store/messages';
 import { Modal } from '../../context/ModalContext';
 import MessageOnClick from '../MessageOnClick';
 import ReadAndUnread from './ReadAndUnread';
 import './messages.css';
+import MessageUser from '../MessageUser';
+
+
 
 
 const Messages = () => {
@@ -16,6 +19,7 @@ const Messages = () => {
     const [personToMessage, setPersonToMessage] = useState(0);
     const [messageText, setMessageText] = useState("");
     const [iconToggle, setIconToggle] = useState();
+
 
     const onClose= () => {setShowModal(false)};
 
@@ -50,39 +54,39 @@ const Messages = () => {
     }, [dispatch, iconToggle]);
 
     return usersMessages.length ?
-        <div className='all-users-messages-container'>    
-            {usersMessages.map((eachPersonWhoHasMessaged) => {
-                    return (
-                        <div className='each-message'  onClick={messageUser} id={eachPersonWhoHasMessaged.messageSenderId}>
-                            <div key={eachPersonWhoHasMessaged.createdAt} className='message-element'>
-                                {<img src={eachPersonWhoHasMessaged.messageSender.profilePhotoUrl} alt="" className='profile-photo'/>}
-                                {<h2 className='each-name'>{eachPersonWhoHasMessaged.messageSender.firstName}: </h2> }
-                                <p className='each-massage-to-user'  id={eachPersonWhoHasMessaged.messageSenderId} >{eachPersonWhoHasMessaged.content}</p>
-                                    {showModal && (
-                                    <Modal onClose={onClose} >
-                                        <MessageOnClick personToMessage={personToMessage} onClose={onClose}/>
-                                        <div className='message-input-button'>
-                                            <div className='message-input-container'>
-                                                <textarea 
-                                                    className='message-text-area' 
-                                                    placeholder='Send a message'
-                                                    value={messageText}
-                                                    onChange={e => { setMessageText(e.target.value)}}
-                                                ></textarea>
-                                            </div>
-                                            <button className='message-send-button' onClick={handleMessageSendClick}>Send Message</button>
+    <div className='all-users-messages-container'>    
+        {usersMessages.map((eachPersonWhoHasMessaged) => {
+                return (
+                    <div className='each-message'  onClick={messageUser} id={eachPersonWhoHasMessaged.messageSenderId}>
+                        <div key={eachPersonWhoHasMessaged.createdAt} className='message-element'>
+                            {<img src={eachPersonWhoHasMessaged.messageSender.profilePhotoUrl} alt="" className='profile-photo'/>}
+                            {<h2 className='each-name'>{eachPersonWhoHasMessaged.messageSender.firstName}: </h2> }
+                            <p className='each-massage-to-user'  id={eachPersonWhoHasMessaged.messageSenderId} >{eachPersonWhoHasMessaged.content}</p>
+                                {showModal && (
+                                <Modal onClose={onClose} >
+                                    <MessageOnClick personToMessage={personToMessage} onClose={onClose}/>
+                                    <div className='message-input-button'>
+                                        <div className='message-input-container'>
+                                            <textarea 
+                                                className='message-text-area' 
+                                                placeholder='Send a message'
+                                                value={messageText}
+                                                onChange={e => { setMessageText(e.target.value)}}
+                                            ></textarea>
                                         </div>
-                                    </Modal>
-                                    )}
-                                    <ReadAndUnread iconToggle={iconToggle} eachPersonWhoHasMessaged={eachPersonWhoHasMessaged}/>
-                            </div>
+                                        <button className='message-send-button' onClick={handleMessageSendClick}>Send Message</button>
+                                    </div>
+                                </Modal>
+                                )}
+                                <ReadAndUnread iconToggle={iconToggle} eachPersonWhoHasMessaged={eachPersonWhoHasMessaged}/>
                         </div>
-                    );
-            })} 
-        </div> :
-                <div className='no-message-container'>
-                    <h1 className='no-message-text'>No messages</h1>
-                </div> 
+                    </div>
+                );
+        })} 
+    </div> :
+            <div className='no-message-container'>
+                <h1 className='no-message-text'>No messages</h1>
+            </div> 
 };
 
 export default Messages;
