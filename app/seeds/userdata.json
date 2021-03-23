@@ -1,11 +1,11 @@
 [
     {
-      "username": "Demo",
+      "username": "demo@aa.io",
       "email": "demo@aa.io",
-      "first_name": "demo@aa.io",
+      "first_name": "Demo",
       "last_name": "demo@aa.io",
       "password": "password",
-      "age": "52", 
+      "age": "32", 
       "zip_code": "11111",
       "bio": "Totally Awesome!",
       "profile_photo_url": "http://wing.s3.amazonaws.com/1.png",
@@ -229,7 +229,7 @@
       "zip_code": "11111",
       "bio": "Totally Awesome!",
       "profile_photo_url": "http://wing.s3.amazonaws.com/14.png",
-      "gender_id": "Woman"
+      "gender_id": "Man"
 
     },
     {

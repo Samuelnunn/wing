@@ -8,7 +8,7 @@ import ProtectedRoute from "./components/auth/ProtectedRoute";
 import MatchCard from "./components/Match/index";
 import Messages from "./components/Messages/index";
 import Matched from './components/Matched/index';
-import User from './components/User'
+import User from './components/Profile/User';
 import SplashPage from './components/Splash'
 import { authenticate, logout } from "./services/auth";
 import { addUser } from "./store/session";

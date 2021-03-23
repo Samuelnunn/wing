@@ -3,7 +3,7 @@ import { useDispatch } from 'react-redux';
 import { useHistory, Link } from "react-router-dom";
 import { logout } from '../../services/auth';
 import LogoutButton from '../auth/LogoutButton'
-import User from '../User'
+import User from '../Profile/User'
 import MatchCard from "../Match";
 
 
