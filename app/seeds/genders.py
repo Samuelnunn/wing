@@ -1,12 +1,10 @@
 from app.models import db, Gender
 
 genders = [
-    "Woman", "Cis Woman", "Trans Woman", "Man",
-    "Cis Man", "Trans Man", "Agender", "Androgynous",
-    "Bigender", "GenderFluid", "GenderQueer",
-    "Gender Nonconforming", "Hijra", "Intersex",
-    "Non-binary", "Other", "Pangender", "Transfeminine",
-    "Transmasculine", "Transsexual", "Two Spirit"
+    "Woman", "Man", "Agender",
+    "GenderQueer", "Intersex",
+    "Non-binary", "Other","Trans", 
+    "Two Spirit"
     ]
 
 def seed_genders():

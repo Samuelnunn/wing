@@ -17,5 +17,52 @@
     height: 100%;
     width: 100%;
     grid-template-columns: 100px auto 100px;
-    grid-template-rows: 40px 500px 40px 50px auto;
+    grid-template-rows: 40px 500px 40px 80px 30px 80px;
+}
+
+.multi-select-profile{
+    justify-content: center;
+    justify-self: center;
+    align-items: center;
+    display: grid;
+    grid-row-start:6;
+    grid-column-start: 2;
+    grid-template-rows: 50px 10px;
+    width: 410px;
+    font-size: 20px;
+    border: solid 4px rgb(18,147,164);
+    border-radius: 25px;
+    background-color: rgb(68,60,76, 0.7);
+}
+
+
+
+.gender-preference-text{
+    grid-row-start:5;
+    grid-column-start: 2;
+    display: flex;
+    justify-content: center;
+    font-size: 24px;
+}
+
+.gender-preference-update{
+    margin-top: 11px;
+    height: 22px;
+    border-radius: 0 0 25px 25px;
+    outline: none;
+    border: none;
+    font: inherit;
+}
+
+.gender-preference-update:hover{
+        cursor: pointer;
+        background-color: teal;
+        color: white;
+        transition: 1s;
+}
+
+
+.input-sizing{
+    font-size: 24px;
+    padding-left: 5px;
 }

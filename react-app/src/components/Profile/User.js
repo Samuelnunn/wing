@@ -10,12 +10,10 @@ function User({user}) {
 
     console.log(genderPreferenceId)
 
-    let genders = ["Woman", "Cis Woman", "Trans Woman", "Man",
-    "Cis Man", "Trans Man", "Agender", "Androgynous",
-    "Bigender", "GenderFluid", "GenderQueer",
-    "Gender Nonconforming", "Hijra", "Intersex",
-    "Non-binary", "Other", "Pangender", "Transfeminine",
-    "Transmasculine", "Transsexual", "Two Spirit"]
+    let genders = [ "Woman", "Man", "Agender",
+                    "GenderQueer", "Intersex",
+                    "Non-binary", "Other","Trans", 
+                    ]
     const [genderPreference, setGenderPreference] = useState("")
 
     console.log(genderPreferenceId.indexOf("Man"))
@@ -50,38 +48,40 @@ function User({user}) {
                 <img src={user.profilePhotoUrl} className='match-card-pic'/>
                 <h1 className='match-card-name-age'>{user.firstName}, {user.age}</h1>
                 <p className='bio'>{user.bio}</p>    
-                <form onSubmit={onGenderClick}>
-                <div> 
-                    <p>Gender Preference: </p>
-                    { genders.map(eachGender => {
-                        if (genderPreference.length >= 1) {
-                        return (
-                            <>
-                                <input
-                                    type="checkbox"
-                                    name="genderPreferences"
-                                    placeholder={eachGender}
-                                    onChange={updateGenderPreference}
-                                    value={eachGender}
-                                ></input>{eachGender}
-                            </>
-                            )
-                        } else {
+                <p className='gender-preference-text'>Gender Preferences</p>
+                <form onSubmit={onGenderClick} className='multi-select-profile'>
+                    <div className='input-sizing'> 
+                        { genders.map(eachGender => {
+                            if (genderPreference.length >= 1) {
                             return (
                                 <>
-                                <input
-                                    type="checkbox"
-                                    name="genderPreferences"
-                                    placeholder={eachGender}
-                                    onChange={updateGenderPreference}
-                                    value={eachGender}
-                                    required={true}
-                                ></input>{eachGender}</> 
-                            )   
-                        }
-                    })}
-                </div>
-                <button type="submit">Gender Preferences Update</button>
+                                    <input 
+                                        className='gender-text'
+                                        type="checkbox"
+                                        name="genderPreferences"
+                                        placeholder={eachGender}
+                                        onChange={updateGenderPreference}
+                                        value={eachGender}
+                                    ></input>{eachGender}
+                                </>
+                                )
+                            } else {
+                                return (
+                                    <>
+                                    <input
+                                        type="checkbox"
+                                        name="genderPreferences"
+                                        className='gender-text'
+                                        placeholder={eachGender}
+                                        onChange={updateGenderPreference}
+                                        value={eachGender}
+                                        required={true}
+                                    ></input>{eachGender}</> 
+                                )   
+                            }
+                        })}
+                    </div>
+                    <button className='gender-preference-update' type="submit">Gender Preferences Update</button>
                 </form>
             </div>
         </div>

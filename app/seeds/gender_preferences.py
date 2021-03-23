@@ -5,7 +5,7 @@ def seed_gender_preferences():
     users = User.query.all()
     for u in users:
         entry = GenderPreference(
-            user_id=u.id, gender_id=4
+            user_id=u.id, gender_id=2
         )
         db.session.add(entry)
     db.session.commit()
