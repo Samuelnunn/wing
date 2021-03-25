@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { sendAMessage } from '../../store/messages';
 import './MessageOnMatch.css'
+import pic from './3.png'
 
 // const MessageOnMatch = ({singlePerson, onClose}) => {
 //     const dispatch = useDispatch();
@@ -34,10 +35,13 @@ import './MessageOnMatch.css'
 //         </div>
 //     );
 // };
-const MessageOnMatch = () => {
+const MessageOnMatch = ({onClose}) => {
+    // onClose = onClose()
+    // onClose()
     return (
         <div className='message-on-match'>
-            <h1> You've matched your person!</h1>  
+            <img src={pic} className='bird-pic'/>
+            <h1> You've Paired Your Person!</h1>  
         </div>
     );
 };

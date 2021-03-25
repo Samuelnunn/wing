@@ -59,13 +59,25 @@
    justify-content: flex-start;
    justify-self: center;
    align-items: center;
-   justify-content: space-around;
+   /* justify-content: space-between; */
+}
+
+.about-header{
+    margin-top: 20px;
+    margin-bottom: 25px;
+}
+
+.quote{
+    margin-bottom: 35px;
 }
 
 
 .text-body{
     display: flex;
-    align-self: center;
-    justify-self: center;
+    /* align-self: center; */
+    /* justify-self: center; */
     text-align: center;
+    font-size: 18px;
+    padding-left: 5px;
+    padding-right: 5px;
 }

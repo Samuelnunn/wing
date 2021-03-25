@@ -28,7 +28,7 @@
     /* grid-template-rows: 500px 1fr; */
     background-color: rgb(68,60,76, 0.7);
     color: white;
-    border: solid 4px #46ffd7;
+    border: solid 4px #178dd1;
     margin-bottom: 50px;
    
     
@@ -73,7 +73,7 @@
     padding-left: 10px;
     display: flex;
     align-content: flex-end;
-    border-top: solid 4px #46ffd7;
+    border-top: solid 4px #178dd1;
     border-radius: 0 0 0 22px;
 }
 
@@ -90,7 +90,7 @@
     padding-top: 10px;
     height: 70px;
     width: 400px;
-    border: solid  #46ffd7;
+    border: solid  #178dd1;
     border-radius: 25px;
     color: white;
     background-color: rgb(68,60,76, 0.7);
@@ -128,7 +128,7 @@
     font: inherit;
     height: 57px;
     width: 142px;
-    border-top: solid 4px #46ffd7;
+    border-top: solid 4px #178dd1;
     border-radius: 0 0 20.5px 0;
 }
 .message-send-button-matched:hover{
@@ -152,11 +152,11 @@
     height: 50px !important;
     outline: none;
     background: none;
-    border: 2px solid #46ffd7;
+    border: 2px solid #178dd1;
 }
 .remove-match-button:hover{
     cursor: pointer;
-    background-color: teal;
+    background-color: maroon;
    transition: 1.5s;
    transform: translateX(0.15em);
  }

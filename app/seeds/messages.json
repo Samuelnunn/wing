@@ -30,7 +30,19 @@
       "message_sender_id": "3"
     },
     {
-      "read": false,
+      "read": true,
+      "content": "Or Gauc.",
+      "recipient_id": "1",
+      "message_sender_id": "3"
+    },
+    {
+      "read": true,
+      "content": "Dang. Now I want mexican",
+      "recipient_id": "1",
+      "message_sender_id": "3"
+    },
+    {
+      "read": true,
       "content": "Hey. He's cute!",
       "recipient_id": "1",
       "message_sender_id": "2"
@@ -40,5 +52,23 @@
       "content": "adorable",
       "recipient_id": "1",
       "message_sender_id": "4"
+    },
+    {
+      "read": false,
+      "content": "I'm here for the wings.",
+      "recipient_id": "1",
+      "message_sender_id": "5"
+    },
+    {
+      "read": false,
+      "content": "This is John! ",
+      "recipient_id": "1",
+      "message_sender_id": "6"
+    },
+    {
+      "read": false,
+      "content": "Where is Sebastian based.",
+      "recipient_id": "1",
+      "message_sender_id": "27"
     }
 ]

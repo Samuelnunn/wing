@@ -5,13 +5,13 @@
     /* position: absolute; */
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: flex-start;
+    flex-direction: column;
     margin-bottom: 175px;
     background-color: rgb(68,60,76);
     color: white;
     border: solid 4px #46ffd7;
     box-shadow: 0 0 100px 20px #46ffd7;
-    margin-top: 47px;
 }
 
 
@@ -23,4 +23,9 @@
     width: 100%;
     grid-template-columns: 100px auto 100px;
     grid-template-rows: 40px 500px 40px 100px auto;
+}
+
+.bird-pic{
+    height: 600px;
+    width: 450px;
 }

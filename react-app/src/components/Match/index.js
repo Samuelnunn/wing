@@ -50,9 +50,9 @@ function MatchCard() {
             }
         });
         dispatch(matchUsers(e.target.id));
-        setSeenUser(e.target.id);
         dispatch(userToBeSeen(e.target.id))
         .then(() => {dispatch(getSeenUsers())})
+        setSeenUser(e.target.id);
     };
 
     const passUser = (e) => {

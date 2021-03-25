@@ -3,7 +3,6 @@ const FETCH_ALL_MESSAGES = "messages/fetchAllMessages";
 const FETCH_MESSAGE_FEED = "messages/fetchMessageFeed";
 
 
-
 const sendMessage = (payload) => ({
     type: SEND_A_MESSAGE,
     payload,
@@ -44,9 +43,9 @@ export const fetchMessageFeedMessages = (userId) => {
         const res = await fetch(`/api/messages/messagefeed/${userId}`, {
             method: 'PUT'
         })
+        return responseJSON.messages;
     };
 };
-
 
 
 export const sendAMessage = (id, content) => async (dispatch) => {
@@ -57,8 +56,6 @@ export const sendAMessage = (id, content) => async (dispatch) => {
             body: formData,
         });
         const message = await res.json();
-        // dispatch(sendMessage(message));
-        // await dispatch(fetchMessageFeed(id))
         return message;
 };
 

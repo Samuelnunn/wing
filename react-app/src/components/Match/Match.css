@@ -10,7 +10,7 @@
     justify-content: center;
     background-color: rgb(68,60,76, 0.7);
     color: white;
-    border: solid 4px #46ffd7;
+    border: solid 4px #178dd1;
     margin-top: 900px;
 }
 
@@ -33,7 +33,8 @@
     grid-row-start: 5;
     outline: none;
     background: none;
-    border: 2px solid #46ffd7;
+    border: 2px solid #178dd1
+    ;
 }
 
 
@@ -63,6 +64,7 @@
     z-index: -1;
 }
 
+
 .pass-button{
     border-radius: 50%;
     width: 50px !important;
@@ -71,11 +73,11 @@
     grid-column-start: 3;
     outline: none;
     background: none;
-    border: 2px solid #46ffd7;
+    border: 2px solid #178dd1;
 }
 .pass-button:hover{
     cursor: pointer;
-    background-color: teal;
+    background-color: maroon;
    transition: 1.5s;
    transform: translateX(0.15em);
  }
@@ -137,7 +139,7 @@
     padding-top: 10px;
     height: 70px;
     width: 400px;
-    border: solid  rgb(18,147,164);
+    border: solid  #178dd1;
     border-radius: 25px;
     color: white;
     background-color: rgb(68,60,76, 0.7);

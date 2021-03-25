@@ -13,9 +13,9 @@
     display: flex;
     justify-content: flex-start;
     margin-left: auto;
-    border-left:solid 4px #46ffd7;
-    border-top:solid 4px #46ffd7;
-    border-bottom:solid 4px #46ffd7;
+    border-left:solid 4px #178dd1;
+    border-top:solid 4px #178dd1;
+    border-bottom:solid 4px #178dd1;
 }
 
 .all-users-messages-container::-webkit-scrollbar {
@@ -32,9 +32,9 @@
     align-items: flex-end;
     justify-content: end;
     align-self: flex-end;
-    border-top: solid 4px #46ffd7;
-    border-right: solid 4px #46ffd7;
-    border-bottom: solid 4px #46ffd7;
+    border-top: solid 4px #178dd1;
+    border-right: solid 4px #178dd1;
+    border-bottom: solid 4px #178dd1;
 }
 
 .message-on-click-container{
@@ -88,6 +88,7 @@
     width: 60px;
     border-radius: 50%;
     grid-row-start: 2;
+    margin-left: 5px;
 }
 
 
@@ -167,7 +168,7 @@
     padding-top: 10px;
     height: 70px;
     width: 400px;
-    border: solid  #46ffd7;
+    border: solid  #178dd1;
     border-radius: 25px;
     color: white;
     background-color: rgb(68,60,76, 0.7);

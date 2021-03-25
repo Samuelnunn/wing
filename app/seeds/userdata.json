@@ -2,12 +2,12 @@
     {
       "username": "demo@aa.io",
       "email": "demo@aa.io",
-      "first_name": "Demo",
+      "first_name": "Sebastian",
       "last_name": "demo@aa.io",
       "password": "password",
       "age": "32", 
       "zip_code": "11111",
-      "bio": "Totally Awesome!",
+      "bio": "I'm, just a demo... but I still need love.",
       "profile_photo_url": "http://wing.s3.amazonaws.com/1.png",
       "gender_id": "Man"
     },
@@ -241,7 +241,7 @@
       "age": "52", 
       "zip_code": "11111",
       "bio": "Totally Awesome!",
-      "profile_photo_url": "http://wing.s3.amazonaws.com/anastasia-vityukova-QhKX67yT7wk-unsplash.jpg",
+      "profile_photo_url": "http://wing.s3.amazonaws.com/22.png",
       "gender_id": "Woman"
 
     },
@@ -254,7 +254,7 @@
       "age": "52", 
       "zip_code": "11111",
       "bio": "Totally Awesome!",
-      "profile_photo_url": "http://wing.s3.amazonaws.com/anastasia-vityukova-QhKX67yT7wk-unsplash.jpg",
+      "profile_photo_url": "http://wing.s3.amazonaws.com/22.png",
       "gender_id": "Woman"
 
     },
@@ -267,7 +267,7 @@
       "age": "52", 
       "zip_code": "11111",
       "bio": "Totally Awesome!",
-      "profile_photo_url": "http://wing.s3.amazonaws.com/anastasia-vityukova-QhKX67yT7wk-unsplash.jpg",
+      "profile_photo_url": "http://wing.s3.amazonaws.com/22.png",
       "gender_id": "Woman"
 
     },
@@ -280,7 +280,7 @@
       "age": "52", 
       "zip_code": "11111",
       "bio": "Totally Awesome!",
-      "profile_photo_url": "http://wing.s3.amazonaws.com/anastasia-vityukova-QhKX67yT7wk-unsplash.jpg",
+      "profile_photo_url": "http://wing.s3.amazonaws.com/22.png",
       "gender_id": "Woman"
 
     },
@@ -293,7 +293,7 @@
       "age": "52", 
       "zip_code": "11111",
       "bio": "Totally Awesome!",
-      "profile_photo_url": "http://wing.s3.amazonaws.com/anastasia-vityukova-QhKX67yT7wk-unsplash.jpg",
+      "profile_photo_url": "http://wing.s3.amazonaws.com/22.png",
       "gender_id": "Woman"
 
     },
@@ -318,7 +318,43 @@
       "age": "52", 
       "zip_code": "11111",
       "bio": "Totally Awesome!",
-      "profile_photo_url": "http://wing.s3.amazonaws.com/anastasia-vityukova-QhKX67yT7wk-unsplash.jpg",
-      "gender_id": "Non-Binary"
+      "profile_photo_url": "http://wing.s3.amazonaws.com/22.png",
+      "gender_id": "Non-binary"
+    },
+    {
+      "username": "ricky",
+      "email": "Ican.com",
+      "first_name": "Ricky",
+      "last_name": "lake",
+      "password": "password",
+      "age": "23", 
+      "zip_code": "11111",
+      "bio": "fine...",
+      "profile_photo_url": "http://wing.s3.amazonaws.com/19.png",
+      "gender_id": "Man"
+    },
+    {
+      "username": "florp",
+      "email": "florpy@lorpy.com",
+      "first_name": "Johnathan",
+      "last_name": "Blob",
+      "password": "password",
+      "age": "28", 
+      "zip_code": "11111",
+      "bio": "Pretty much like all other jonathans",
+      "profile_photo_url": "http://wing.s3.amazonaws.com/20.png",
+      "gender_id": "Man"
+    },
+    {
+      "username": "Justin",
+      "email": "Justin@time.com",
+      "first_name": "Justin",
+      "last_name": "time",
+      "password": "password",
+      "age": "34", 
+      "zip_code": "11111",
+      "bio": "Justin... Just out of luck in love",
+      "profile_photo_url": "http://wing.s3.amazonaws.com/21.png",
+      "gender_id": "Man"
     }
 ]
