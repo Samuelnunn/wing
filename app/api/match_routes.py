@@ -1,6 +1,6 @@
 from flask import Blueprint, jsonify, request
 from flask_login import login_required, current_user
-from app.models import db, User, GenderPreference, Gender, SeenByUser
+from app.models import db, User, GenderPreference, Gender, SeenByUser, Message
 
 
 match_routes = Blueprint('matches', __name__)
@@ -70,6 +70,12 @@ def unmatch_user(id_param):
     user = User.query.filter(User.id == current_user.id).first()
     user_to_unmatch = User.query.filter(User.id == id_param).first()
     user_to_unmatch.matches.remove(user)
+    messages_from_match = Message.query.filter(id_param == Message.message_sender_id).all()
+    message_from_user = Message.query.filter(Message.recipient_id == id_param).all()
+    for message in messages_from_match:
+        db.session.delete(message)
+    for message in message_from_user:
+        db.session.delete(message)
     db.session.add(user)
     db.session.add(user_to_unmatch)
     db.session.commit()
@@ -106,17 +112,6 @@ def users_match_to_current_user():
 @match_routes.route("/seen/<int:id_param>", methods=["POST"])
 # @login_required
 def seen_by_current_user(id_param):
-    # def seen_info(self):
-    #     return {
-    #         "seenUser": self.seen_by_user_id,
-    #         "currentUser": self.user_id
-    #     }
-    # user = User.query.get(current_user.id)
-    # user_has_been_seen = User.query.filter(User.id == id_param).first()
-    # seen_by = SeenByUser(
-    #     seen_by_user_id=current_user.id,
-    #     user_id=user_has_been_seen.id
-    # )
     user_to_be_seen = User.query.get(id_param)
     current_user.seen_users.append(user_to_be_seen)
     db.session.add(current_user)

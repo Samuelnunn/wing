@@ -23,5 +23,5 @@ def seed_messages():
 
 def undo_messages():
     db.session.execute('TRUNCATE users CASCADE;')
-    db.session.execute("ALTER SEQUENCE USERS_id_seq RESTART WITH 1")
+    db.session.execute("ALTER SEQUENCE messages_id_seq RESTART WITH 1")
     db.session.commit()

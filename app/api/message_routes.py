@@ -32,9 +32,7 @@ def get_messagefeed(id_param):
     user = User.query.filter(User.id == current_user.id).first()
     messages_from_match = Message.query.filter(id_param == Message.message_sender_id).all()
     message_from_user = Message.query.filter(Message.recipient_id == id_param)
- 
     formated_messages = []
-    
     for message in messages_from_match:
         formated_messages.append(message.to_dict())
     for message in message_from_user:

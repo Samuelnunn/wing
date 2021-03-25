@@ -4,9 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import Center from 'react-center';
 import Navigation from './Navigation'
 import NavBar from "./components/NavBar/index";
-import ProtectedRoute from "./components/auth/ProtectedRoute";
 import MatchCard from "./components/Match/index";
-import Messages from "./components/Messages/index";
 import Matched from './components/Matched/index';
 import User from './components/Profile/User';
 import SplashPage from './components/Splash'
@@ -16,19 +14,23 @@ import { getPotentialMatches, usersWhoHaveMatchedCurrent} from './store/matches'
 import { matchedByOtherUser } from './store/matched';
 import { fetchMessages } from './store/messages';
 import { getSeenUsers } from './store/matches';
-import { addPreferenceToState } from './store/preferences'
+import { addPreferenceToState } from './store/preferences';
+import { Modal } from './context/ModalContext';
 import './index.css';
-
-
-
+import MessagesContainer from "./components/Messages/MessageContainer";
 
 
 function App() {
   const dispatch = useDispatch();
   const [authenticated, setAuthenticated] = useState(false);
   const [loaded, setLoaded] = useState(false);
-  
+  console.log(Modal)
   const user = useSelector(state => state.session.user) ;
+
+  const [showModal, setShowModal] = useState(false);
+
+  const onClose= () => {setShowModal(false)}
+
 
   const config = {
     navigation: {
@@ -62,7 +64,6 @@ function App() {
         <>
             <BrowserRouter>
             <NavBar loaded={loaded} setAuthenticated={setAuthenticated}  authenticated={authenticated}/>
-            
             <Route path="/" exact={true} authenticated={authenticated}>
                 <SplashPage className='splash'/>
             </Route>
@@ -81,7 +82,7 @@ function App() {
                             </Center>
                         </Route>
                         <Route path="/messages" exact={true} authenticated={authenticated}>
-                            <Messages className="body-of-webpage" loaded={loaded} />
+                            <MessagesContainer className="body-of-webpage" loaded={loaded} />
                         </Route>
                         <Route path="/matched" exact={true} authenticated={authenticated}>
                             <Matched className="body-of-webpage" loaded={loaded} />

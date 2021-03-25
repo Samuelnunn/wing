@@ -4,6 +4,7 @@ import { signUp, genderPreferenceFormData } from '../../services/auth';
 import { useDispatch } from 'react-redux';
 import { addUser } from '../../store/session';
 import './SignUp.css';
+import wing from './w-logo.png';
 
 const SignUpForm = ({authenticated, setAuthenticated, onClose}) => {
     const history = useHistory();
@@ -19,16 +20,14 @@ const SignUpForm = ({authenticated, setAuthenticated, onClose}) => {
     const [bio, setBio] = useState("");
     const [gender, setGender] = useState("");
     const [profilePicture, setProfilePicture] = useState("");
-    const [selectedFile, setSelectedFile] = useState("Profile Image");
+    const [selectedFile, setSelectedFile] = useState("Choose A Profile Picture");
     const [genderPreference, setGenderPreference] = useState("");
 
     const dispatch = useDispatch();
-    let genders = ["Woman", "Cis Woman", "Trans Woman", "Man",
-           "Cis Man", "Trans Man", "Agender", "Androgynous",
-           "Bigender", "GenderFluid", "GenderQueer",
-           "Gender Nonconforming", "Hijra", "Intersex",
-           "Non-binary", "Other", "Pangender", "Transfeminine",
-           "Transmasculine", "Transsexual", "Two Spirit"];
+    let genders = ["Woman", "Man",
+                   "Agender", "GenderQueer",
+                   "Intersex", "Non-binary", 
+                   "Other", "Trans",];
 
     const onSignUp = async (e) => {
         e.preventDefault();
@@ -107,46 +106,50 @@ const SignUpForm = ({authenticated, setAuthenticated, onClose}) => {
     return (
         <form onSubmit={onSignUp} className='signup-form-container'>
             <div className='right-side-container'>
+                <img src={wing} className='w-logo'/>
             </div>
             <div className='sign-up-side'>
-                <div>
+                <div className='email-ele'>
                     <input
                         type="text"
                         name="username"
                         placeholder='Username'
                         onChange={updateUsername}
                         value={username}
+                        className='input-fields'
                     ></input>
                 </div>
-                <div>
-                <input
+                <div className='email-ele'> 
+                    <input
                         type="text"
                         name="email"
                         placeholder='Email'
                         onChange={updateEmail}
                         value={email}
-                ></input>
+                        className='input-fields'
+                    ></input>
                 </div>
-                <div>
+                <div className='email-ele'>
                     <input
                         type="password"
                         name="password"
                         placeholder='Password'
                         onChange={updatePassword}
                         value={password}
+                        className='input-fields'
                     ></input>
                 </div>
-                <div>
-                    <input
+                <div className='email-ele'>                    <input
                         type="password"
                         name="repeat_password"
                         placeholder='Confirm password'
                         onChange={updateRepeatPassword}
                         value={repeatPassword}
                         required={true}
+                        className='input-fields'
                     ></input>
                 </div>
-                <div>    
+                <div className='email-ele'>  
                     <input
                         type="text"
                         name="firstName"
@@ -154,9 +157,10 @@ const SignUpForm = ({authenticated, setAuthenticated, onClose}) => {
                         onChange={updateFirstName}
                         value={firstName}
                         required={true}
+                        className='input-fields'
                     ></input>
                 </div>
-                <div>    
+                <div className='email-ele'>  
                     <input
                         type="text"
                         name="lastName"
@@ -164,9 +168,10 @@ const SignUpForm = ({authenticated, setAuthenticated, onClose}) => {
                         onChange={updateLastName}
                         value={lastName}
                         required={true}
+                        className='input-fields'
                     ></input>
                 </div>
-                <div>    
+                <div className='email-ele'> 
                     <input
                         type="number"
                         name="age"
@@ -174,9 +179,10 @@ const SignUpForm = ({authenticated, setAuthenticated, onClose}) => {
                         onChange={updateAge}
                         value={age}
                         required={true}
+                        className='input-fields'
                     ></input>
                 </div>
-                <div>    
+                <div className='email-ele'>   
                     <input
                         type="number"
                         name="zipCode"
@@ -184,93 +190,104 @@ const SignUpForm = ({authenticated, setAuthenticated, onClose}) => {
                         onChange={updateZipCode}
                         value={zipCode}
                         required={true}
+                        className='input-fields'
                     ></input>
                 </div>
-                <div>
+                <div className='bio-ele'>
+                    <label>Tell the world about your person</label>
                     <input
                         type="text"
                         name="bio"
-                        placeholder='Tell people about your person'
+                        placeholder='Short Bio'
                         onChange={updateBio}
                         value={bio}
                         required={true}
+                        className='bio-text-ele'
                     ></input>
                 </div>
-                <div> 
-                    <p>Idententifying Gender :</p>
-                    { genders.map(eachGender => {
+                <div className='gender-id-ele'>
+                    <label className='gender-id-label'>Identifying Gender </label> 
+                    {genders.map(eachGender => {
                         if (gender.length >= 1) {
                         return (
-                            <>
+                            <div className='gender-text'>
                                 <input
                                     type="checkbox"
                                     name="gender"
                                     placeholder={eachGender}
                                     onChange={updateGender}
                                     value={eachGender}
+                                    className='gender-text'
                                 ></input>{eachGender}
-                            </>
+                            </div>
                             )
                         } else {
                             return (
-                                <>
-                                <input
-                                    type="checkbox"
-                                    name="gender"
-                                    placeholder={eachGender}
-                                    onChange={updateGender}
-                                    value={eachGender}
-                                    required={true}
-                                ></input>{eachGender}</> 
+                                <div className='gender-text'>
+                                    <input
+                                        type="checkbox"
+                                        name="gender"
+                                        placeholder={eachGender}
+                                        onChange={updateGender}
+                                        value={eachGender}
+                                        required={true}
+                                        className='gender-text'
+                                    ></input>{eachGender}
+                                </div> 
                             )   
                         }
                     })}
-                </div>
-                <div> 
-                    <p>Gender Preference:</p>
+                    </div>
+                <div className='gender-pref-ele'> 
+                    <label className='gender-pref-label'>Gender Preferences</label>
                     { genders.map(eachGender => {
                         if (genderPreference.length >= 1) {
                         return (
-                            <>
+                            <div className='gender-text'>
                                 <input
                                     type="checkbox"
                                     name="genderPreferences"
                                     placeholder={eachGender}
                                     onChange={updateGenderPreference}
                                     value={eachGender}
+                                    className='gender-text'
                                 ></input>{eachGender}
-                            </>
+                            </div>
                             )
                         } else {
                             return (
-                                <>
-                                <input
-                                    type="checkbox"
-                                    name="genderPreferences"
-                                    placeholder={eachGender}
-                                    onChange={updateGenderPreference}
-                                    value={eachGender}
-                                    required={true}
-                                ></input>{eachGender}</> 
+                                <div className='gender-text'>
+                                    <input
+                                        type="checkbox"
+                                        name="genderPreferences"
+                                        placeholder={eachGender}
+                                        onChange={updateGenderPreference}
+                                        value={eachGender}
+                                        required={true}
+                                        className='gender-text'
+                                    ></input>{eachGender}
+                                </div> 
                             )   
                         }
                     })}
                 </div>
                 <div>
-                    <h5 className='normalize-text' style={{ margin: '0', overflow: 'hidden' }}>{selectedFile}</h5>
+                    <h5 className='normalize-text' style={{ margin: '0', overflow: 'hidden' }}>
+                        {selectedFile}</h5>
                 </div>
-                <div>
-                <input
-                        
+                <div className='profile-pic-upload-container'>
+                <label className='profile-pic-input'>Upload Picture 
+                    <input       
                         type="file"
                         name="user_file"
                         onChange={updateProfilePhotoPicture}
                         ref={fileInput}
+                        className='profile-pic-input'
                     /> 
+                </label>
                 </div>
-                <button type="submit">Sign Up</button>
-            </div>
-            <div className='right-side-container'>
+                <div className='padding-buffer'/>
+                <button type="submit" className='button-ele'>Sign Up</button>
             </div>
         </form>
     );

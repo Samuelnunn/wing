@@ -3,8 +3,9 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    /* height: 100%; */
-    margin-top: 550px;
+    height: 100%;
+    margin-top: 360px;
+    /* margin-right: 20px */
 }
 
 @keyframes bounce {
@@ -24,25 +25,19 @@
     }
 }
 
-.text{
-    height: 50px;
-
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    /* background-color:#007d8c; */
-    /* background-color: linear-gradient(60deg, #f79533, #f37055, #ef4e7b, #a166ab, #5073b8, #1098ad, #07b39b, #6fba82);; */
-    box-shadow: 0 0 100px 50px #007d8c
-    ;
+.wing-logo{
+    width: 400px;
+    height: 300px;
+   
 }
 
 
 
 
 
-.text:hover{
+.wing-logo:hover{
     cursor: pointer;
-    animation: bounce 1s;
+    animation: bounce 1.5s;
 }
 
 .about-body{
@@ -51,9 +46,26 @@
     padding-top: 10px;
     height: 400px;
     width: 400px;
-    border: solid  rgb(18,147,164);
+    border: solid  #46ffd7;
     border-radius: 25px;
     color: white;
     background-color: rgb(68,60,76, 0.7);
+    box-shadow: 0 0 100px 20px #46ffd7;
 }
 
+.about-body{
+   display: flex;
+   flex-direction: column; 
+   justify-content: flex-start;
+   justify-self: center;
+   align-items: center;
+   justify-content: space-around;
+}
+
+
+.text-body{
+    display: flex;
+    align-self: center;
+    justify-self: center;
+    text-align: center;
+}

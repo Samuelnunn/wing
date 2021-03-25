@@ -12,8 +12,6 @@
     height: 1175px;
     overflow: scroll;
     justify-content: center;
-    /* margin-top: 50px; */
-    /* border: solid 4px rgb(18,147,164); */
     padding-top: 50px;
 }
 
@@ -30,8 +28,7 @@
     /* grid-template-rows: 500px 1fr; */
     background-color: rgb(68,60,76, 0.7);
     color: white;
-    border: solid 4px rgb(18,147,164);
-    /* margin-top: 900px */
+    border: solid 4px #46ffd7;
     margin-bottom: 50px;
    
     
@@ -76,8 +73,8 @@
     padding-left: 10px;
     display: flex;
     align-content: flex-end;
-    border-top: solid rgb(18,147,164);
-    border-radius: 0 0 0 25px;
+    border-top: solid 4px #46ffd7;
+    border-radius: 0 0 0 22px;
 }
 
 .no-current-matches-container{
@@ -93,7 +90,7 @@
     padding-top: 10px;
     height: 70px;
     width: 400px;
-    border: solid  rgb(18,147,164);
+    border: solid  #46ffd7;
     border-radius: 25px;
     color: white;
     background-color: rgb(68,60,76, 0.7);
@@ -131,8 +128,8 @@
     font: inherit;
     height: 57px;
     width: 142px;
-    border-top: solid rgb(18,147,164);
-    border-radius: 0 0 25px 0;
+    border-top: solid 4px #46ffd7;
+    border-radius: 0 0 20.5px 0;
 }
 .message-send-button-matched:hover{
     cursor: pointer;
@@ -155,7 +152,7 @@
     height: 50px !important;
     outline: none;
     background: none;
-    border: 2px solid teal;
+    border: 2px solid #46ffd7;
 }
 .remove-match-button:hover{
     cursor: pointer;
@@ -180,4 +177,8 @@
     top: 10%;
     left: calc(-0.15em - 0.08em * 2);
     filter: brightness(0.8);
+}
+
+body{
+    overflow: hidden;
 }

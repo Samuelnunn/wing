@@ -1,18 +1,18 @@
 
 
 .signup-form-container{
-    display: inline-block;
+    display: grid;
     grid-template-columns: 1fr 1fr;
-    max-height: 400px;
-    width: 600px;
+    height: 400px;
+    width: 800px;
     font-size: x-large;
     border-radius: 25px;
 }
 
 .right-side-container{
-    grid-row-start: 2;
-    /* background-color:rgb(72,53,68, 0.7); */
-    background-color:#604753;
+    grid-column-start: 2;
+    grid-row-start: 1;
+    background-color: rgb(169,105,136, 0.8);
 }
 
 .sign-up-side{
@@ -21,9 +21,13 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: space-around;
-    
+    justify-content: space-between;
+}
 
+
+
+.sign-up-side::-webkit-scrollbar {
+    display: none;
 }
 
 .email-ele{
@@ -37,11 +41,9 @@
 .button-ele{
 	padding: 0;
 	text-align: center;
-    background-color: #c98d9d
-    ;
+    background-color: #c98d9d;
     border: none;
     font-family: 'Lato';
-    /* background: none; */
     color: white;
     font: inherit;
     width: 80%;
@@ -59,8 +61,105 @@
     border-bottom: 1px solid lightgrey;
     outline: none;
     font-size: large;
+    margin-top: 60px;
 }
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
 
 .input-fields:focus {
     border-bottom: 1px solid #c98d9d
+}
+
+.bio-ele{
+    width: 80%;
+    margin-top: 50px;
+    border-top: 1px solid  #c98d9d;
+    color: #c98d9d;    
+}
+
+
+
+.bio-text-ele{
+    width: 100%;
+    border: 0;
+    border-bottom: 1px solid lightgrey;
+    outline: none;
+    font-size: large;
+    padding-top: 40px;
+    border-bottom: 1px solid #c98d9d;
+   
+}
+
+.gender-id-ele{
+    width: 80%;
+    margin-top: 50px;
+    border-top: 1px solid  rgb(18,147,164);
+    border-bottom: 1px solid  rgb(18,147,164);  
+}
+.gender-pref-ele{
+    width: 80%;
+    margin-top: 50px;
+    border-top: 1px solid  #1ccdcc;
+    border-bottom: 1px solid  #1ccdcc;
+    margin-bottom: 50px;  
+}
+
+.gender-pref-label{
+    color: #1ccdcc;
+    align-self: flex-start;
+    display: flex;
+    justify-content: space-around;
+}
+
+
+.gender-id-label{
+    color: rgb(18,147,164);
+    align-self: flex-start;
+    display: flex;
+    justify-content: space-around;
+}
+
+.profile-pic-upload-container{
+    /* padding-top: 50px; */
+    /* margin-top: 50px; */
+    /* width: 300px; */
+}
+
+.profile-pic-input{
+    font: inherit;
+    justify-content: center;
+    font-size: 20px;
+    padding: 0;
+	text-align: center;
+    background-color: #c98d9d;
+    color: white;
+    border: solid 1px black;
+  
+}
+
+.padding-buffer{
+    margin-bottom: 50px;
+}
+
+.profile-pic-input:hover{
+    cursor: pointer;
+    box-shadow: inset 0 0 100px 100px rgba(255, 255, 255, 0.1);
+}
+
+
+input[type="file"] {
+    display: none;
+}
+
+.w-logo{
+    display: flex;
+    height: 300px;
+    width: 400px;
+    align-self: center;
+    margin-top: 50px;
 }

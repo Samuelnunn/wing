@@ -16,8 +16,7 @@ function MatchCard() {
     const usersWhoLikeCurrentUser = useSelector((state) => state.matches.otherUserMatched);
     const matchedUser = useSelector((state) => state.matched.matchedUsers);
     const seenUsersFromStore = useSelector((state) => state.matches.seenUsers);
-    // const seenUsersFromStored = useSelector((state) => state.matches.seenUsers.seenUserIds);
-    console.log(potentialMatch)
+
     
     const [showModal, setShowModal] = useState(false);
     const [seenUser, setSeenUser] = useState(0);

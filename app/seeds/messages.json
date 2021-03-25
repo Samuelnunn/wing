@@ -12,8 +12,20 @@
       "message_sender_id": "1"
     },
     {
-      "read": false,
-      "content": "Loves it. Where shall they meet?",
+      "read": true,
+      "content": "No he prefers mexican!",
+      "recipient_id": "1",
+      "message_sender_id": "3"
+    },
+    {
+      "read": true,
+      "content": "Margs margs margs all day...",
+      "recipient_id": "1",
+      "message_sender_id": "3"
+    },
+    {
+      "read": true,
+      "content": "when hes not eating tacos",
       "recipient_id": "1",
       "message_sender_id": "3"
     },
@@ -21,7 +33,7 @@
       "read": false,
       "content": "Hey. He's cute!",
       "recipient_id": "1",
-      "message_sender_id": "5"
+      "message_sender_id": "2"
     },
     {
       "read": false,

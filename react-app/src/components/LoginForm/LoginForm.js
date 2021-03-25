@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import * as sessionActions from "../../store/session";
 import { login } from "../../services/auth";
 import "./LoginForm.css";
+import wing from './w-logo.png';
 
 
 const LoginForm = ({ setAuthenticated, onClose }) => {
@@ -30,6 +31,7 @@ const LoginForm = ({ setAuthenticated, onClose }) => {
   return (
     <form onSubmit={handleSubmit} className='form-container'>
         <div className='left-side-container'>
+            <img src={wing} className='w-logo'/>
         </div>
         <div className='login-container'>
             <div>
@@ -38,7 +40,7 @@ const LoginForm = ({ setAuthenticated, onClose }) => {
                   ))}
             </div>
             <div className='email-ele'>
-                    <label htmlFor="email">Email </label>
+            <label htmlFor="email">Email </label>
                     <input
                         name="email"
                         type="text"

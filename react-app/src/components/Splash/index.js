@@ -3,6 +3,7 @@ import { Modal } from '../../context/ModalContext';
 import AboutWing from './about'
 import './Splash.css';
 import '../../index.css'
+import wing from './wing-logo2.png'
 
 
 
@@ -18,7 +19,7 @@ const SplashPage = () => {
 
     return (
             <div className='logo'>
-                <h1 className='text' onClick={modalClickHandler}>Wing</h1>
+                <img className='wing-logo' src={wing} onClick={modalClickHandler}/>
                 <div></div>
                 <div>
                     {showModal && (

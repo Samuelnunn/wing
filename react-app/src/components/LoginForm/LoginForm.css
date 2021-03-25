@@ -1,31 +1,27 @@
 #nav-link-buttons{
-    /* color: yellow !important; */
     color:#483544;
 }
+
 #nav-link-buttons:hover{
     transition: color 1s;
     color:white;
 }
 
-
-
 .form-container{
     display: grid;
     grid-template-columns: 1fr 1fr;
-    height: 300px;
-    width: 600px;
+    height: 400px;
+    width: 800px;
     font-size: x-large;
-    border-radius: 25px;
+    border-radius: 25px !important;
 }
 
 .left-side-container{
     grid-row-start: 1;
-    /* background-color:rgb(72,53,68, 0.7); */
-    background-color:#604753;
+    background-color: rgb(169,105,136, 0.8);
 }
 
-.login-container{
-    
+.login-container{  
     background-color: white;
     display: flex;
     flex-direction: column;
@@ -45,21 +41,19 @@
 .button-ele{
 	padding: 0;
 	text-align: center;
-    background-color: #c98d9d
-    ;
+    background-color: #c98d9d;
     border: none;
     font-family: 'Lato';
-    /* background: none; */
     color: white;
     font: inherit;
     width: 80%;
+    outline: none;
 }
+
 .button-ele:hover{
 	cursor: pointer;
     box-shadow: inset 0 0 100px 100px rgba(255, 255, 255, 0.1);
 }
-
-
 
 .input-fields {
     width: 100%;

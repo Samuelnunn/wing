@@ -1,24 +1,55 @@
 .all-users-messages-container{
-    display: grid;
     flex-direction: column;
-    flex-wrap: wrap;
+    flex-wrap: nowrap;
     justify-content: space-around;
-    width: 800px;
-    height: auto;
+    width: 500px;
+    height: 500px;
+    overflow-y: auto;
     background-color: rgb(68,60,76, 0.7);
-    border-radius: 25px;
-    padding-top: 10px !important;
+    border-radius: 25px 0 0 25px;
+    padding: 10px ;
     margin-top: 50px;
+    padding-bottom: 10px;
+    display: flex;
+    justify-content: flex-start;
+    margin-left: auto;
+    border-left:solid 4px #46ffd7;
+    border-top:solid 4px #46ffd7;
+    border-bottom:solid 4px #46ffd7;
 }
 
+.all-users-messages-container::-webkit-scrollbar {
+    display: none;
+}
 
+ .current-messages-container{
+    grid-column-start: 2;
+    grid-column-end: 2;
+    background-color: rgb(68,60,76, 0.7);
+    border-radius: 0 25px 25px 0;
+    height: 500px;
+    margin-top: 50px;
+    align-items: flex-end;
+    justify-content: end;
+    align-self: flex-end;
+    border-top: solid 4px #46ffd7;
+    border-right: solid 4px #46ffd7;
+    border-bottom: solid 4px #46ffd7;
+}
 
+.message-on-click-container{
+    border-radius: 25px;
+    width: 615px;
+    height: 500px;
+}
 
 .all-users-messages-container .each-message{
     display: grid;
+    grid-row-start: 1;
+    grid-row-end: 1;
     grid-template-columns: auto 30px;
     background-color:rgb(57,167,175, 0.2);
-    width: 800px;
+    width: 480px;
     height: 100px;
     border-radius: 25px;
     border-bottom: solid 2px gray;
@@ -26,6 +57,7 @@
     margin-top: 0;
     color: white;
     font-size: 22px;
+    flex-direction: column;
 }
 
 .each-message{
@@ -39,7 +71,6 @@
     ;
 }
 .each-message{
-    margin-left: 20px;
     margin-top: 32px;   
 }
 
@@ -59,16 +90,10 @@
     grid-row-start: 2;
 }
 
-.all-users-messages-container{
-    display: flex;
-    flex-direction: row;
-    padding: 10px;
-    padding-top: 50px;
-    border: 4px solid  rgb(18,147,164);
-}
 
 .message-element{
-    padding-left: 15px;
+    grid-row-start: 1;
+    grid-row-end: 1;
     display: flex;
     flex-direction: row;
 
@@ -89,12 +114,12 @@
 }
 
 .message-text-area{
-    width: 700px;
+    width: 450px;
     resize: none;
     font-size: 22px;
     height: 30px;
     display: flex;
-    border-radius: 25px 0px 0px 25px;
+    
     outline: none;
     padding-left: 10px;
 
@@ -104,7 +129,7 @@
 .message-input-button{
     display: flex;
     flex-direction: row;
-    border-bottom: 2px solid teal;
+   
     border-radius: 25px;
 }
 
@@ -118,7 +143,8 @@
     color: black;
     font: inherit;
     width: 80%;
-    border-radius: 0px 25px 25px 0px;
+    border-radius: 0px 0px 17px 0px;
+    font-size: 20px;
 }
 
 .message-send-button:hover{
@@ -141,8 +167,37 @@
     padding-top: 10px;
     height: 70px;
     width: 400px;
-    border: solid  rgb(18,147,164);
+    border: solid  #46ffd7;
     border-radius: 25px;
     color: white;
     background-color: rgb(68,60,76, 0.7);
+}
+
+.whole-message-component{
+    width: 1200px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+/* 
+.border-sizer{
+    border-right: 4px solid rgb(68,60,76, 0.7);
+    padding-right: 480px;
+} */
+
+.read-unread{
+    pointer-events: none !important;
+}
+
+#message-message-text-area{
+    outline: none;
+    border: none;
+}
+
+.wing-logo-message{
+    display: flex;
+    height: 300px;
+    width: 500px;
+    align-self: center;
+    margin-left: 45px;
+    margin-top: 90px;
 }

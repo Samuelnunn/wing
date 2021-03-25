@@ -8,25 +8,21 @@ function User({user}) {
 
     const genderPreferenceId = useSelector((state) => state.genderPreference.genderPreferences);
 
-    console.log(genderPreferenceId)
-
     let genders = [ "Woman", "Man", "Agender",
                     "GenderQueer", "Intersex",
                     "Non-binary", "Other","Trans", 
                     ]
     const [genderPreference, setGenderPreference] = useState("")
 
-    console.log(genderPreferenceId.indexOf("Man"))
+
     let changeGenderPreferences = genderPreferenceId.indexOf(genderPreference)
-    // console.log(change_gender_preferences += 1)
-    // const currentgenderPreference = useSelector((state) => state.messages)
+
     const onGenderClick = async (e) => {
         e.preventDefault();
-    // console.log(gendersToUpdate)
+
         const userId = user.id
     
         const myUser = addGenderPreferences(userId, changeGenderPreferences);
-    // const genderPreferenceData = await genderPreferenceFormData(genderPreference)
         if (!myUser.errors) {
             dispatch(addGenderPreferences(userId, changeGenderPreferences += 1));
             window.location.href='/matches';
@@ -54,7 +50,7 @@ function User({user}) {
                         { genders.map(eachGender => {
                             if (genderPreference.length >= 1) {
                             return (
-                                <>
+                                <div className='each-gender-input'>
                                     <input 
                                         className='gender-text'
                                         type="checkbox"
@@ -63,11 +59,11 @@ function User({user}) {
                                         onChange={updateGenderPreference}
                                         value={eachGender}
                                     ></input>{eachGender}
-                                </>
+                                </div>
                                 )
                             } else {
                                 return (
-                                    <>
+                                    <div className='each-gender-input'>
                                     <input
                                         type="checkbox"
                                         name="genderPreferences"
@@ -76,7 +72,7 @@ function User({user}) {
                                         onChange={updateGenderPreference}
                                         value={eachGender}
                                         required={true}
-                                    ></input>{eachGender}</> 
+                                    ></input>{eachGender}</div> 
                                 )   
                             }
                         })}
