@@ -1,13 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from "react-redux";
-import { sendAMessage, fetchMessages, fetchMessageFeedMessages, setMessageFeedForUser } from '../../store/messages';
-import { Modal } from '../../context/ModalContext';
+import { sendAMessage, fetchMessages, fetchMessageFeedMessages } from '../../store/messages';
 import Messages from './index'
 import MessageOnClick from '../MessageOnClick';
-import ReadAndUnread from './ReadAndUnread';
 import './messages.css';
 import wing from './w-logo.png'
-
 
 
 const MessagesContainer = () => {
@@ -16,21 +13,13 @@ const MessagesContainer = () => {
     const usersMessages = useSelector((state) => state.messages.message);
     const usersMessageFeed = useSelector((state) => state.messages.messagefeed);
     
-
     const [showChat, setShowChat] = useState(false);
     const [personToMessage, setPersonToMessage] = useState(0);
     const [messageText, setMessageText] = useState("");
-    const [iconToggle, setIconToggle] = useState();
-
     
     const messageUser = async (e) => {   
-        usersMessages.filter((eachUser) => {
-            if(e.target.id == eachUser.messageSenderId){
-                setIconToggle(eachUser.read);
-            }
-        });
-        await dispatch(fetchMessages)
-        await dispatch(fetchMessageFeedMessages(e.target.id))
+        dispatch(fetchMessages())
+        dispatch(fetchMessageFeedMessages(e.target.id))
         .then(() =>  setPersonToMessage(e.target.id));
         setShowChat(true);
     };
@@ -45,19 +34,13 @@ const MessagesContainer = () => {
     };
 
     useEffect(() => {
-        fetchMessages()
-    }, [dispatch, fetchMessages, messageUser]);
+        dispatch(fetchMessageFeedMessages(personToMessage));
+    }, [dispatch, messageText]);
 
-
-    useEffect(() => {
-        usersMessages.filter((eachUser) => {
-            setIconToggle(eachUser.read) 
-        });
-    }, [dispatch, fetchMessages, messageText, iconToggle]);
 
     return usersMessages.length ?
         <div className='whole-message-component'>    
-            <Messages showChat={showChat} messageUser={messageUser}/>
+            <Messages showChat={showChat} personToMessage={personToMessage} messageUser={messageUser}/>
             <div className='current-messages-container'>
                 {!showChat && <img src={wing} className='wing-logo-message'/>}
                 {showChat && <div className='message-on-click-container'>
