@@ -38,30 +38,40 @@ function MatchCard() {
     
     
     const removedDuplicates = arrayOfIds.filter(values => !flattenNestedArray.includes(values));
-    const randomNum = Math.floor(Math.random() * removedDuplicates.length);
+    // const randomNum = Math.floor(Math.random() * removedDuplicates.length);
     
 
     const randomizerFilter = potentialMatch.filter((oneMatch) => oneMatch.id == removedDuplicates[0]); 
 
-    const matchUser = (e) => {
+    const matchUser = async (e) => {
+        console.log(e.target.id) 
+        if(e.target.id){
         usersWhoLikeCurrentUser.filter((eachId) => {
             if (eachId.id == e.target.id) {
                 setShowModal(true);
+                // onClose()
             }
         });
         dispatch(matchUsers(e.target.id));
         dispatch(userToBeSeen(e.target.id))
-        .then(() => {dispatch(getSeenUsers())})
+        .then(() => {dispatch(getSeenUsers())});
         setSeenUser(e.target.id);
+        } else{
+            onClose()
+        }
     };
 
     const passUser = (e) => {
+        console.log(e.target.id)
+        if(e.target.id){
         setSeenUser(e.target.id);
         dispatch(userToBeSeen(e.target.id))
-        .then(() => {dispatch(getSeenUsers())})
+        .then(() => {dispatch(getSeenUsers())});
+        } else {
+            onClose()
+        }
     };
     
-
 
       
     return randomizerFilter.length ?

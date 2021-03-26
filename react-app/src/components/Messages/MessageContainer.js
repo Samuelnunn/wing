@@ -33,6 +33,8 @@ const MessagesContainer = () => {
         };
     };
 
+
+
     useEffect(() => {
         dispatch(fetchMessageFeedMessages(personToMessage));
     }, [dispatch, messageText]);
@@ -55,7 +57,8 @@ const MessagesContainer = () => {
                                 onChange={e => { setMessageText(e.target.value)}}
                             ></textarea>
                         </div>
-                        <button className='message-send-button' onClick={handleMessageSendClick}>Send Message</button>
+                        <button className='message-send-button'
+                        onClick={handleMessageSendClick}>Send Message</button>
                     </div> 
                 </div>}
             </div>

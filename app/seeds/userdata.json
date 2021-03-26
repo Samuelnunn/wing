@@ -170,7 +170,7 @@
     {
       "username": "Ashton",
       "email": "ashton@aa.io",
-      "first_name": "Matty",
+      "first_name": "Ashton",
       "last_name": "Wheeler",
       "password": "password",
       "age": "52", 
@@ -183,7 +183,7 @@
     {
       "username": "Paolo",
       "email": "Paolo@aa.io",
-      "first_name": "Matty",
+      "first_name": "Paolo",
       "last_name": "Wheeler",
       "password": "password",
       "age": "52", 
@@ -196,7 +196,7 @@
     {
       "username": "Max",
       "email": "Max@aa.io",
-      "first_name": "Matty",
+      "first_name": "Max",
       "last_name": "Wheeler",
       "password": "password",
       "age": "52", 
@@ -209,7 +209,7 @@
     {
       "username": "Adam",
       "email": "Adam@aa.io",
-      "first_name": "Matty",
+      "first_name": "Adam",
       "last_name": "Wheeler",
       "password": "password",
       "age": "52", 
@@ -240,7 +240,7 @@
       "password": "password",
       "age": "52", 
       "zip_code": "11111",
-      "bio": "Totally Awesome!",
+      "bio": "Danielle? More like damn! She's swell!",
       "profile_photo_url": "http://wing.s3.amazonaws.com/22.png",
       "gender_id": "Woman"
 
