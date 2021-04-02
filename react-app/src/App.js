@@ -18,6 +18,7 @@ import { addPreferenceToState } from './store/preferences';
 import { Modal } from './context/ModalContext';
 import './index.css';
 import MessagesContainer from "./components/Messages/MessageContainer";
+import Footer from './components/Footer.js/index.js'
 
 
 function App() {
@@ -67,6 +68,7 @@ function App() {
             <Route path="/" exact={true} authenticated={authenticated}>
                 <SplashPage className='splash'/>
             </Route>
+            <Footer />
             
             {loaded && (
                 <>
@@ -91,6 +93,7 @@ function App() {
                             <User user={user} className="body-of-webpage" loaded={loaded} />
                         </Route>
                     </Switch>
+                    <Footer />
                     <>
                     </>
                 </>
