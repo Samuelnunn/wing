@@ -24,3 +24,8 @@ right: 6px;
     color: white;
 }
 
+.icon-size:hover{
+    transition: 0.5s;
+    color: #178dd1;
+}
+
