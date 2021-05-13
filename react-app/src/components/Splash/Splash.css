@@ -44,8 +44,8 @@
     display: flex;
     justify-content: center;
     padding-top: 10px;
-    height: 400px;
-    width: 400px;
+    height: 800px;
+    width: 800px;
     border: solid  #46ffd7;
     border-radius: 25px;
     color: white;
@@ -74,10 +74,9 @@
 
 .text-body{
     display: flex;
-    /* align-self: center; */
-    /* justify-self: center; */
     text-align: center;
     font-size: 18px;
-    padding-left: 5px;
-    padding-right: 5px;
+    padding-left: 50px;
+    padding-right: 50px;
+    padding-top: 175px;
 }
