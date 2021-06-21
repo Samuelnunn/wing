@@ -34,7 +34,6 @@ const MessagesContainer = () => {
     };
 
 
-
     useEffect(() => {
         dispatch(fetchMessageFeedMessages(personToMessage));
     }, [dispatch, messageText]);

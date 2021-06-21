@@ -65,7 +65,7 @@ def match_user(id_param):
     return jsonify(matches_to_return)
 
 @match_routes.route("/unmatch/<int:id_param>", methods=["DELETE"])
-# @login_required
+# @login_required 
 def unmatch_user(id_param):
     user = User.query.filter(User.id == current_user.id).first()
     user_to_unmatch = User.query.filter(User.id == id_param).first()
