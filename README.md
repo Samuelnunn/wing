@@ -1,4 +1,4 @@
-# Flask React Project
+# Wing
 
 This is the backend for the Flask React project.
 
