@@ -6,6 +6,17 @@
 
 https://wingdating.herokuapp.com/
 
+## Used Technologies
+
+* React.js
+* Redux
+* JavaScript
+* Python
+* PosgreSQL
+* Flask
+* SQLAlchemy
+* Alembic
+
 ## Getting started
 
 1. Clone this repository (only this branch)
