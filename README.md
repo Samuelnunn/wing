@@ -19,7 +19,7 @@ https://wingdating.herokuapp.com/
 
 ## Getting started
 
-1. Clone this repository (only this branch)
+1. Clone this repository 
 
    ```bash
    git clone https://github.com/appacademy-starters/python-project-starter.git
@@ -33,6 +33,7 @@ https://wingdating.herokuapp.com/
 
 3. Create a **.env** file based on the example with proper settings for your
    development environment
+   
 4. Setup your PostgreSQL user, password and database and make sure it matches your **.env** file
 
 5. Get into your pipenv, migrate your database, seed your database, and run your flask app
@@ -53,7 +54,11 @@ https://wingdating.herokuapp.com/
    flask run
    ```
 
-6. To run the React App in development, checkout the [README](./react-app/README.md) inside the `react-app` directory.
+6. CD into the react-app directory
+   
+   ```bash
+   npm install
+   ```
 
 ***
 *IMPORTANT!*
