@@ -96,14 +96,11 @@ https://wingdating.herokuapp.com/
 
 7. If image exists delete before building
 
-docker image rm registry.heroku.com/wingdating/web
-
-docker build --tag registry.heroku.com/wingdating/web .  
-
-docker push registry.heroku.com/wingdating/web
-
-heroku container:release web -a wingdating 
-   
+   ```bash
+   docker image rm registry.heroku.com/wingdating/web
+   docker build --tag registry.heroku.com/wingdating/web .  
+   docker push registry.heroku.com/wingdating/web
+   heroku container:release web -a wingdating 
    ```
 
 8. set up your database:
@@ -114,5 +111,3 @@ heroku container:release web -a wingdating
    ```
 
 9. Under Settings find "Config Vars" and add any additional/secret .env variables.
-
-10. profit
