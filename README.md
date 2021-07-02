@@ -106,8 +106,8 @@ https://wingdating.herokuapp.com/
 8. set up your database:
 
    ```bash
-   heroku run -a {NAME_OF_HEROKU_APP} flask db upgrade
-   heroku run -a {NAME_OF_HEROKU_APP} flask seed all
+   heroku run -a wingdating flask db upgrade
+   heroku run -a wingdating flask seed all
    ```
 
 9. Under Settings find "Config Vars" and add any additional/secret .env variables.
